@@ -11,8 +11,6 @@ namespace HackManchester2014.Map
         public MapModule()
             : base("Map")
         {
-            this.RequiresAuthentication();
-
             Get["/"] = _ =>
             {
                 var model = new MapHomeViewModel

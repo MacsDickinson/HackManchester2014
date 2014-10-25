@@ -61,6 +61,9 @@
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.Authentication.Forms">
+      <HintPath>..\packages\Nancy.Authentication.Forms.0.23.2\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>..\packages\Nancy.Hosting.Aspnet.0.23.2\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
@@ -87,6 +90,7 @@
       <HintPath>..\packages\SimpleAuthentication.Core.0.3.14\lib\net40\SimpleAuthentication.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -126,15 +130,20 @@
   <ItemGroup>
     <Compile Include="Auth\AuthModule.cs" />
     <Compile Include="Auth\AuthProvider.cs" />
+    <Compile Include="Util\ExtentionMethods.cs" />
+    <Compile Include="Auth\UserIdentity.cs" />
+    <Compile Include="Auth\UserMapper.cs" />
+    <Compile Include="Domain\Entry.cs" />
+    <Compile Include="Domain\Challenge.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Donation\DonationCore.cs" />
     <Compile Include="Donation\JustGivingUrlBuilder.cs" />
     <Compile Include="Home\HomeModule.cs" />
     <Compile Include="Infrastructure\JustGivingConfiguration.cs" />
-    <Compile Include="Map\MapModule.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\RavenSessionProvider.cs" />
     <Compile Include="Map\MapModule.cs" />
+    <Compile Include="Map\Models\MapDonation.cs" />
     <Compile Include="Map\Models\MapHomeViewModel.cs" />
     <Compile Include="Map\Models\MapLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

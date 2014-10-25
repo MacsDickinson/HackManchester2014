@@ -16,7 +16,7 @@ namespace HackManchester2014.Domain
             UserInfo = userInformation;
             ProviderName = providerName;
         }
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string ProviderName { get; set; }
         public SimpleAuthentication.Core.UserInformation UserInfo { get; set; }
 

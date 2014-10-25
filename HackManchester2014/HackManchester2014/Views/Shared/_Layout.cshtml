@@ -1,4 +1,5 @@
-﻿@{
+﻿@using HackManchester2014.Util
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -34,7 +35,13 @@
         }
     </style>
 </head>
-<body>
-    @RenderBody()
-</body>
+    <body>
+        @if (Html.GetUser() != null)
+        {
+            <div>
+                <span>Logged in as @Html.GetUser().UserInfo.Name</span><span><a href="/Logout">Log Out</a></span>
+            </div>
+        }
+        @RenderBody()
+    </body>
 </html>

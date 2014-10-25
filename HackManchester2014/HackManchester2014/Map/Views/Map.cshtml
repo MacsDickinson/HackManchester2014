@@ -1,7 +1,21 @@
 ﻿@{
     Layout = "Shared/_Layout.cshtml";
 }
+@using HackManchester2014.Map.Models
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Map.Models.MapHomeViewModel>
+
+@helper LoadNominations(MapDonation donation)
+{
+    <text>
+        setTimeout(function() {
+            animateData(map, @Html.Raw(donation.NominationsGeoJson))
+            @foreach (var nomination in donation.Nominations)
+            {
+                @LoadNominations(nomination)
+            }
+        }, 1000);
+    </text>
+}
 
 <div id='map-wrapper'>
     <div id='map'></div>
@@ -17,11 +31,17 @@
         });
 
         // Load the data for the user
-        loadData(map, @Html.Raw(Model.DonationsJson));
+        loadData(map, @Html.Raw(Model.Donation.DonationGeoJson));
 
-        map.setView([@Model.MyLocation.Latitude, @Model.MyLocation.Longitude], 15);
+        @LoadNominations(Model.Donation)
+
+        map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude], 13);
         map.infoControl.addInfo('<a href="http://hackman14.azurewebsites.net/">Mighty Morphin Power Hackers</a>');
 
+        function animateData(map, data) {
+            L.mapbox.featureLayer(data)
+                .addTo(map);
+        }
         function loadData(map, data) {
             L.mapbox.featureLayer(data)
                 .addTo(map);

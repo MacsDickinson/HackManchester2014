@@ -7,22 +7,37 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Nancy.Security;
+using HackManchester2014.Domain;
+using HackManchester2014.Auth;
+using Raven.Client;
 
 namespace HackManchester2014.Donation
 {
     public class DonationCore: NancyModule
     {
-        public DonationCore(JustGivingConfiguration justGivingConfig)
+        public DonationCore(IDocumentSession session, JustGivingConfiguration justGivingConfig)
         {
-            Get["/BeginDonate"] = _ =>
+            this.RequiresAuthentication();
+
+            Get[@"/challenges/{challengeTag}/donate"] = _ =>
             {
+                var user = (UserIdentity)Context.CurrentUser;
+
+                string challengeTag = _.challengeTag;
+                var challenge = session.Load<Challenge>(string.Format("challenges/{0}", challengeTag));
+
+                var entry = new Entry(user.User, challenge);
+
+                session.Store(entry);
+                session.SaveChanges();
+
                 var returnUrl = new UriBuilder
                 {
                     Scheme = this.Request.Url.Scheme,
                     Host = this.Request.Url.HostName,
                     Port = this.Request.Url.Port ?? 80,
-                    Path = "/ConfirmDonate",
-                    Query = "DonationId=JUSTGIVING-DONATION-ID"
+                    Path = string.Format("/{0}/{1}/confirm-JUSTGIVING-DONATION-ID", challenge.Id, entry.Id)
                 }.ToString();
 
                 var url = new JustGivingUrlBuilder
@@ -30,21 +45,28 @@ namespace HackManchester2014.Donation
                     Host = justGivingConfig.WebsiteHost,
                     CharityId = 300,
                     Amount = 3.14M,
-                    Reference = "Matts First & Test",
+                    Reference = entry.Id,
                     ExitUrl = returnUrl
                 }.ToString();
                 
                 return new RedirectResponse(url);
             };
 
-            Get["/ConfirmDonate"] = _ =>
+            Get["/challenges/{challengeTag}/entries/{entryId}/confirm-{donationId}"] = _ =>
             {
                 var c = new JustGivingClient(new ClientConfiguration(string.Format("https://{0}/", justGivingConfig.ApiHost), justGivingConfig.ApiKey, 3));
 
-                int donationId = Context.Request.Query.DonationId;
+                string challengeTag = _.challengeTag;
+                int entryId = _.entryId;
+                int donationId = _.donationId;
 
                 var donation = c.Donation.Retrieve(donationId);
-                return JsonConvert.SerializeObject(donation, Formatting.Indented);
+
+                var entry = session.Load<Entry>(entryId);
+                entry.Donation = donation;
+                session.SaveChanges();
+
+                return "Thanks for donating";
             };
         }
     }

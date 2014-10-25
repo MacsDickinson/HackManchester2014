@@ -133,7 +133,7 @@
     <Compile Include="Util\ExtentionMethods.cs" />
     <Compile Include="Auth\UserIdentity.cs" />
     <Compile Include="Auth\UserMapper.cs" />
-    <Compile Include="Domain\ChallengeEntry.cs" />
+    <Compile Include="Domain\Entry.cs" />
     <Compile Include="Domain\Challenge.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Donation\DonationCore.cs" />
@@ -143,6 +143,7 @@
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\RavenSessionProvider.cs" />
     <Compile Include="Map\MapModule.cs" />
+    <Compile Include="Map\Models\MapDonation.cs" />
     <Compile Include="Map\Models\MapHomeViewModel.cs" />
     <Compile Include="Map\Models\MapLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

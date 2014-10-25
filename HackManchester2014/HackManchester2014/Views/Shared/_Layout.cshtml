@@ -34,7 +34,13 @@
         }
     </style>
 </head>
-<body>
-    @RenderBody()
-</body>
+    <body>
+        @if (Html.RenderContext.Context.CurrentUser != null)
+        {
+            <div>
+                <span>Logged in as @Html.RenderContext.Context.CurrentUser.UserName</span><span><a href="/Logout">Log Out</a></span>
+            </div>
+        }
+        @RenderBody()
+    </body>
 </html>

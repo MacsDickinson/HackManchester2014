@@ -24,4 +24,4 @@ namespace HackManchester2014.Auth
             return user == null ? null : new UserIdentity(user.UserInfo.UserName, identifier);
         }
     }
-} 
+}

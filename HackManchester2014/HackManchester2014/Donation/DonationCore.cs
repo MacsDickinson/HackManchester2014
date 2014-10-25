@@ -27,7 +27,7 @@ namespace HackManchester2014.Donation
                 string challengeTag = _.challengeTag;
                 var challenge = session.Load<Challenge>(string.Format("challenges/{0}", challengeTag));
 
-                var entry = new Entry(user.Id, user.UserName, challenge);
+                var entry = new Entry(user.User, challenge);
 
                 session.Store(entry);
                 session.SaveChanges();

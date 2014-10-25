@@ -19,10 +19,10 @@ namespace HackManchester2014.Domain
         public JG.Donation Donation { get; set; }
 
         private Entry() { }
-        public Entry(Guid userId, string userName, Challenge challenge)
+        public Entry(User user, Challenge challenge)
         {
-            UserId = string.Format("users/{0}", userId);
-            UserName = userName;
+            UserId = string.Format("users/{0}", user.Id);
+            UserName = user.UserInfo.Name;
             ChallengeId = challenge.Id;
             ChallengeTitle = challenge.Title;
         }

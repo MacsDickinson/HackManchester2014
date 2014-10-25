@@ -41,6 +41,14 @@
     <Reference Include="GeoJSON.Net">
       <HintPath>..\packages\GeoJSON.Net.0.0.16\lib\GeoJSON.Net.dll</HintPath>
     </Reference>
+    <Reference Include="JustGiving.Api.Data.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\justgiving-sdk.1.6.6\lib\Net35\JustGiving.Api.Data.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="JustGiving.Api.Sdk, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\justgiving-sdk.1.6.6\lib\Net35\JustGiving.Api.Sdk.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
@@ -94,8 +102,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Home\Views\Map.cshtml" />
-    <Content Include="Home\Views\Shared\_Layout.cshtml" />
+    <Content Include="Map\Views\Map.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -108,12 +116,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auth\AuthProvider.cs" />
+    <Compile Include="Authentication\AuthenticationModule.cs" />
+    <Compile Include="Donation\DonationCore.cs" />
+    <Compile Include="Donation\JustGivingUrlBuilder.cs" />
     <Compile Include="Home\HomeModule.cs" />
+    <Compile Include="Map\MapModule.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\RavenSessionProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Home\Views\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

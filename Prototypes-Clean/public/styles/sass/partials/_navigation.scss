@@ -1,0 +1,25 @@
+/*	=NAVIGATION
+--------------------------------------------------------------------*/
+
+.nav {
+	@extend .group;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+	.nav__item {
+		display: inline-block;
+	}
+
+	.nav__link {
+		padding: 0 .5em;
+		color: $accent-primary;
+		text-decoration: none;
+	}
+
+
+// Primary navigation for the app
+.nav--site {
+	float: right;
+}

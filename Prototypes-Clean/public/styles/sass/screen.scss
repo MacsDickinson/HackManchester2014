@@ -1,0 +1,243 @@
+/*	=IMPORTS
+--------------------------------------------------------------------*/
+@import "compass"; 				// Cut this down as required
+@import "compass/typography/vertical_rhythm";
+
+/* Partials */
+@import "partials/normalize"; 	// Edited version of Nicolas Galaghers Normalise
+@import "partials/base.scss";	// Global variables, global mixins & global styles such as clearfix
+@import "partials/typography";	// Global typographys settings such as hN header stack 
+@import "partials/buttons";		// Button variations
+@import "partials/navigation";	// Navigation such as global nav, sub nav and tabs etc
+@import "partials/island";		// Content blocks that stand isolated from surrounding content
+@import "partials/stats";		// Display stats and KPIs 
+@import "partials/forms";		// All form styles
+
+/*  =BASE
+------------------------------------------------------------*/
+
+html {
+	background: #fff;
+	padding: 0;
+	margin: 0;
+	//background-image: url(http://basehold.it/i/24); // 24px baseline grid
+}
+
+body {
+	height: 100%;
+}
+
+ul {
+	margin: 0 0 .75em 0;
+
+	ul {
+		margin: .375em 0 .375em 0;
+	}
+
+}
+
+/*  =LAYOUT
+--------------------------------------------------------------------*/
+
+%layout {
+    min-width: 300px;
+    max-width: 960px;
+    padding: 0 2em;
+    margin: 0 auto;
+
+    @include breakpoint(single) {
+        padding: 0 1em;
+    }
+
+}
+
+.layout-constrained {
+	@extend %layout;
+}
+
+.layout-constrained--narrow {
+	max-width: 720px;
+}
+
+/*  =HEADER
+--------------------------------------------------------------------*/
+
+.header-site {
+	@extend .group;
+	padding: 1em 0;
+}
+
+
+/*  =FOOTER
+--------------------------------------------------------------------*/
+
+.footer-site {
+	text-align: center;
+	margin-bottom: 2em;
+
+	.layout-constrained {
+		padding-top: 1em;
+		border-top: 1px solid $base-ui-color;
+	}
+}
+
+
+/*  =STEPS
+--------------------------------------------------------------------*/
+
+.step-list {
+
+}
+
+.step-item {
+	
+	text-align: center;
+}
+
+.step-item--trio {
+	
+}
+
+    .step-item__title {
+       
+    }
+
+    .step-item__detail { 
+        max-width: 15.625em;
+        margin: 0 auto;
+    }
+
+.section-overview {
+    margin-bottom: 2.5em;
+}
+
+
+/*  =HERO BANNER
+--------------------------------------------------------------------*/
+.hero-banner {
+	margin-bottom: 3em;
+	padding-bottom: 2em;
+	background: #ddd;
+}
+
+	.hero-banner__body {
+		float: left;
+		max-width: 400px;
+	}
+
+
+.container-block {
+
+
+}
+
+.section-overview {
+	text-align: center;
+}
+
+
+.header-divide {
+	height: .75em;
+	margin-bottom: .5em;
+	border-bottom: 1px solid $base-ui-color;
+}
+
+	.header-divide__content {
+		padding: 0 1em;
+		background: #fff;
+	}
+
+
+/*  =GALLERY
+--------------------------------------------------------------------*/
+.gallery {
+	margin-bottom: 3em;
+}
+
+/*  =STEPS
+--------------------------------------------------------------------*/
+
+.intro-steps {
+	@extend .group;
+	margin-bottom: 3em;
+}
+
+.step-item {
+
+}
+
+.step-item--trio {
+	float: left;
+	width: 33.3%;
+}
+
+/*  =PROGRESS
+--------------------------------------------------------------------*/
+.progress-step {
+    text-align: center;
+}
+
+.progress-step__indicator {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    border: 2px solid #ddd;
+    border-radius: 3em;
+    text-align: center;
+    line-height: 2em;
+    margin-right: .5em;
+}
+
+
+
+/*  =GALLERY ITEMS
+--------------------------------------------------------------------*/
+
+.gallery-item {
+	position: relative;
+	display: inline-block;
+
+	img {
+		display: block;
+	}
+	
+}
+
+.gallery-item--overlay {
+
+	&:after {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		content: "";
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,.1)), color-stop(100%, rgba(0,0,0,.6))); // Gradient to overlay the image
+	}
+
+}
+
+	.gallery-item__meta {
+		position: absolute;
+		z-index: 10;
+		bottom: 0;
+		padding: 5%;
+		color: #fff;
+	}
+
+	.gallery-item__name {
+		color: #fff;
+		margin-bottom: .25em;
+		font-weight: 500;
+	}
+
+	.gallery-item__location {
+		font-weight: 300;
+	}
+
+
+/*  =GENERAL UI ELEMENTS
+--------------------------------------------------------------------*/
+
+
+@import "partials/temp"; // Used for temporary styles throughout the project. This should ideally be empty in production environments

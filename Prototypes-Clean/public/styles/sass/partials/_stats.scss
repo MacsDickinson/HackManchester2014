@@ -1,0 +1,25 @@
+ .stat-group{
+    @extend .group;
+    margin-left: -.5em;
+}
+
+.stat-group--hero {
+    float: right;
+}
+    
+    .stat {
+        float: left;
+        margin: 1em;
+        text-align: center;
+    }
+
+        .stat__title{
+            display: block;
+        }
+
+        .stat__value{
+            @extend .alpha; 
+            display: block;
+            margin-left: 0;
+            margin-bottom: 0;
+        }

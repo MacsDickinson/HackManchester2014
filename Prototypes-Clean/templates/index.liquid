@@ -1,0 +1,121 @@
+{% block title %}Intro Page{% endblock %} 
+{% block content %}
+
+<div class="hero-banner group">
+	
+	{% include "header" %}
+
+	<div class="layout-constrained">
+		<div class="hero-banner__body">
+			<h1 class="kilo">Project X</h1>
+			<p class="">
+				Using the power of social media to to change the world one link at a time.
+			</p>
+			<a href="/register" class="btn btn--primary btn--xl">Get Involved</a>
+		</div>
+
+		<div class="stat-group stat-group--hero">
+	        <dl class="stat">
+	            <dd class="stat__value">106</dd>
+	        	<dt class="stat__title">Challenges</dt>
+	        </dl>
+
+	        <dl class="stat">
+	            <dd class="stat__value">£1,060</dd>
+	            <dt class="stat__title">Raised so far</dt>
+	        </dl>
+	    </div>
+	</div>
+</div>
+
+<section class="container-block">
+	<div class="layout-constrained">
+		<div class="section-overview">
+			<h2 class="">Recent Completed Challenges</h2>
+			<p>You can become a #projectxer</p>
+		</div>
+		
+		<div class="gallery">
+
+			<div class="gallery-item gallery-item--overlay">
+				<img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
+				<div class="gallery-item__meta">
+					<h4 class="gallery-item__name">John Doe</h4>
+					<span class="tile__location">Leeds, UK</span>
+				</div>
+			</div>
+
+			<div class="gallery-item gallery-item--overlay">
+				<img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
+				<div class="gallery-item__meta">
+					<h4 class="gallery-item__name">John Doe</h4>
+					<span class="tile__location">Leeds, UK</span>
+				</div>
+			</div>
+			<div class="gallery-item gallery-item--overlay">
+				<img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
+				<div class="gallery-item__meta">
+					<h4 class="gallery-item__name">John Doe</h4>
+					<span class="tile__location">Leeds, UK</span>
+				</div>
+			</div>
+			<div class="gallery-item gallery-item--overlay">
+				<img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
+				<div class="gallery-item__meta">
+					<h4 class="gallery-item__name">John Doe</h4>
+					<span class="tile__location">Leeds, UK</span>
+				</div>
+			</div>
+			<div class="gallery-item gallery-item--overlay">
+				<img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
+				<div class="gallery-item__meta">
+					<h4 class="gallery-item__name">John Doe</h4>
+					<span class="tile__location">Leeds, UK</span>
+				</div>
+			</div>
+			<div class="gallery-item gallery-item--overlay">
+				<img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
+				<div class="gallery-item__meta">
+					<h4 class="gallery-item__name">John Doe</h4>
+					<span class="tile__location">Leeds, UK</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="container-block">
+	<div class="layout-constrained">
+		<div class="section-overview">
+			<h2 class="header-divide"><span class="header-divide__content">Looks Great, what do I have to do?</span></h2>
+			<p>Its really simple, challenge your mates in 3 steps</p>
+		</div>
+
+		<div class="intro-steps">
+			<div class="step-item step-item--trio">
+				<img class="gallery__item" src="http://placehold.it/125x125" />
+				<h3 class="step-item__title">Step 1</h3>
+				<p class="step-item__detail">
+					Sign in with your social media account.
+				</p>
+			</div>
+
+			<div class="step-item step-item--trio">
+				<img class="gallery__item" src="http://placehold.it/125x125" />
+				<h3 class="step-item__title">Step 2</h3>
+				<p class="step-item__detail">
+					Accept a challenge and make a donation.
+				</p>
+			</div>
+
+			<div class="step-item step-item--trio">
+				<img class="gallery__item" src="http://placehold.it/125x125" />
+				<h3 class="step-item__title">Step 3</h3>
+				<p class="step-item__detail">
+					Upload proof of your challenge and nominate your mates.
+				</p>
+			</div>
+		</div>	
+	</div>
+</section>
+{% endblock %}

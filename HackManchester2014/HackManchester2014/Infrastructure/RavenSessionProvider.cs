@@ -2,6 +2,9 @@
 {
     using System.Configuration;
     using Raven.Client.Document;
+    using Raven.Client;
+    using HackManchester2014.Domain;
+    using System.Transactions;
 
     public class RavenSessionProvider
     {
@@ -23,8 +26,26 @@
                 ApiKey = ConfigurationManager.AppSettings["RAVENHQ_APIKEY"],
             };
             store.Initialize();
+            
+            using (var session = store.OpenSession())
+            {
+                EnsureSeedData(session);
+            }
 
             return store;
+        }
+
+        private static void EnsureSeedData(IDocumentSession session)
+        {
+            session.Store(new Challenge
+            {
+                Id = "challenges/mind",
+                Title = "Mindful for Minds",
+                CharityName = "Mind",
+                JustGivingCharityId = 300,
+            });
+
+            session.SaveChanges();
         }
     }
 }

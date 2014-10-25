@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using HackManchester2014.Domain;
 using Nancy.Security;
 
 namespace HackManchester2014.Auth
@@ -10,14 +11,14 @@ namespace HackManchester2014.Auth
         {
         }
 
-        public UserIdentity(string username, Guid id)
+        public UserIdentity(User user)
         {
-            UserName = username;
-            Id = id;
+            UserName = user.UserInfo.UserName;
+            User = user;
         }
 
         public string UserName { get; private set; }
-        public Guid Id { get; set; }
+        public User User { get; private set; }
         public IEnumerable<string> Claims { get; private set; }
     }
 }

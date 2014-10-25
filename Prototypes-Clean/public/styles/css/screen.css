@@ -1086,6 +1086,12 @@ ul ul {
   float: left;
   max-width: 400px;
 }
+@media (max-width: 37.5em) {
+  .hero-banner__body {
+    float: none;
+    text-align: center;
+  }
+}
 
 .section-overview {
   text-align: center;
@@ -1096,10 +1102,21 @@ ul ul {
   margin-bottom: .5em;
   border-bottom: 1px solid #ddd;
 }
+@media (max-width: 37.5em) {
+  .header-divide {
+    height: auto;
+    border: 0;
+  }
+}
 
 .header-divide__content {
   padding: 0 1em;
   background: #fff;
+}
+@media (max-width: 37.5em) {
+  .header-divide__content {
+    padding: 0;
+  }
 }
 
 /*  =GALLERY
@@ -1114,9 +1131,15 @@ ul ul {
   margin-bottom: 3em;
 }
 
-.step-item--trio {
+.step-item {
   float: left;
   width: 33.3%;
+}
+@media (max-width: 37.5em) {
+  .step-item {
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
 }
 
 /*  =PROGRESS

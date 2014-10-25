@@ -123,6 +123,12 @@ ul {
 	.hero-banner__body {
 		float: left;
 		max-width: 400px;
+
+		@include breakpoint(viewport-s) {
+			float: none;
+			text-align: center;
+		}
+
 	}
 
 
@@ -140,11 +146,22 @@ ul {
 	height: .75em;
 	margin-bottom: .5em;
 	border-bottom: 1px solid $base-ui-color;
+
+	@include breakpoint(viewport-s) {
+		height: auto;
+		border: 0;
+	}
+
 }
 
 	.header-divide__content {
 		padding: 0 1em;
 		background: #fff;
+
+		@include breakpoint(viewport-s) {
+			padding: 0;
+		}
+
 	}
 
 
@@ -163,13 +180,16 @@ ul {
 }
 
 .step-item {
-
-}
-
-.step-item--trio {
 	float: left;
 	width: 33.3%;
+
+	@include breakpoint(viewport-s) {
+		width: 100%;
+		margin-bottom: 1.5em;
+	}
+
 }
+
 
 /*  =PROGRESS
 --------------------------------------------------------------------*/

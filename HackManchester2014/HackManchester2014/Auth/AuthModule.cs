@@ -10,7 +10,7 @@ namespace HackManchester2014.Home
 
     public class AuthModule : NancyModule
     {
-        public HomeModule(IDocumentSession documentSession)
+        public AuthModule(IDocumentSession documentSession)
         {
             Get["/Login"] = _ => "Hello!";
         }

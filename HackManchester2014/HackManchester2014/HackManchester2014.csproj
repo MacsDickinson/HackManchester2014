@@ -115,8 +115,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\AuthModule.cs" />
     <Compile Include="Auth\AuthProvider.cs" />
-    <Compile Include="Authentication\AuthenticationModule.cs" />
     <Compile Include="Donation\DonationCore.cs" />
     <Compile Include="Donation\JustGivingUrlBuilder.cs" />
     <Compile Include="Home\HomeModule.cs" />

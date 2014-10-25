@@ -90,6 +90,7 @@
       <HintPath>..\packages\SimpleAuthentication.Core.0.3.14\lib\net40\SimpleAuthentication.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -131,6 +132,8 @@
     <Compile Include="Auth\AuthProvider.cs" />
     <Compile Include="Auth\UserIdentity.cs" />
     <Compile Include="Auth\UserMapper.cs" />
+    <Compile Include="Domain\ChallengeEntry.cs" />
+    <Compile Include="Domain\Challenge.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Donation\DonationCore.cs" />
     <Compile Include="Donation\JustGivingUrlBuilder.cs" />

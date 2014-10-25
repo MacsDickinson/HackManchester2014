@@ -20,7 +20,7 @@ namespace HackManchester2014.Donation
         {
             this.RequiresAuthentication();
 
-            Get[@"/challenges/{challengeTag}/donate"] = _ =>
+            Post[@"/challenges/{challengeTag}/donate"] = _ =>
             {
                 var user = (UserIdentity)Context.CurrentUser;
 

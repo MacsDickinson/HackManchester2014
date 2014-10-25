@@ -21,7 +21,7 @@ namespace HackManchester2014.Auth
         public IUserIdentity GetUserFromIdentifier(Guid identifier, NancyContext context)
         {
             var user = Session.Load<User>(identifier);
-            return user == null ? null : new UserIdentity(user.UserInfo.UserName, identifier);
+            return user == null ? null : new UserIdentity(user);
         }
     }
 }

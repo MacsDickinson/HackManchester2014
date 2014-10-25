@@ -25,7 +25,7 @@ namespace HackManchester2014.Donation
                 var user = (UserIdentity)Context.CurrentUser;
 
                 string challengeTag = _.challengeTag;
-                var challenge = session.Load<Challenge>(string.Format("challenges/{0}", challengeTag));
+                var challenge = session.Load<Domain.Challenge>(string.Format("challenges/{0}", challengeTag));
 
                 var entry = new Entry(user.User, challenge);
 

@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "Shared/_Layout.cshtml";
+}
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Challenge.Models.ChallengesViewModel>
+
+<div>
+    @foreach (var challenge in Model.Challenges)
+    {
+        <div>
+            <div><a href="/@challenge.Id/">@challenge.Title</a></div>
+            <span>@challenge.Charity</span>
+        </div>
+    }
+</div>

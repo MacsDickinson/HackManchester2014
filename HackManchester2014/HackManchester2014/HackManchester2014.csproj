@@ -118,6 +118,8 @@
     <Content Include="Map\Views\Map.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Auth\Views\Login.cshtml" />
+    <Content Include="Challenge\Views\Challenges.cshtml" />
+    <Content Include="Challenge\Views\Challenge.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -134,6 +136,9 @@
     <Compile Include="Util\ExtentionMethods.cs" />
     <Compile Include="Auth\UserIdentity.cs" />
     <Compile Include="Auth\UserMapper.cs" />
+    <Compile Include="Challenge\ChallengeModule.cs" />
+    <Compile Include="Challenge\Models\ChallengesViewModel.cs" />
+    <Compile Include="Challenge\Models\ChallengeViewModel.cs" />
     <Compile Include="Domain\Entry.cs" />
     <Compile Include="Domain\Challenge.cs" />
     <Compile Include="Domain\User.cs" />

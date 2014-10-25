@@ -7,6 +7,7 @@ namespace HackManchester2014.Infrastructure
     using Nancy.Session;
     using Nancy.TinyIoc;
     using Raven.Client;
+    using System.Configuration;
 
     public class Bootstrapper : DefaultNancyBootstrapper
     {
@@ -21,6 +22,12 @@ namespace HackManchester2014.Infrastructure
             var store = RavenSessionProvider.DocumentStore;
 
             container.Register<IDocumentStore>(store);
+            container.Register<JustGivingConfiguration>(new JustGivingConfiguration
+            {
+                ApiHost = ConfigurationManager.AppSettings["JustGiving.ApiHost"],
+                ApiKey = ConfigurationManager.AppSettings["JustGiving.ApiKey"],
+                WebsiteHost = ConfigurationManager.AppSettings["JustGiving.WebsiteHost"],
+            });
 
             // Custom view locations
             Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat(context.ModuleName, "/Views/", viewName));

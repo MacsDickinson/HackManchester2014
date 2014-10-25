@@ -7,7 +7,7 @@ namespace HackManchester2014.Donation
 {
     public class JustGivingUrlBuilder
     {
-        public bool Live { get; set; }
+        public string Host { get; set; }
         public int CharityId { get; set; }
         public decimal Amount { get; set; }
         public string Reference { get; set; }
@@ -25,7 +25,7 @@ namespace HackManchester2014.Donation
             var uri = new UriBuilder
             {
                 Scheme = "https",
-                Host = string.Format("{0}justgiving.com", Live ? string.Empty : "v3-sandbox."),
+                Host = Host,
                 Path = string.Format("/4w350m3/donation/direct/charity/{0}/", CharityId),
                 Query = queryString
             };

@@ -1,0 +1,95 @@
+{% block title %}Register{% endblock %} 
+{% block content %}
+
+{% include "header" %}
+
+<article>
+
+	<section class="container-block form-step">
+		<div class="layout-constrained">
+			<h1>Lets do this!</h1>
+			<p>
+				There's only a few quick steps to complete, first lets get your details.
+			</p>
+			<h2><span class="progress-step">1</span> Sign in</h2>
+			<p>Nobody likes filling forms, sign in below so we can get your details.</p>
+			<p>(Don't worry, we wont be posting anything to your account).</p>
+			<div class="sign-in__social">
+				<a class="btn btn--twitter">Sign in with Twitter</a>
+			</div>	
+
+		</div>
+	</section>
+
+	<section class="container-block form-step">
+		<div class="layout-constrained">
+			<h2><span class="progress-step">2</span> Accept your challenge</h2>
+			<fieldset>
+				<legend>Please select the challenge you would like to do...</legend>
+
+
+				<ul class="form-group input-list input-list--trio">
+					<li class="input-list__item">
+						<label for="challenge-x" class="btn-radio">
+							<input type="radio" id="challenge-x" name="challengeSelection" />
+							<span class="btn-radio__btn">
+								<span class="radio-button__title">Project X</span>
+								<span class="radio-button__description">A Take a picture of yourself with...</span>
+							</span>
+						</label>
+					</li>
+					<li class="input-list__item">
+						<label for="challenge-y" class="btn-radio">
+							<input type="radio" id="challenge-y" name="challengeSelection"  />
+							<span class="btn-radio__btn">
+								<span class="radio-button__title">Project Sample 1</span>
+								<span class="radio-button__description">This is a sample challenge, dont pick it!</span>
+							</span>
+						</label>
+					</li>
+					<li class="input-list__item">
+						<label for="challenge-z" class="btn-radio">
+							<input type="radio" id="challenge-z" name="challengeSelection"  />
+							<span class="btn-radio__btn">
+								<span class="radio-button__title">Project Sample 2</span>
+								<span class="radio-button__description">This is a sample challenge, dont pick it!</span>
+							</span>
+						</label>
+					</li>
+				</ul>
+				<div class="form-actions">
+					<button class="btn btn--primary">Continue</button>
+				</div>
+			</fieldset>
+		</div>
+	</section>
+
+	<section class="container-block form-step">
+		<div class="layout-constrained">
+			<h2><span class="progress-step">3</span>Upload your proof</h2>
+			<p>
+				Select a challenge from below to 
+			</p>
+
+			<fieldset>
+				<legend>Upload your proof</legend>
+
+				<div class="form-group">
+					<label for="proof-file" class="btn btn--primary">
+						Upload your image
+						<input type="file" id="proof-file" />
+					</label>
+
+
+				</div>
+			</fieldset>
+		</div>
+	</section>
+
+</article>
+
+
+
+
+
+{% endblock %}

@@ -53,7 +53,7 @@ $base-font-family:  "proxima-nova", arial, sans-serif!default;
 /**
  * Default colour for objects’ borders etc.
  */
-$base-ui-color:     #ccc!default;
+$base-ui-color:     #EDEDED!default;
 
 
 
@@ -173,6 +173,11 @@ $brand-round:        4px!default;
 
 
 $accent-primary: #B03769;
+$accent-secondary: #803655;
+$accent-tertiary: #965A73;
+
+
+$accent-twitter: #55ACEE;
 
 
 
@@ -185,7 +190,7 @@ $accent-primary: #B03769;
 $use-grids:         false!default;
 $use-flexbox:       false!default;
 $use-columns:       false!default;
-$use-nav:           true!default;
+$use-nav:           false!default;
 $use-options:       true!default;
 $use-pagination:    false!default;
 $use-breadcrumb:    false!default;

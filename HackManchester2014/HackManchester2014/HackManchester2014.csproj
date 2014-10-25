@@ -139,6 +139,9 @@
     <Compile Include="Map\MapModule.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\RavenSessionProvider.cs" />
+    <Compile Include="Map\MapModule.cs" />
+    <Compile Include="Map\Models\MapHomeViewModel.cs" />
+    <Compile Include="Map\Models\MapLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

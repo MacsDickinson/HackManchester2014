@@ -21,7 +21,7 @@ namespace HackManchester2014.Donation
                 { "amount", Amount.ToString() },
                 { "exiturl", ExitUrl }
             }.Select(x => string.Format("{0}={1}", HttpUtility.UrlEncode(x.Key), HttpUtility.UrlEncode(x.Value))));
-            
+
             var uri = new UriBuilder
             {
                 Scheme = "https",

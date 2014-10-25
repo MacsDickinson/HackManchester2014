@@ -11,7 +11,7 @@
 			<p>
 				There's only a few quick steps to complete, first lets get your details.
 			</p>
-			<h2><span class="progress-step">1</span> Sign in</h2>
+			<h2 class="progress-step"><span class="progress-step__indicator">1</span> Sign in</h2>
 			<p>Nobody likes filling forms, sign in below so we can get your details.</p>
 			<p>(Don't worry, we wont be posting anything to your account).</p>
 			<div class="sign-in__social">
@@ -23,9 +23,9 @@
 
 	<section class="container-block form-step">
 		<div class="layout-constrained">
-			<h2><span class="progress-step">2</span> Accept your challenge</h2>
+			<h2 class="progress-step"><span class="progress-step__indicator">2</span> Accept your challenge</h2>
 			<fieldset>
-				<legend>Please select the challenge you would like to do...</legend>
+				<legend class="form-step__intro">Please select the challenge you would like to complete...</legend>
 
 
 				<ul class="form-group input-list input-list--trio">
@@ -66,13 +66,23 @@
 
 	<section class="container-block form-step">
 		<div class="layout-constrained">
+			<h2 class="progress-step"><span class="progress-step__indicator">3</span>Make your donation</h2>
+			<p>
+				Before you can nominate we need you to make your donation. You will be taken to JustGiving to securely take your payment.
+			</p>
+			<a href="#" class="btn btn--primary">Proceed to JustGiving</a>
+		</div>
+	</section>
+
+	<section class="container-block form-step">
+		<div class="layout-constrained">
 			<h2><span class="progress-step">3</span>Upload your proof</h2>
 			<p>
 				Select a challenge from below to 
 			</p>
 
 			<fieldset>
-				<legend>Upload your proof</legend>
+				<legend class="is-offscreen">Prove you have done the challenge</legend>
 
 				<div class="form-group">
 					<label for="proof-file" class="btn btn--primary">

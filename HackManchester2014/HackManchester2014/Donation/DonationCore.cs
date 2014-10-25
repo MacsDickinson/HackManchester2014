@@ -20,12 +20,12 @@ namespace HackManchester2014.Donation
         {
             this.RequiresAuthentication();
 
-            Get[@"/challenges/{challengeTag}/donate"] = _ =>
+            Post[@"/challenges/{challengeTag}/donate"] = _ =>
             {
                 var user = (UserIdentity)Context.CurrentUser;
 
                 string challengeTag = _.challengeTag;
-                var challenge = session.Load<Challenge>(string.Format("challenges/{0}", challengeTag));
+                var challenge = session.Load<Domain.Challenge>(string.Format("challenges/{0}", challengeTag));
 
                 var entry = new Entry(user.User, challenge);
 
@@ -63,10 +63,20 @@ namespace HackManchester2014.Donation
                 var donation = c.Donation.Retrieve(donationId);
 
                 var entry = session.Load<Entry>(entryId);
+                var nomination = new Nomination
+                {
+                    Id = string.Format("nominations/kLw{0:00000}IaQ", entryId),
+                    NominatedByEntryId = entry.Id
+                };
+                session.Store(nomination);
                 entry.Donation = donation;
+                entry.Nominations.Add(nomination);
                 session.SaveChanges();
 
-                return "Thanks for donating";
+                var nominationUrl = new UriBuilder(Request.Url.ToString());
+                nominationUrl.Path = nomination.Id;
+
+                return "Thanks for donating, here's your nomination Url: " + nominationUrl.ToString();
             };
         }
     }

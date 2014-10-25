@@ -30,7 +30,10 @@ namespace HackManchester2014.Auth
                 Session.Store(user);
                 Session.SaveChanges();
             }
-            return Nancy.Authentication.Forms.FormsAuthentication.UserLoggedInRedirectResponse(nancyModule.Context, user.Id);
+            var returnUrl = nancyModule.Session["returnUrl"].ToString();
+            nancyModule.Session["returnUrl"] = null;
+            return Nancy.Authentication.Forms.FormsAuthentication.UserLoggedInRedirectResponse(nancyModule.Context,
+                user.Id, null, returnUrl);
         }
 
         public dynamic OnRedirectToAuthenticationProviderError(NancyModule nancyModule, string errorMessage)

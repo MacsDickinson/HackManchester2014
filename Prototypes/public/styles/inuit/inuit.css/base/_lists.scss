@@ -17,3 +17,22 @@ li{
 /*ul*/.numbered-list{
     list-style-type:decimal;
 }
+
+
+.inline-list {
+  margin: .5em 0;
+}
+
+.inline-item {
+  display: inline-block;
+  border-left: 1px solid #ddd;
+  padding-left: .8em;
+  margin-left: .8em;
+
+  &:first-child {
+	border: 0;
+	margin: 0;
+	padding: 0;
+  }
+
+}

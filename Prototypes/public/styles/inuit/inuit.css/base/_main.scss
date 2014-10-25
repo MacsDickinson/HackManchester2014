@@ -100,6 +100,10 @@ html{
 \*------------------------------------*/
 
 .progress-step {
+    text-align: center;
+}
+
+.progress-step__indicator {
     display: inline-block;
     width: 2em;
     height: 2em;
@@ -107,6 +111,6 @@ html{
     border-radius: 3em;
     text-align: center;
     line-height: 2em;
-    margin-right: .25em;
+    margin-right: .5em;
 }
 

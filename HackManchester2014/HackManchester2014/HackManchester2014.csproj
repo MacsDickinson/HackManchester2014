@@ -41,12 +41,31 @@
     <Reference Include="GeoJSON.Net">
       <HintPath>..\packages\GeoJSON.Net.0.0.16\lib\GeoJSON.Net.dll</HintPath>
     </Reference>
+    <Reference Include="JustGiving.Api.Data.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\justgiving-sdk-rc.1.6.6\lib\net35\JustGiving.Api.Data.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="JustGiving.Api.Sdk, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\justgiving-sdk-rc.1.6.6\lib\net35\JustGiving.Api.Sdk.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Http, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\justgiving-sdk-rc.1.6.6\lib\net35\Microsoft.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Http.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\justgiving-sdk-rc.1.6.6\lib\net35\Microsoft.Http.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>..\packages\Nancy.Hosting.Aspnet.0.23.2\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.SimpleAuthentication">
+      <HintPath>..\packages\Nancy.SimpleAuthentication.0.3.14\lib\net40\Nancy.SimpleAuthentication.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>..\packages\Nancy.Viewengines.Razor.0.23.2\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
@@ -60,6 +79,12 @@
     </Reference>
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\packages\RavenDB.Client.2.5.2935\lib\net45\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleAuthentication.Core">
+      <HintPath>..\packages\SimpleAuthentication.Core.0.3.14\lib\net40\SimpleAuthentication.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Web.DynamicData" />
@@ -87,6 +112,7 @@
     <Content Include="packages.config" />
     <Content Include="Map\Views\Map.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Auth\Views\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -98,8 +124,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\AuthenticationModule.cs" />
+    <Compile Include="Auth\AuthModule.cs" />
+    <Compile Include="Auth\AuthProvider.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Donation\DonationCore.cs" />
+    <Compile Include="Donation\JustGivingUrlBuilder.cs" />
     <Compile Include="Home\HomeModule.cs" />
+    <Compile Include="Infrastructure\JustGivingConfiguration.cs" />
+    <Compile Include="Map\MapModule.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\RavenSessionProvider.cs" />
     <Compile Include="Map\MapModule.cs" />

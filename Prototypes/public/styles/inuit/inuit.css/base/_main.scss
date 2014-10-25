@@ -7,7 +7,49 @@ html{
     min-height:100%;
 }
 
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+
+%layout {
+    min-width: 300px;
+    max-width: 1200px;
+    padding: 0 2em;
+    margin: 0 auto;
+
+    // @include breakpoint(single) {
+    //     padding: 0 1em;
+    // }
+
+}
+
+.layout-constrained {
+	@extend %layout;
+}
+
+
+.step-list {
+	@extend %grid;
+}
+
+.step-item {
+	@extend %grid__item;
+	text-align: center;
+}
+
+.step-item--trio {
+	@extend %one-third;
+}
+
+
+/*------------------------------------*\
+    $HERO BANNER
+\*------------------------------------*/
 .hero-banner {
 	padding: 2em;
 	background: #ddd;
 }
+
+
+
+

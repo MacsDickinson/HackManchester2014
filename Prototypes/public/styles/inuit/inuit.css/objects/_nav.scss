@@ -18,7 +18,7 @@
  * Demo: jsfiddle.net/inuitcss/Vnph4
  *
  */
-.nav{
+.nav {
     list-style:none;
     margin-left:0;
     @extend .cf;
@@ -30,8 +30,13 @@
             display:inline-block;
            *display:inline;
             zoom:1;
+            text-decoration: none;
         }
     }
+}
+
+.nav--site {
+  
 }
 
 
@@ -70,7 +75,7 @@
  *
  */
 .nav--banner{
-    text-align:center;
+  text-align:center;
 }
 
 
@@ -102,6 +107,11 @@
             padding:$half-spacing-unit;
         }
     }
+}
+
+.nav--site {
+  float: right;
+  margin: 0;
 }
 
 

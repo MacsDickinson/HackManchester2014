@@ -1,3 +1,5 @@
+using Nancy.Routing;
+
 namespace HackManchester2014.Home
 {
     using System.Collections.Generic;
@@ -12,7 +14,12 @@ namespace HackManchester2014.Home
     {
         public AuthModule(IDocumentSession documentSession)
         {
-            Get["/Login"] = _ => Negotiate.WithView("Login");
+            Get["/Login"] = _ =>
+            {
+                var returnUrl = Context.Request.Query.returnUrl.ToString();
+                Session["returnUrl"] = returnUrl;
+                return Negotiate.WithView("Login");
+            };
 
             Get["/Logout"] =
                 _ => Nancy.Authentication.Forms.FormsAuthentication.LogOutAndRedirectResponse(Context, "~/");

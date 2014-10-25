@@ -7,7 +7,7 @@ namespace HackManchester2014.Home
     {
         public HomeModule(IDocumentSession documentSession)
         {
-            Get["/"] = _ => "Hello!, go to /challenges/mind/donate to donate";
+            Get["/"] = _ => Negotiate.WithView("Index");
         }
     }
 }

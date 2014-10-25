@@ -120,6 +120,7 @@
     <Content Include="Auth\Views\Login.cshtml" />
     <Content Include="Challenge\Views\Challenges.cshtml" />
     <Content Include="Challenge\Views\Challenge.cshtml" />
+    <Content Include="Home\Views\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -156,7 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Script\" />
-    <Folder Include="Home\Views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "Shared/_Layout.cshtml";
 }
-@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Map.Models.MapHomeViewModel>
 
 <div id='map-wrapper'>
     <div id='map'></div>
@@ -11,17 +11,16 @@
     $(function () {
         L.mapbox.accessToken = 'pk.eyJ1IjoibWFjc2RpY2tpbnNvbiIsImEiOiI3R2FLei1jIn0.As3Ni9FK_IkYl6V4rVsubA';
 
-        var map = L.mapbox.map('map', 'examples.map-20v6611k')
-            .setView([53.477179333058984, -2.254300117492676], 15);
+        var map = L.mapbox.map('map', 'examples.map-20v6611k');
 
-        loadData(map, '/Map/Data');
+        // Load the data for the user
+        loadData(map, @Html.Raw(Model.DonationsJson));
 
-        //addPoint(map, 'Peregrine Espresso', '1718 14th St NW, Washington, DC', -77.03221142292, 38.913371603574);
-        //addPoint(map, 'Something else', 'Something else', -77.04, 38.913371603574);
+        map.setView([@Model.MyLocation.Latitude, @Model.MyLocation.Longitude], 15);
 
-        function loadData(map, url) {
-            L.mapbox.featureLayer()
-                .loadURL(url)
+
+        function loadData(map, data) {
+            L.mapbox.featureLayer(data)
                 .addTo(map);
         }
 

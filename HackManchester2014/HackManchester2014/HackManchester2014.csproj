@@ -104,6 +104,7 @@
     <Content Include="packages.config" />
     <Content Include="Map\Views\Map.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Auth\Views\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

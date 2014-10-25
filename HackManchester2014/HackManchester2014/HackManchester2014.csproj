@@ -121,6 +121,10 @@
     <Content Include="Challenge\Views\Challenges.cshtml" />
     <Content Include="Challenge\Views\Challenge.cshtml" />
     <Content Include="Home\Views\Index.cshtml" />
+    <Content Include="Home\Views\Register2.cshtml" />
+    <Content Include="Home\Views\Register3.cshtml" />
+    <Content Include="Home\Views\Register4.cshtml" />
+    <Content Include="Home\Views\Register1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

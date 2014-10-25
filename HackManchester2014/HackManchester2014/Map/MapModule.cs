@@ -1,3 +1,5 @@
+using Nancy.Security;
+
 namespace HackManchester2014.Map
 {
     using System.Collections.Generic;
@@ -13,6 +15,8 @@ namespace HackManchester2014.Map
         public MapModule()
             : base("Map")
         {
+            this.RequiresAuthentication();
+
             Get["/"] = _ =>
             {
                 var locations = TestLocations();

@@ -52,6 +52,7 @@
         .stat__value{
             @extend .alpha; 
             margin-left:0;
+            margin-bottom: 0;
             @include vendor(order, 1);
             -ms-flex-order:1;
         }

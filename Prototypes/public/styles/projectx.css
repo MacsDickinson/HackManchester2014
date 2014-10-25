@@ -861,7 +861,7 @@ textarea:focus {
  * and over in your markup.
  */
 .cf:after, .nav:after, .island:after,
-.islet:after, .stat-group:after, .group:after {
+.islet:after, .stat-group:after, .group:after, .input-list:after {
   content: "";
   display: table;
   clear: both; }
@@ -883,7 +883,6 @@ blockquote, p, address,
 table,
 fieldset, figure,
 pre,
-.form-fields > li,
 .media,
 .island,
 .islet {
@@ -894,7 +893,7 @@ pre,
   blockquote, .islet p, .islet address, .islet
   table, .islet
   fieldset, .islet figure, .islet
-  pre, .islet .form-fields > li, .islet
+  pre, .islet
   .media, .islet
   .island, .islet
   .islet {
@@ -940,19 +939,56 @@ html {
 \*------------------------------------*/
 .layout-constrained {
   min-width: 300px;
-  max-width: 1200px;
+  max-width: 960px;
   padding: 0 2em;
   margin: 0 auto; }
 
 .step-item {
   text-align: center; }
 
+.step-item__detail {
+  max-width: 15.625em;
+  margin: 0 auto; }
+
+.section-overview {
+  margin-bottom: 2.5em; }
+
 /*------------------------------------*\
     $HERO BANNER
 \*------------------------------------*/
 .hero-banner {
-  padding: 2em;
+  padding-bottom: 2em;
   background: #ddd; }
+
+.container-block .layout-constrained {
+  padding: 3em 0;
+  border-bottom: 1px solid #EDEDED; }
+
+/*------------------------------------*\
+    $HEADER
+\*------------------------------------*/
+.header-site {
+  margin-bottom: 2em;
+  padding: 1em 0; }
+
+/*------------------------------------*\
+    $FOOTER
+\*------------------------------------*/
+.footer-site {
+  text-align: center; }
+
+/*------------------------------------*\
+    $ICONS & TYPOGRAPHY
+\*------------------------------------*/
+.progress-step {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  border: 2px solid #ddd;
+  border-radius: 3em;
+  text-align: center;
+  line-height: 2em;
+  margin-right: .25em; }
 
 /*------------------------------------*\
     $HEADINGS
@@ -968,19 +1004,22 @@ h1, .alpha, .stat__value {
   font-size: 36px;
   font-size: 2.25rem;
   line-height: 1.33333;
-  font-weight: 600; }
+  font-weight: 600;
+  margin-bottom: .5em; }
 
 h2, .beta {
   font-size: 30px;
   font-size: 1.875rem;
   line-height: 1.6;
-  font-weight: 600; }
+  font-weight: 600;
+  margin-bottom: .5em; }
 
-h3, .gamma {
+h3, .gamma, .radio-button__title {
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 1;
-  font-weight: 600; }
+  font-weight: 600;
+  margin-bottom: .5em; }
 
 h4, .delta {
   font-size: 20px;
@@ -1008,6 +1047,9 @@ h6, .zeta {
    </hgroup>
  *
  */
+.hN {
+  margin-bottom: 0; }
+
 hgroup .hN {
   margin-bottom: 0; }
 
@@ -1456,7 +1498,7 @@ td {
  */
 .table--bordered th,
 .table--bordered td {
-  border: 1px solid #ccc; }
+  border: 1px solid #EDEDED; }
   .table--bordered th:empty,
   .table--bordered td:empty {
     border: none; }
@@ -1487,49 +1529,44 @@ td {
  *
  */
 fieldset {
-  padding: 24px; }
+  padding: 0;
+  border: 0; }
 
-/**
- * Text inputs
- *
- * Instead of a `[type]` selector for each kind of form input, we just use a
- * class to target any/every one, e.g.:
-   <input type=text class=text-input>
-   <input type=email class=text-input>
-   <input type=password class=text-input>
- *
- */
-.text-input,
-textarea {
-  /**
-   * Style these via your theme stylesheet.
-   */ }
+.form-group {
+  margin-bottom: 1em; }
 
-/**
- * Group sets of form fields in a list, e.g.:
- *
-   <ul class=form-fields>
-       <li>
-           <label />
-           <input />
-       </li>
-       <li>
-           <label />
-           <select />
-       </li>
-       <li>
-           <label />
-           <input />
-       </li>
-   </ul>
- *
- */
-.form-fields {
-  list-style: none;
-  margin: 0; }
+.input-list {
+  margin-left: 0;
+  padding: 0;
+  list-style-type: none; }
 
-.form-fields > li:last-child {
-  margin-bottom: 0; }
+.input-list--trio .input-list__item {
+  width: 30%;
+  float: left;
+  margin-right: 3%; }
+
+.btn-radio {
+  display: block; }
+  .btn-radio .btn-radio__btn {
+    display: block;
+    padding: 1.5em;
+    border: 1px solid #ddd; }
+  .btn-radio input[type="radio"] {
+    position: absolute;
+    left: -9999px;
+    z-index: -100; }
+    .btn-radio input[type="radio"]:checked + .btn-radio__btn {
+      border-color: #B03769; }
+
+.radio-button__title {
+  display: block; }
+
+.radio-button__description {
+  display: block; }
+
+input[type="file"] {
+  position: absolute;
+  left: -999px; }
 
 /**
  * Labels
@@ -2013,13 +2050,14 @@ label,
  */
 .nav {
   list-style: none;
-  margin-left: 0; }
-  .nav > li,
-  .nav > li > a {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
-    text-decoration: none; }
+  margin: 0; }
+
+.nav__item {
+  display: inline-block; }
+
+.nav__link {
+  color: #B03769;
+  text-decoration: none; }
 
 /**
  * `.nav--stacked` extends `.nav` and throws the list into vertical mode, e.g.:
@@ -2131,7 +2169,7 @@ label,
  *
  */
 .options > li > a {
-  border: 0 solid #ccc;
+  border: 0 solid #EDEDED;
   border-width: 1px;
   border-left-width: 0; }
 .options > li:first-child > a {
@@ -2250,6 +2288,7 @@ label,
   /* [8] */ }
 
 .btn {
+  border: 1px solid;
   color: #fff; }
   .btn, .btn:hover {
     text-decoration: none;
@@ -2326,7 +2365,20 @@ label,
  * Button function modifiers.
  */
 .btn--primary {
-  background-color: #B03769; }
+  background-color: #B03769;
+  border-color: #9d315d; }
+
+.btn--secondary {
+  background-color: #803655;
+  border-color: #6e2e49; }
+
+.btn--tertiary {
+  background-color: #965A73;
+  border-color: #865067; }
+
+.btn--twitter {
+  background-color: #55ACEE;
+  border-color: #3ea1ec; }
 
 /**
  * Positive actions; e.g. sign in, purchase, submit, etc.
@@ -2427,6 +2479,7 @@ label,
 
 .stat__value {
   margin-left: 0;
+  margin-bottom: 0;
   -webkit-order: 1;
   -moz-order: 1;
   -ms-order: 1;

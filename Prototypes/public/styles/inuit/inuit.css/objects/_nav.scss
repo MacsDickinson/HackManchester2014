@@ -20,20 +20,20 @@
  */
 .nav {
     list-style:none;
-    margin-left:0;
+    margin: 0;
     @extend .cf;
-
-    > li{
-
-        &,
-        > a{
-            display:inline-block;
-           *display:inline;
-            zoom:1;
-            text-decoration: none;
-        }
-    }
 }
+
+  .nav__item {
+    display: inline-block;
+  }
+
+  .nav__link {
+    color: $accent-primary;
+    text-decoration: none;
+  }
+
+
 
 .nav--site {
   

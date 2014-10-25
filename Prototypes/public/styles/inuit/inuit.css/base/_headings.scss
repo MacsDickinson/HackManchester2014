@@ -11,14 +11,17 @@
 h1,.alpha{
     @include font-size($h1-size);
     font-weight: 600;
+    margin-bottom: .5em;
 }
 h2,.beta{
     @include font-size($h2-size);
     font-weight: 600;
+    margin-bottom: .5em;
 }
 h3,.gamma{
     @include font-size($h3-size);
     font-weight: 600;
+    margin-bottom: .5em;
 }
 h4,.delta{
     @include font-size($h4-size);
@@ -43,6 +46,7 @@ h6,.zeta{
  *
  */
 .hN{
+  margin-bottom:0;
 }
 hgroup .hN{
     margin-bottom:0;

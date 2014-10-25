@@ -1,22 +1,16 @@
 {% block content %}
 
-<header class="site-header">
-	<img class="logo-site" src="http://placehold.it/125x75" />
-	<ul class="nav nav--block nav--site">
-		<li>
-			<a href="#">Sign In</a>
-		</li>
-	</ul>
-</header>
-
 <div class="hero-banner group">
+	
+	{% include "header" %}
+
 	<div class="layout-constrained">
 		<div class="hero-banner__body">
 			<h1 class="kilo">Project X</h1>
 			<p class="">
 				Using the power of social media to to change the world one link at a time.
 			</p>
-			<a href="#" class="btn btn--primary">Get Involved</a>
+			<a href="/register" class="btn btn--primary">Get Involved</a>
 		</div>
 
 		<div class="stat-group stat-group--hero">
@@ -35,8 +29,11 @@
 
 <section class="container-block">
 	<div class="layout-constrained">
-		<h2>Recent Completed Challenges</h2>
-		<p>You can become a #projectxer</p>
+		<div class="section-overview">
+			<h2 class="hN">Recent Completed Challenges</h2>
+			<p>You can become a #projectxer</p>
+		</div>
+		
 		<div class="slider">
 			Some Video/Photo magic will go in here!
 		</div>
@@ -45,41 +42,34 @@
 
 <section class="container-block">
 	<div class="layout-constrained">
-		<h2>Looks Great, what do I have to do?</h2>
-		<p>Its really simple, challenge your mates in 3 steps</p>
+		<div class="section-overview">
+			<h2 class="hN">Looks Great, what do I have to do?</h2>
+			<p>Its really simple, challenge your mates in 3 steps</p>
+		</div>
 
 		<div class="grid step-list">
 			<div class="step-item step-item--trio">
-				<h3>Step 1</h3>
-				<p>
+				<h3 class="step-item__title">Step 1</h3>
+				<p class="step-item__detail">
 					Sign in with your social media account.
 				</p>
 			</div><!--
 
 			--><div class="step-item step-item--trio">
-				<h3>Step 2</h3>
-				<p>
+				<h3 class="step-item__title">Step 2</h3>
+				<p class="step-item__detail">
 					Accept a challenge and make a donation.
 				</p>
 			</div><!--
 
 			--><div class="step-item step-item--trio">
-				<h3>Step 3</h3>
-				<p>
+				<h3 class="step-item__title">Step 3</h3>
+				<p class="step-item__detail">
 					Upload proof of your challenge and nominate your mates.
 				</p>
 			</div>
 		</div>	
 	</div>
 </section>
-
-
-
-
-	
-
-
-
-
 
 {% endblock %}

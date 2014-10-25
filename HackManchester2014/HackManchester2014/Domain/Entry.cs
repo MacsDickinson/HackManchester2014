@@ -18,15 +18,24 @@ namespace HackManchester2014.Domain
         
         public JG.Donation Donation { get; set; }
 
+        public List<Nomination> Nominations { get; set; }
+
         public List<string> ParentEntries { get; private set; }
         public string ParentEntry { get { return ParentEntries.LastOrDefault(); } }
-        private Entry() { }
+
+        private Entry()
+        {
+            Nominations = new List<Nomination>();
+        }
+
         public Entry(User user, Challenge challenge, Entry parentEntry = null)
         {
             UserId = string.Format("users/{0}", user.Id);
             UserName = user.UserInfo.Name;
             ChallengeId = challenge.Id;
             ChallengeTitle = challenge.Title;
+            Nominations = new List<Nomination>();
+
             if (parentEntry != null)
             {
                 ParentEntries = parentEntry.ParentEntries.Concat(new List<string> {parentEntry.Id}).ToList();

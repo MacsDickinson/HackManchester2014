@@ -61,6 +61,9 @@
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.Authentication.Forms">
+      <HintPath>..\packages\Nancy.Authentication.Forms.0.23.2\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>..\packages\Nancy.Hosting.Aspnet.0.23.2\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
@@ -126,6 +129,8 @@
   <ItemGroup>
     <Compile Include="Auth\AuthModule.cs" />
     <Compile Include="Auth\AuthProvider.cs" />
+    <Compile Include="Auth\UserIdentity.cs" />
+    <Compile Include="Auth\UserMapper.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Donation\DonationCore.cs" />
     <Compile Include="Donation\JustGivingUrlBuilder.cs" />

@@ -13,7 +13,7 @@ html{
 
 %layout {
     min-width: 300px;
-    max-width: 1200px;
+    max-width: 960px;
     padding: 0 2em;
     margin: 0 auto;
 
@@ -29,7 +29,7 @@ html{
 
 
 .step-list {
-	@extend %grid;
+	@extend %grid; 
 }
 
 .step-item {
@@ -41,15 +41,72 @@ html{
 	@extend %one-third;
 }
 
+    .step-item__title {
+        //@extend .hN;
+    }
+
+    .step-item__detail { 
+        max-width: 15.625em;
+        margin: 0 auto;
+    }
+
+
+
+.section-overview {
+    margin-bottom: 2.5em;
+}
+
 
 /*------------------------------------*\
     $HERO BANNER
 \*------------------------------------*/
 .hero-banner {
-	padding: 2em;
+	padding-bottom: 2em;
 	background: #ddd;
 }
 
 
+.container-block {
+    //text-align: center;
 
+    .layout-constrained {
+        padding: 3em 0;
+        border-bottom: 1px solid $base-ui-color;
+    }
+}
+
+
+/*------------------------------------*\
+    $HEADER
+\*------------------------------------*/
+
+.header-site {
+    margin-bottom: 2em;
+    padding: 1em 0;
+}
+
+
+/*------------------------------------*\
+    $FOOTER
+\*------------------------------------*/
+
+.footer-site {
+    text-align: center;
+}
+
+
+/*------------------------------------*\
+    $ICONS & TYPOGRAPHY
+\*------------------------------------*/
+
+.progress-step {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    border: 2px solid #ddd;
+    border-radius: 3em;
+    text-align: center;
+    line-height: 2em;
+    margin-right: .25em;
+}
 

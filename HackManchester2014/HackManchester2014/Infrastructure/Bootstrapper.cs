@@ -1,4 +1,6 @@
+using HackManchester2014.Auth;
 using Nancy;
+using Nancy.Authentication.Forms;
 
 namespace HackManchester2014.Infrastructure
 {
@@ -28,7 +30,6 @@ namespace HackManchester2014.Infrastructure
                 ApiKey = ConfigurationManager.AppSettings["JustGiving.ApiKey"],
                 WebsiteHost = ConfigurationManager.AppSettings["JustGiving.WebsiteHost"],
             });
-
             // Custom view locations
             Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat(context.ModuleName, "/Views/", viewName));
         }
@@ -44,7 +45,13 @@ namespace HackManchester2014.Infrastructure
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
         {
             base.RequestStartup(container, pipelines, context);
-
+            var formsAuthConfiguration =
+                new FormsAuthenticationConfiguration()
+                {
+                    RedirectUrl = "~/login",
+                    UserMapper = new UserMapper(container.Resolve<IDocumentSession>())
+                };
+            FormsAuthentication.Enable(pipelines, formsAuthConfiguration);
             pipelines.AfterRequest.AddItemToEndOfPipeline(ctx =>
             {
                 var documentSession = container.Resolve<IDocumentSession>();

@@ -7,57 +7,84 @@
  *
  */
 fieldset{
-    padding:$base-spacing-unit;
+    padding: 0;
+    border: 0;
 }
 
-
-/**
- * Text inputs
- *
- * Instead of a `[type]` selector for each kind of form input, we just use a
- * class to target any/every one, e.g.:
-   <input type=text class=text-input>
-   <input type=email class=text-input>
-   <input type=password class=text-input>
- *
- */
 .text-input,
 textarea{
-    /**
-     * Style these via your theme stylesheet.
-     */
+
 }
 
 
-/**
- * Group sets of form fields in a list, e.g.:
- *
-   <ul class=form-fields>
-       <li>
-           <label />
-           <input />
-       </li>
-       <li>
-           <label />
-           <select />
-       </li>
-       <li>
-           <label />
-           <input />
-       </li>
-   </ul>
- *
- */
-.form-fields{
-    list-style:none;
-    margin:0;
+.form-group {
+    margin-bottom: 1em;
 }
-    .form-fields > li{
-        @extend %sass-margin-bottom;
+
+.input-list {
+  @extend .group;
+  margin-left: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+  .input-list__item {
+
+    .input-list--trio & {
+      width: 30%;
+      float: left;
+      margin-right: 3%;
     }
-    .form-fields > li:last-child{
-        margin-bottom:0;
+
+  }
+
+.btn-radio {
+  
+  
+
+
+}
+
+.btn-radio {
+  display: block;
+
+  .btn-radio__btn {
+    display: block;
+    padding: 1.5em;
+    border: 1px solid #ddd;
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    left: -9999px;
+    z-index: -100;
+
+    &:checked + .btn-radio__btn {
+      border-color: $accent-primary;
     }
+
+  }
+
+}
+
+
+
+  .radio-button__title {
+    @extend .gamma;
+    display: block;
+  }
+
+  .radio-button__description {
+    display: block;
+  }
+
+
+
+input[type="file"] {
+  position: absolute;
+  left: -999px;
+
+}
 
 
 /**

@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="Auth\AuthModule.cs" />
     <Compile Include="Auth\AuthProvider.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="Donation\DonationCore.cs" />
     <Compile Include="Donation\JustGivingUrlBuilder.cs" />
     <Compile Include="Home\HomeModule.cs" />

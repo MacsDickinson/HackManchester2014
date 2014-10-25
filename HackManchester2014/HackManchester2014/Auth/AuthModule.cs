@@ -12,7 +12,7 @@ namespace HackManchester2014.Home
     {
         public AuthModule(IDocumentSession documentSession)
         {
-            Get["/Login"] = _ => "Hello!";
+            Get["/Login"] = _ => Negotiate.WithView("Login");
         }
     }
 }

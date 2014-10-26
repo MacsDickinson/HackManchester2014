@@ -1,4 +1,3 @@
-using System.IO;
 using HackManchester2014.Infrastructure;
 
 namespace HackManchester2014.Home
@@ -19,6 +18,7 @@ namespace HackManchester2014.Home
             Get["/"] = _ =>
             {
                 var seed = new Random().Next(1, 2048);
+
                 var model = new HomeIndexModel
                 {
                     MapModel = new MapViewModel
@@ -27,8 +27,13 @@ namespace HackManchester2014.Home
                         I = seed
                     },
                     TotalDonations = documentSession.Query<Entry>().ToList().Sum(x => x.Donation.Amount ?? 0)
-
                 };
+
+                var user = Context.GetUser();
+                if (user != null)
+                {
+                    model.NewAchievements = documentSession.GetNewAchievements(Context.GetUser());
+                }
 
                 model.Entries = documentSession.Query<Entry>().Where(x => x.ProofImage != null).OrderByDescending(x => x.Donation.DonationDate).Take(6).ToList();
 

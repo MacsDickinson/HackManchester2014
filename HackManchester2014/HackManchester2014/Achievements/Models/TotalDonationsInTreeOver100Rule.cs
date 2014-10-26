@@ -10,6 +10,11 @@
     {
         public bool Achieved(User user, IDocumentSession documentSession)
         {
+            if (user.Achievements.Any(x => x.Type == AchievementType.TotalDonationsInTreeOver100))
+            {
+                return false;
+            }
+
             var entries = documentSession.Query<Entry>().Where(x => x.UserId == user.Id);
 
             if (entries.Any())
@@ -33,7 +38,7 @@
                 Description = "Congratulations, you're tree of influence has donated over £100",
                 Type = AchievementType.TotalDonationsInTreeOver100,
                 Awarded = DateTime.Now,
-                Image = ""
+                Icon = "fa-btc"
             };
         }
     }

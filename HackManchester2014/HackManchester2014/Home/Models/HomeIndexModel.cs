@@ -12,5 +12,11 @@ namespace HackManchester2014.Home.Models
         public int TotalChallenges { get; set; }
         public MapViewModel MapModel { get; set; }
         public List<Entry> Entries { get; set; }
+        public List<Achievement> NewAchievements { get; set; }
+
+        public HomeIndexModel()
+        {
+            NewAchievements = new List<Achievement>();
+        }
     }
 }

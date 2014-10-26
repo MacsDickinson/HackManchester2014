@@ -24,7 +24,9 @@ namespace HackManchester2014.Account
             {
                 var user = base.Context.GetUser();
 
-                var entries = documentSession.Query<Entry>().Where(x => x.UserId == user.Id).ToList();
+                var totals = documentSession.Query<UserStatsIndexItem, UserStatsIndex>()
+                    .Where(x => x.UserId == user.Id)
+                    .SingleOrDefault();
 
                 var seed = new Random().Next(1, 2048);
                 var model = new AccountIndexModel
@@ -36,15 +38,12 @@ namespace HackManchester2014.Account
                     }
                 };
 
-                if (entries != null)
+                if (totals != null)
                 {
-                    var indexItems = documentSession.Query<EntryIndexItem>("EntryChildrenIndex").ToList()
-                        .Where(x => entries.Any(y=>y.Id==x.Id)).ToList();
-
-                    model.TotalDonated = indexItems.Sum(x => x.OwnDonation);
-                    model.TotalDonations = indexItems.Count();
-                    model.TotalRaised = indexItems.Sum(x => x.TotalDonations);
-                    model.TotalNominated = indexItems.Sum(x => x.Decendants);
+                    model.TotalDonated = totals.OwnDonation;
+                    model.TotalDonations = totals.DonatedCount;
+                    model.TotalNominated = totals.NominatedCount;
+                    model.TotalRaised = totals.DonationsTotal;
                 }
                 return Negotiate.WithView("Account")
                     .WithModel(model);

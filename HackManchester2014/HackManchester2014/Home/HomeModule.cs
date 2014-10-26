@@ -26,7 +26,7 @@ namespace HackManchester2014.Home
                 if (entryId != null)
                 {
                     var entry = documentSession.Load<Entry>(entryId.Id);
-                    var children = documentSession.Query<Entry>().Where(x => x.ParentEntries.Any(y => y == entry.Id)).Where(x=>x.GeoIp != null).ToList();
+                    var children = documentSession.Query<Entry>().Where(x => x.ParentEntries.Any(y => y == entry.Id)).Where(x=>x.GeoIp != null).OrderBy(x=>x.ParentEntries).Take(256).ToList();
                     Donation = MapModule.BuildTree(entry, children);
                 }
                 var model = new HomeIndexModel

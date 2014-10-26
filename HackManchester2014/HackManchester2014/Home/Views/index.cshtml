@@ -120,8 +120,13 @@
 </section>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $(document).on('.js-notification-dismiss', 'click', function () {
+    //$(document).ready(function () {
+    //    $(document).on('.js-notification-dismiss', 'click', function () {
+    //        $(this).parent().hide();
+    //    });
+    //});
+    $(function () {
+        $('.js-notification-dismiss').click(function () {
             $(this).parent().hide();
         });
     });

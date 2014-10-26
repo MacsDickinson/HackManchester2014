@@ -47,50 +47,16 @@
         </div>
 
         <div class="gallery">
-
-            <div class="gallery-item gallery-item--overlay">
-                <img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
-                <div class="gallery-item__meta">
-                    <h4 class="gallery-item__name">John Doe</h4>
-                    <span class="tile__location">Leeds, UK</span>
+            @foreach (var entry in Model.Entries)
+            {
+                <div class="gallery-item gallery-item--overlay">
+                    <img class="gallery__item" src="/image/@entry.ProofImage" />
+                    <div class="gallery-item__meta">
+                        <h4 class="gallery-item__name">@entry.UserName</h4>
+                        <span class="tile__location">Leeds, UK</span>
+                    </div>
                 </div>
-            </div>
-
-            <div class="gallery-item gallery-item--overlay">
-                <img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
-                <div class="gallery-item__meta">
-                    <h4 class="gallery-item__name">John Doe</h4>
-                    <span class="tile__location">Leeds, UK</span>
-                </div>
-            </div>
-            <div class="gallery-item gallery-item--overlay">
-                <img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
-                <div class="gallery-item__meta">
-                    <h4 class="gallery-item__name">John Doe</h4>
-                    <span class="tile__location">Leeds, UK</span>
-                </div>
-            </div>
-            <div class="gallery-item gallery-item--overlay">
-                <img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
-                <div class="gallery-item__meta">
-                    <h4 class="gallery-item__name">John Doe</h4>
-                    <span class="tile__location">Leeds, UK</span>
-                </div>
-            </div>
-            <div class="gallery-item gallery-item--overlay">
-                <img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
-                <div class="gallery-item__meta">
-                    <h4 class="gallery-item__name">John Doe</h4>
-                    <span class="tile__location">Leeds, UK</span>
-                </div>
-            </div>
-            <div class="gallery-item gallery-item--overlay">
-                <img class="gallery__item" src="/public/content/images/sample-pic-01.jpg" />
-                <div class="gallery-item__meta">
-                    <h4 class="gallery-item__name">John Doe</h4>
-                    <span class="tile__location">Leeds, UK</span>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>

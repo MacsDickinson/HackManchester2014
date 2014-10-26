@@ -109,7 +109,8 @@ namespace HackManchester2014.Donation
                         ContentType = httpFile.ContentType,
                         Name = httpFile.Name
                     };
-                    entry.ProofImage = image;
+                    entry.ProofImage = image.Id;
+                    session.Store(image);
                     session.Store(entry);
                 }
                 return Response.AsRedirect(string.Format("/challenges/{0}/entries/{1}/nominate", challengeTag, entryId));

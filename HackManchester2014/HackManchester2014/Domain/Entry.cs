@@ -26,7 +26,7 @@ namespace HackManchester2014.Domain
 
         public GeoIp GeoIp { get; set; }
 
-        public Image ProofImage { get; set; }
+        public Guid? ProofImage { get; set; }
 
         private Entry()
         {

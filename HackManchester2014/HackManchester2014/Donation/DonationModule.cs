@@ -15,13 +15,13 @@ using Raven.Client;
 
 namespace HackManchester2014.Donation
 {
-    public class DonationCore: NancyModule
+    public class DonationModule: NancyModule
     {
-        public DonationCore(IDocumentSession session, JustGivingConfiguration justGivingConfig)
+        public DonationModule(IDocumentSession session, JustGivingConfiguration justGivingConfig)
         {
             this.RequiresAuthentication();
 
-            Post[@"/challenges/{challengeTag}/donate"] = _ =>
+            Get[@"/challenges/{challengeTag}/donate"] = _ =>
             {
                 var user = (UserIdentity)Context.CurrentUser;
 
@@ -79,7 +79,14 @@ namespace HackManchester2014.Donation
                 var nominationUrl = new UriBuilder(Request.Url.ToString());
                 nominationUrl.Path = nomination.Id;
 
-                return "Thanks for donating, here's your nomination Url: " + nominationUrl.ToString();
+                var viewModel = new Models.ConfirmationViewModel
+                {
+
+                };
+
+                return Negotiate
+                    .WithModel(viewModel)
+                    .WithView("register4");
             };
         }
     }

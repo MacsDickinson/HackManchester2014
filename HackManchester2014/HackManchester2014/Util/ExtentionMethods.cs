@@ -8,6 +8,7 @@ using RestSharp;
 namespace HackManchester2014
 {
     using System.Collections.Generic;
+    using System.Linq;
     using HackManchester2014.Achievements.Models;
     using Raven.Client;
 
@@ -33,22 +34,15 @@ namespace HackManchester2014
 
         public static List<Achievement> GetNewAchievements(this IDocumentSession session, User user)
         {
-            var achievements = new List<Achievement>();
-            foreach (var rule in Rules())
-            {
-                if (rule.Achieved(user, session))
-                {
-                    achievements.Add(rule.AwardAchievement());
-                }
-            }
-            return achievements;
+            return (from rule in Rules() where rule.Achieved(user, session) select rule.AwardAchievement()).ToList();
         }
 
-        private static List<IAchievementRule> Rules()
+        private static IEnumerable<IAchievementRule> Rules()
         {
             return new List<IAchievementRule>
             {
-                new FirstDonationAchievementRule()
+                new FirstDonationAchievementRule(),
+                new TotalDonationsInTreeOver100Rule()
             };
         }
     }

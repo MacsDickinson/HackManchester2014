@@ -160,6 +160,7 @@
     <Compile Include="Account\Models\AccountIndexModel.cs" />
     <Compile Include="Achievements\Models\FirstDonationAchievementRule.cs" />
     <Compile Include="Achievements\Models\IAchievementRule.cs" />
+    <Compile Include="Achievements\Models\TotalDonationsInTreeOver100Rule.cs" />
     <Compile Include="Auth\AuthModule.cs" />
     <Compile Include="Auth\AuthProvider.cs" />
     <Compile Include="Domain\Achievement.cs" />

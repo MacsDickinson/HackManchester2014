@@ -11,8 +11,6 @@ namespace HackManchester2014.Map
         public MapModule()
             : base("Map")
         {
-            this.RequiresAuthentication();
-
             Get["/"] = _ =>
             {
                 var model = new MapHomeViewModel
@@ -51,7 +49,7 @@ namespace HackManchester2014.Map
                     {
                         n2.Nominations.Add(RandomChild(n2, random));
                     }
-                    foreach (var n3 in nomination.Nominations)
+                    foreach (var n3 in n2.Nominations)
                     {
                         for (double k = 0; k < 3; k++)
                         {
@@ -72,8 +70,8 @@ namespace HackManchester2014.Map
 
         private double RandomDouble(Random random)
         {
-            const double maximum = 0.05;
-            const double minimum = -0.05;
+            const double maximum = 0.5;
+            const double minimum = -0.5;
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
     }

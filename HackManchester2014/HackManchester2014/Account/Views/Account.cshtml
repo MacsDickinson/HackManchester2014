@@ -5,30 +5,30 @@
 
 <section class="map-container">
     @Html.Partial("Shared/_Map", Model.MapModel)
-</section>
-<section class="stat-bar">
-    <div class="layout-constrained">
-        <div class="stat-group stat-group--bar">
-            <dl class="stat">
-                <dd class="stat__value">£@Model.TotalDonated</dd>
-                <dt class="stat__title">Donated</dt>
-            </dl>
+    <section class="stat-bar">
+        <div class="layout-constrained">
+            <div class="stat-group stat-group--bar">
+                <dl class="stat">
+                    <dd class="stat__value">£@Model.TotalDonated</dd>
+                    <dt class="stat__title">Donated</dt>
+                </dl>
 
-            <dl class="stat">
-                <dd class="stat__value">@Model.TotalDonations</dd>
-                <dt class="stat__title">Donations</dt>
-            </dl>
-            <dl class="stat">
-                <dd class="stat__value">£@Model.TotalRaised</dd>
-                <dt class="stat__title">Raised</dt>
-            </dl>
+                <dl class="stat">
+                    <dd class="stat__value">@Model.TotalDonations</dd>
+                    <dt class="stat__title">Donations</dt>
+                </dl>
+                <dl class="stat">
+                    <dd class="stat__value">£@Model.TotalRaised</dd>
+                    <dt class="stat__title">Raised</dt>
+                </dl>
 
-            <dl class="stat">
-                <dd class="stat__value">@Model.TotalNominated</dd>
-                <dt class="stat__title">Donations</dt>
-            </dl>
+                <dl class="stat">
+                    <dd class="stat__value">@Model.TotalNominated</dd>
+                    <dt class="stat__title">Donations</dt>
+                </dl>
+            </div>
         </div>
-    </div>
+    </section>
 </section>
 
 <section class="main-content">

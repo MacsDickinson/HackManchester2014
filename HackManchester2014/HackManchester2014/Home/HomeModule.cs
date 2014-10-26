@@ -1,12 +1,9 @@
-using System.Linq;
-using HackManchester2014.Domain;
 using HackManchester2014.Infrastructure;
 
 namespace HackManchester2014.Home
 {
     using HackManchester2014.Domain;
     using HackManchester2014.Home.Models;
-    using HackManchester2014.Infrastructure.Indexes;
     using HackManchester2014.Map;
     using HackManchester2014.Map.Models;
     using Nancy;
@@ -27,7 +24,7 @@ namespace HackManchester2014.Home
                     }
                 };
 
-                model.TotalDonations = documentSession.Query<Entry>().Sum(x => x.Donation.Amount ?? 0); ;
+                model.TotalDonations = documentSession.Query<Entry>().ToList().Sum(x => x.Donation.Amount ?? 0); ;
                 model.TotalChallenges = documentSession.Query<Entry>().Count();
 
                 return Negotiate.WithView("Index")

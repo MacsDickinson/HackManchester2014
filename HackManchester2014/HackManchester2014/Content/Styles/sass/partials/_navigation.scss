@@ -10,12 +10,18 @@
 
 	.nav__item {
 		display: inline-block;
+
+        .nav--site & {
+            color: #fff;
+        }
+
 	}
 
 	.nav__link {
 		padding: 0 .5em;
-		color: $accent-primary;
+		color: #fff !important;
 		text-decoration: none;
+
 	}
 
 

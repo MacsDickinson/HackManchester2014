@@ -32,7 +32,7 @@
                         {"title", Title},
                         {"description", Description},
                         {"marker-size", "small"},
-                        {"marker-color", "#32A07E"},
+                        {"marker-color", "#ec5a1f"},
                         {"marker-symbol", "star"}
                     };
                 var feature = new Feature(point, featureProperties);
@@ -56,7 +56,7 @@
                         {"title", x.Title},
                         {"description", x.Description},
                         {"marker-size", "small"},
-                        {"marker-color", "#32A07E"},
+                        {"marker-color", "#ec5a1f"},
                         {"marker-symbol", "star"}
                     };
                     return new Feature(point, featureProperties);

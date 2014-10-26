@@ -24,7 +24,7 @@ namespace HackManchester2014.Account
             {
                 var user = base.Context.GetUser();
 
-                var entries = documentSession.Query<Entry>().Where(x => x.UserId == user.Id);
+                var entries = documentSession.Query<Entry>().Where(x => x.UserId == user.Id).ToList();
 
                 var seed = new Random().Next(1, 2048);
                 var model = new AccountIndexModel

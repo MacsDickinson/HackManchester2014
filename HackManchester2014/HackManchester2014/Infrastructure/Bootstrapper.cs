@@ -1,6 +1,8 @@
+using System.Reflection;
 using HackManchester2014.Auth;
 using Nancy;
 using Nancy.Authentication.Forms;
+using Raven.Client.Indexes;
 
 namespace HackManchester2014.Infrastructure
 {
@@ -22,7 +24,6 @@ namespace HackManchester2014.Infrastructure
             base.ConfigureApplicationContainer(container);
 
             var store = RavenSessionProvider.DocumentStore;
-
             container.Register<IDocumentStore>(store);
             container.Register<JustGivingConfiguration>(new JustGivingConfiguration
             {

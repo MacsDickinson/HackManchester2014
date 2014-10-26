@@ -1,4 +1,6 @@
-﻿namespace HackManchester2014.Infrastructure
+﻿using Raven.Client.Indexes;
+
+namespace HackManchester2014.Infrastructure
 {
     using System.Configuration;
     using Raven.Client.Document;
@@ -26,7 +28,7 @@
                 ApiKey = ConfigurationManager.AppSettings["RAVENHQ_APIKEY"],
             };
             store.Initialize();
-            
+            IndexCreation.CreateIndexes(typeof(RavenSessionProvider).Assembly, store);
             using (var session = store.OpenSession())
             {
                 EnsureSeedData(session);

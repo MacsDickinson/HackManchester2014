@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using JG = JustGiving.Api.Sdk.Model.Donation;
+
 
 namespace HackManchester2014.Domain
 {
@@ -16,7 +15,7 @@ namespace HackManchester2014.Domain
         public string ChallengeId { get; set; }
         public string ChallengeTitle { get; set; }
         
-        public JG.Donation Donation { get; set; }
+        public Donation Donation { get; set; }
 
         public List<Nomination> Nominations { get; set; }
 

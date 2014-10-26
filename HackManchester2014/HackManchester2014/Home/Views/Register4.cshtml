@@ -20,11 +20,9 @@
                     <form id="upload-form" method="POST" enctype="multipart/form-data">
                         <label for="proof-file" class="btn btn--primary">
                             Upload your image
-
-
-
+                            <input type="file" id="proof-file" name="file" onchange="$('#upload-form').submit();" />
                         </label>
-                        <input type="file" id="proof-file" name="file" onchange="$('#upload-form').submit();" />
+                        
                     </form>
 
                 </div>

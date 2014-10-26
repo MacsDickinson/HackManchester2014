@@ -1,37 +1,35 @@
 ﻿@{
     Layout = "Shared/_Layout.cshtml";
 }
-@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Donation.Models.NominateViewModel>
 
 <article class="register main-content">
     <section class="layout-constrained layout-constrained--narrow">
         <div class="layout-constrained layout-constrained--narrow">
 
             <div class="page-intro">
-                <h1>Upload Your Picture</h1>
+                <h1>Nominate more folks!</h1>
                 <p>
-                    Great work for making your donation, you can now upload your proof for completing the challenge.
+                    Great work for making your donation, you can now nominate your mates.
                 </p>
             </div>
 
             <div class="form-panel">
-                <h2 class="progress-step"><span class="progress-step__indicator">3</span>Upload picture</h2>
+                <h2 class="progress-step"><span class="progress-step__indicator">4</span>Enter your friends names</h2>
                 
                 <fieldset>
-                    <legend class="form-step__intro">Prove you have done the challenge</legend>
+                    <legend class="form-step__intro">Click below to share the nomination on twitter.</legend>
 
                     <div class="form-group">
 
-                        <form id="upload-form" method="POST" enctype="multipart/form-data">
+                        <a href="//twitter.com/share?url=@Model.NominationUrl&text=For @Model.ChallengeTitle I nominate:">Share on twitter</a>
+                           @*<form id="upload-form" action="/register/4" method="POST" enctype="multipart/form-data">
                             <label for="proof-file" class="btn btn--primary">
                                 Upload your image
                                 <input type="file" id="proof-file" name="file" onchange="$('#upload-form').submit();" />
                             </label>
 
-                        </form>
-
-
-                    </div>
+                        </form>*@</div>
                 </fieldset>
             </div>
 

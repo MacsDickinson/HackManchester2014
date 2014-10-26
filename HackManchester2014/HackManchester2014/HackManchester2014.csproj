@@ -116,7 +116,7 @@
   <ItemGroup>
     <Content Include="Content\Styles\screen.css" />
     <Content Include="packages.config" />
-    <Content Include="Map\Views\Map.cshtml" />
+    <Content Include="Views\Shared\_Map.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Auth\Views\Login.cshtml" />
     <Content Include="Challenge\Views\Challenges.cshtml" />
@@ -141,6 +141,7 @@
     <Compile Include="Auth\AuthProvider.cs" />
     <Compile Include="Domain\GeoIp.cs" />
     <Compile Include="Domain\Nomination.cs" />
+    <Compile Include="Home\Models\HomeIndexModel.cs" />
     <Compile Include="Util\ExtentionMethods.cs" />
     <Compile Include="Auth\UserIdentity.cs" />
     <Compile Include="Auth\UserMapper.cs" />
@@ -158,12 +159,13 @@
     <Compile Include="Infrastructure\RavenSessionProvider.cs" />
     <Compile Include="Map\MapModule.cs" />
     <Compile Include="Map\Models\MapDonation.cs" />
-    <Compile Include="Map\Models\MapHomeViewModel.cs" />
+    <Compile Include="Map\Models\MapViewModel.cs" />
     <Compile Include="Map\Models\MapLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Script\" />
+    <Folder Include="Map\Views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

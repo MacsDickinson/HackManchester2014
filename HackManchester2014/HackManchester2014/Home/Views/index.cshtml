@@ -1,8 +1,9 @@
 ﻿@{
     Layout = "Shared/_Layout.cshtml";
 }
-@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Home.Models.HomeIndexModel>
 <div class="hero-banner group">
+    @Html.Partial("Shared/_Map", Model.MapModel)
     <div class="layout-constrained">
         <div class="hero-banner__body">
             <h1 class="kilo">Project X</h1>

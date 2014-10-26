@@ -1,8 +1,5 @@
-﻿@{
-    Layout = "Shared/_Layout.cshtml";
-}
-@using HackManchester2014.Map.Models
-@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Map.Models.MapHomeViewModel>
+﻿@using HackManchester2014.Map.Models
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Map.Models.MapViewModel>
 
 @helper LoadNominations(MapDonation donation, bool isLast)
 {
@@ -67,7 +64,7 @@
                 var target = data.features[i].geometry.coordinates;
 
                 var generator = new arc.GreatCircle(obj(source), obj(target));
-                var line = generator.Arc(100, { offset: 10 });
+                var line = generator.Arc(500, { offset: 10 });
                 var newLine = L.polyline(line.geometries[0].coords.map(function(c) {
                     return c.reverse();
                 }), {

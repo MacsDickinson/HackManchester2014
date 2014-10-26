@@ -13,7 +13,7 @@ namespace HackManchester2014.Map
         {
             Get["/"] = _ =>
             {
-                var model = new MapHomeViewModel
+                var model = new MapViewModel
                 {
                     Donation = TestDonation()
                 };
@@ -22,7 +22,7 @@ namespace HackManchester2014.Map
             };
         }
 
-        public MapDonation TestDonation()
+        public static MapDonation TestDonation()
         {
             var topDonation = new MapDonation("Macs Dickinson", "Macs donated £9 to Matts mum", 53.476362020773145,
                 -2.2513389587402344);
@@ -62,13 +62,13 @@ namespace HackManchester2014.Map
             return topDonation;
         }
 
-        private MapDonation RandomChild(MapDonation parent, Random random)
+        private static MapDonation RandomChild(MapDonation parent, Random random)
         {
             return new MapDonation(parent.Title + " Child", parent.Title + " Child", (parent.Location.Latitude + RandomDouble(random)),
                 parent.Location.Longitude + RandomDouble(random));
         }
 
-        private double RandomDouble(Random random)
+        private static double RandomDouble(Random random)
         {
             const double maximum = 0.5;
             const double minimum = -0.5;

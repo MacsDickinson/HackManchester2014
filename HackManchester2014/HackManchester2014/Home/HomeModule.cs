@@ -5,6 +5,7 @@ namespace HackManchester2014.Home
     using HackManchester2014.Map.Models;
     using Nancy;
     using Raven.Client;
+    using System.Linq;
 
     public class HomeModule : NancyModule
     {
@@ -28,10 +29,26 @@ namespace HackManchester2014.Home
                 Session["returnUrl"] = "/register/2";
                 return Negotiate.WithView("Register1");
             };
+
             Get["/register/2"] = _ =>
             {
-                return Negotiate.WithView("Register2");
+                var challenges = documentSession.Query<Domain.Challenge>().Take(10).ToList();
+
+                var viewModel = new Challenge.Models.ChallengesViewModel
+                {
+                    Challenges = challenges.Select(x => new Challenge.Models.ChallengeViewModel
+                    {
+                        Title = x.Title,
+                        Brief = x.Brief,
+                        Charity = x.CharityName,
+                        Id = x.Id,
+                    })
+                };
+                return Negotiate
+                    .WithModel(viewModel)
+                    .WithView("Register2");
             };
+
             Get["/register/3"] = _ =>
             {
                 return Negotiate.WithView("Register3");

@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "Shared/_Layout.cshtml";
+}
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Account.Models.AccountIndexModel>
+
+<section class="map-container">
+    @Html.Partial("Shared/_Map", Model.MapModel)
+</section>
+<section class="stat-bar">
+    <div class="layout-constrained">
+        <div class="stat-group stat-group--bar">
+            <dl class="stat">
+                <dd class="stat__value">£30</dd>
+                <dt class="stat__title">Donated</dt>
+            </dl>
+
+            <dl class="stat">
+                <dd class="stat__value">3</dd>
+                <dt class="stat__title">Donations</dt>
+            </dl>
+            <dl class="stat">
+                <dd class="stat__value">£160</dd>
+                <dt class="stat__title">Raised</dt>
+            </dl>
+
+            <dl class="stat">
+                <dd class="stat__value">3</dd>
+                <dt class="stat__title">Donations</dt>
+            </dl>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="layout-constrained">
+
+        <div class="layout-dual">
+            <h3>Your Influence Chart</h3>
+            <ul class="paired-list paired-list--divided">
+                <li>
+                    <div class="paired-list__alpha">Alan Sugar</div>
+                    <div class="paired-list__beta">£280</div>
+                </li>
+                <li>
+                    <div class="paired-list__alpha">Duncan Dannatyne</div>
+                    <div class="paired-list__beta">£220</div>
+                </li>
+                <li>
+                    <div class="paired-list__alpha">Peter Jones</div>
+                    <div class="paired-list__beta">£180</div>
+                </li>
+                <li>
+                    <div class="paired-list__alpha">Theo Paphitis</div>
+                    <div class="paired-list__beta">£110</div>
+                </li>
+                <li>
+                    <div class="paired-list__alpha">Deborah Meaden</div>
+                    <div class="paired-list__beta">£50</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="layout-dual">
+
+        </div>
+
+
+
+
+    </div>
+</section>

@@ -143,6 +143,8 @@
     <Content Include="Content\Styles\sass\partials\_typography.scss" />
     <Content Include="Content\Styles\sass\screen.scss" />
     <Content Include="Content\Styles\mixture.json" />
+    <Content Include="Account\Views\Account.cshtml" />
+    <Content Include="Nomination\Views\Nomination.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -154,10 +156,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AccountModule.cs" />
+    <Compile Include="Account\Models\AccountIndexModel.cs" />
     <Compile Include="Auth\AuthModule.cs" />
     <Compile Include="Auth\AuthProvider.cs" />
+    <Compile Include="Domain\Donation.cs" />
     <Compile Include="Domain\GeoIp.cs" />
+    <Compile Include="Nomination\Models\NominationViewModel.cs" />
+    <Compile Include="Nomination\NominationModule.cs" />
     <Compile Include="Domain\Nomination.cs" />
+    <Compile Include="Infrastructure\Indexes\EntryIndex.cs" />
     <Compile Include="Home\Models\HomeIndexModel.cs" />
     <Compile Include="Util\ExtentionMethods.cs" />
     <Compile Include="Auth\UserIdentity.cs" />

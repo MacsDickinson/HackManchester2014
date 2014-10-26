@@ -165,8 +165,6 @@
     <Compile Include="Domain\Image.cs" />
     <Compile Include="Donation\Models\ConfirmationViewModel.cs" />
     <Compile Include="Donation\Models\NominateViewModel.cs" />
-    <Compile Include="Infrastructure\IImageStore.cs" />
-    <Compile Include="Infrastructure\ImageStore.cs" />
     <Compile Include="Nomination\Models\NominationViewModel.cs" />
     <Compile Include="Nomination\NominationModule.cs" />
     <Compile Include="Domain\Nomination.cs" />

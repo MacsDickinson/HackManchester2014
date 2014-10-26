@@ -47,7 +47,7 @@
         map.scrollWheelZoom.disable();
 
         // Load the data for the user
-        drawPoints(map, @Html.Raw(Model.Donation.DonationGeoJson));
+        drawPoint(map, @Html.Raw(Model.Donation.DonationGeoJson));
         loadMaxLatLng(@Html.Raw(Model.Donation.NominationsGeoJson));
 
         @LoadNominations(Model.Donation, true)
@@ -63,13 +63,13 @@
                 var generator = new arc.GreatCircle(obj(source), obj(target));
                 var line = generator.Arc(500, { offset: 10 });
                 var newLine = L.polyline(line.geometries[0].coords.map(function(c) {
-                    return c.reverse();
-                }), {
-                    color: '#32A07E',
-                    weight: 3,
-                    opacity: 0.9
-                })
-                .addTo(map);
+                        return c.reverse();
+                    }), {
+                        color: '#ec5a1f',
+                        weight: 3,
+                        opacity: 0.9
+                    })
+                    .addTo(map);
                 var totalLength = newLine._path.getTotalLength();
                 newLine._path.classList.add('path-start');
 
@@ -85,6 +85,7 @@
                 })(newLine._path), i * 100);
             }
         }
+
         function loadMaxLatLng(data) {
             var buffer = 0.1;
             var updated = false;
@@ -110,13 +111,28 @@
                 }
             }
             if (updated === true) {
-                map.fitBounds([[minLat, minLng],[maxLat, maxLng]], [10,10]);
+                map.fitBounds([[minLat, minLng], [maxLat, maxLng]], [10, 10]);
                 map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude]);
             }
         }
-        function drawPoints(map, data) {
+        function drawPoint(map, data) {
             L.mapbox.featureLayer(data)
                 .addTo(map);
+            //var latLng = data.geometry.coordinates;
+            //var lat = latLng[0];
+            //var lng = latLng[1];
+
+            //L.marker([lat, lng], {
+            //    icon: L.divIcon({
+            //        className: 'fa fa-dot fa-4 map-marker'
+            //    })
+            //}).addTo(map);
+        }
+        function drawPoints(map, data) {
+            
+            for (var i = 0; i < data.features.length; i++) {
+                drawPoint(map,data.features[i]);
+            }
         }
     })
 </script>

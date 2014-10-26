@@ -96,7 +96,9 @@ namespace HackManchester2014.Donation
 
             Post["/challenges/{challengeTag}/entries/{entryId}/upload"] = _ =>
             {
-                var entry = session.Load<Entry>(_.entryId);
+                string challengeTag = _.challengeTag;
+                int entryId = _.entryId;
+                var entry = session.Load<Entry>(string.Format("entries/{0}", entryId));
                 var httpFile = Request.Files.FirstOrDefault();
                 if (httpFile != null)
                 {
@@ -107,10 +109,10 @@ namespace HackManchester2014.Donation
                         ContentType = httpFile.ContentType,
                         Name = httpFile.Name
                     };
-                    entry.Image = image;
+                    entry.ProofImage = image;
                     session.Store(entry);
                 }
-                return Response.AsRedirect("/");
+                return Response.AsRedirect(string.Format("/challenges/{0}/entries/{1}/nominate", challengeTag, entryId));
             };
         }
     }

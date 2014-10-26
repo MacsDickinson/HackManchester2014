@@ -10,6 +10,11 @@
     {
         public bool Achieved(User user, IDocumentSession documentSession)
         {
+            if (user.Achievements == null)
+            {
+                return false;
+            }
+
             if (user.Achievements.Any(x => x.Type == AchievementType.TotalDonationsInTreeOver100))
             {
                 return false;

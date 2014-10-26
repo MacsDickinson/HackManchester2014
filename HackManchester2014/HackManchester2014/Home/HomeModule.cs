@@ -1,8 +1,7 @@
-using HackManchester2014.Infrastructure;
-
 namespace HackManchester2014.Home
 {
     using System;
+    using System.IO;
     using HackManchester2014.Domain;
     using HackManchester2014.Home.Models;
     using HackManchester2014.Map;
@@ -26,7 +25,7 @@ namespace HackManchester2014.Home
                         Donation = MapModule.TestDonation(seed),
                         I = seed
                     },
-                    TotalDonations = documentSession.Query<Entry>().ToList().Sum(x => x.Donation.Amount ?? 0)
+                    TotalDonations = documentSession.Query<Entry>().ToList().Sum(x => x.Donation == null ? 0 : x.Donation.Amount ?? 0)
                 };
 
                 var user = Context.GetUser();

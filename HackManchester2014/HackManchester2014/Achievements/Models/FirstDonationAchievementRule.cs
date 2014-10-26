@@ -9,8 +9,17 @@
     {
         public bool Achieved(User user, IDocumentSession documentSession)
         {
-            return user.Achievements.Any(x => x.Type == AchievementType.FirstDonation)
-                && documentSession.Query<Entry>().Any(x => x.UserId == user.Id && x.Donation != null);
+            if (user.Achievements == null)
+            {
+                return false;
+            }
+
+            if (user.Achievements.Any(x => x.Type == AchievementType.FirstDonation))
+            {
+                return false;
+            }
+
+            return documentSession.Query<Entry>().Any(x => x.UserId == user.Id && x.Donation != null);
         }
 
         public Achievement AwardAchievement()

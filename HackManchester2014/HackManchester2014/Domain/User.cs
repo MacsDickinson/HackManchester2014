@@ -8,6 +8,7 @@ namespace HackManchester2014.Domain
     {
         public User()
         {
+            Achievements = new List<Achievement>();
         }
 
         public User(string providerName, SimpleAuthentication.Core.UserInformation userInformation)

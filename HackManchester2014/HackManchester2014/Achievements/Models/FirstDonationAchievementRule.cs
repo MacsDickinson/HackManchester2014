@@ -20,7 +20,7 @@
                 Name = "First Donation",
                 Description = "Congratulations, you have made your first donation.",
                 Type = AchievementType.FirstDonation,
-                Image = "",
+                Icon = "fa-bolt",
                 Awarded = DateTime.Now
             };
         }

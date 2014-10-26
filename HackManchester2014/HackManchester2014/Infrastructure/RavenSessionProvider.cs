@@ -7,6 +7,8 @@ namespace HackManchester2014.Infrastructure
     using Raven.Client;
     using HackManchester2014.Domain;
     using System.Transactions;
+    using System.Linq;
+    using System;
 
     public class RavenSessionProvider
     {
@@ -39,32 +41,70 @@ namespace HackManchester2014.Infrastructure
 
         private static void EnsureSeedData(IDocumentSession session)
         {
-            session.Store(new Challenge
-            {
-                Id = "challenges/mind",
-                Title = "Mindful for Minds",
-                Brief = "Share a selfie with your thinking cap on",
-                CharityName = "Mind",
-                JustGivingCharityId = 300,
-            });
+            var challenges = new[] {
+                new Challenge
+                {
+                    Id = "challenges/mind",
+                    Title = "Mindful for Minds",
+                    Brief = "Share a selfie with your thinking cap on",
+                    CharityName = "Mind",
+                    JustGivingCharityId = 300,
+                },
 
-            session.Store(new Challenge
-            {
-                Id = "challenges/autism",
-                Title = "Tapie Selfie",
-                Brief = "Tape your mouth shut to raise awareness for the issues faced by those with autism",
-                CharityName = "Autism Concern",
-                JustGivingCharityId = 114885,
-            });
+                new Challenge
+                {
+                    Id = "challenges/autism",
+                    Title = "Tapie Selfie",
+                    Brief = "Tape your mouth shut to raise awareness for the issues faced by those with autism",
+                    CharityName = "Autism Concern",
+                    JustGivingCharityId = 114885,
+                },
 
-            session.Store(new Challenge
+                new Challenge
+                {
+                    Id = "challenges/cancer",
+                    Title = "Spread Faster Than Cancer",
+                    Brief = "Spread your voice faster than cancer",
+                    CharityName = "Cancer Research UK",
+                    JustGivingCharityId = 2357,
+                }
+            }.ToList();
+
+            challenges.ForEach(session.Store);
+
+            Random rnd = new Random();
+
+            Action<Challenge, Entry, int> makeFakePeople = null;
+            makeFakePeople = (c, e, depth) =>
             {
-                Id = "challenges/cancer",
-                Title = "Spread Faster Than Cancer",
-                Brief = "Spread your voice faster than cancer",
-                CharityName = "Cancer Research UK",
-                JustGivingCharityId = 2357,
-            });
+                if (depth < 5)
+                {
+                    var geoIp = new GeoIp
+                    {
+                        latitude = (float)(e == null ? 53.476362020773145 : HackManchester2014.Map.MapModule.RandomDouble(rnd) + e.GeoIp.latitude),
+                        longitude = (float)(e == null ? -2.2513389587402344 : HackManchester2014.Map.MapModule.RandomDouble(rnd) + e.GeoIp.longitude)
+                    };
+
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        var user = new User
+                        {
+                            Id = Guid.NewGuid(),
+                            UserInfo = new SimpleAuthentication.Core.UserInformation
+                            {
+                                Email = "bob.bobbington@bobbles.bob",
+                                Name = "Bob Bobbington",
+                            }
+                        };
+                        session.Store(user);
+                        var entry = new Entry(user, c, geoIp, e);
+                        session.Store(entry);
+                        makeFakePeople(c, e, depth + 1);
+                    }
+                }
+            };
+
+            //challenges.ForEach(c => makeFakePeople(c, null, 0));
 
             session.SaveChanges();
         }

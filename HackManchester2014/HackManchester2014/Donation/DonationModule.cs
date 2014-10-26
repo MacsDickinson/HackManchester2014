@@ -17,7 +17,7 @@ namespace HackManchester2014.Donation
 {
     public class DonationModule: NancyModule
     {
-        public DonationModule(IDocumentSession session, JustGivingConfiguration justGivingConfig)
+        public DonationModule(IDocumentSession session, JustGivingConfiguration justGivingConfig, IImageStore imageStore)
         {
             this.RequiresAuthentication();
 
@@ -79,6 +79,11 @@ namespace HackManchester2014.Donation
                 var nominationUrl = new UriBuilder(Request.Url.ToString());
                 nominationUrl.Path = nomination.Id;
 
+                return new RedirectResponse(string.Format("/challenges/{0}/entries/{1}/upload", challengeTag, entryId));
+            };
+
+            Get["/challenges/{challengeTag}/entries/{entryId}/upload"] = _ =>
+            {
                 var viewModel = new Models.ConfirmationViewModel
                 {
 
@@ -87,6 +92,23 @@ namespace HackManchester2014.Donation
                 return Negotiate
                     .WithModel(viewModel)
                     .WithView("register4");
+            };
+
+            Post["/challenges/{challengeTag}/entries/{entryId}/upload"] = _ =>
+            {
+                var httpFile = Request.Files.FirstOrDefault();
+                if (httpFile != null)
+                {
+                    var Id = imageStore.SaveImage(httpFile.Value);
+                    var image = new Image()
+                    {
+                        Id = Id,
+                        ContentType = httpFile.ContentType,
+                        Name = httpFile.Name
+                    };
+                    session.Store(image);
+                }
+                return Response.AsRedirect("/");
             };
         }
     }

@@ -3,6 +3,7 @@ using HackManchester2014.Infrastructure.Indexes;
 namespace HackManchester2014.Home
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using HackManchester2014.Domain;
     using HackManchester2014.Home.Models;
@@ -42,8 +43,20 @@ namespace HackManchester2014.Home
                 var user = Context.GetUser();
                 if (user != null)
                 {
-                    model.NewAchievements = documentSession.GetNewAchievements(Context.GetUser());
+                    var ach = documentSession.GetNewAchievements(Context.GetUser());
+                    model.NewAchievements = ach;
+                    if (ach.Any())
+                    {
+                        if (user.Achievements == null)
+                        {
+                            user.Achievements = new List<Achievement>();
+                        }
+                        user.Achievements.AddRange(model.NewAchievements);
+                        documentSession.Store(user);
+                    }
+
                 }
+
 
                 model.Entries = documentSession.Query<Entry>().Where(x => x.ProofImage != null).OrderByDescending(x => x.Donation.DonationDate).Take(6).ToList();
 

@@ -88,7 +88,7 @@ ul {
 
 .header-site {
 	@extend .group;
-	padding: 1em 0;
+	padding: .75em 0;
     background: $accent-primary;
 }
 
@@ -97,6 +97,12 @@ ul {
     color: #fff;
     text-decoration: none;
 }
+
+    .logo-site__strapline {
+        margin-left: 1em;
+        color: #B6E0D5;
+        font-style: italic;
+    }
 
 /*  =FOOTER
 --------------------------------------------------------------------*/
@@ -146,6 +152,7 @@ ul {
 --------------------------------------------------------------------*/
 
 .hero-banner {
+    position: relative;
 	margin-bottom: 3em;
 	padding-bottom: 2em;
 	background: #ddd;
@@ -154,12 +161,30 @@ ul {
 		margin-bottom: 1.5em;
 		padding-bottom: 1em;
 	}
-
+    
 }
 
-	.hero-banner__body {
+    .hero-banner__meta {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 9em 0 2em;
+        //background: rgba(0,0,0,.8);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(13, 28, 39, 0)), color-stop(100%, rgba(13, 28, 39, 0.9))); // Gradient to overlay the image
+    }
+
+	.hero-banner__intro {
 		float: left;
-		max-width: 400px;
+		max-width: 500px;
+        color: #fff;
+
+        h1 {
+            color: #fff;
+        }
+
+        p {
+            @include font-size(1.6);
+        }
 
 		@include breakpoint(viewport-s) {
 			float: none;
@@ -171,10 +196,6 @@ ul {
 	}
 
 
-.container-block {
-
-
-}
 
 .section-overview {
 	text-align: center;

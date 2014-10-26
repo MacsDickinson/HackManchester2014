@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "Shared/_Layout.cshtml";
+}
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+<article>
+    <section class="container-block">
+        <div class="layout-constrained form-step">
+            <h2><span class="progress-step">3</span>Upload your proof</h2>
+            <div class="form-step__intro">
+                <p>
+                    Select a challenge from below to
+                </p>
+            </div>
+
+            <fieldset>
+                <legend class="is-offscreen">Prove you have done the challenge</legend>
+
+                <div class="form-group">
+                    <label for="proof-file" class="btn btn--primary">
+                        Upload your image
+                        <input type="file" id="proof-file" />
+                    </label>
+
+
+                </div>
+            </fieldset>
+        </div>
+    </section>
+</article>

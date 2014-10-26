@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "Shared/_Layout.cshtml";
+}
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+<article>
+    <section class="container-block">
+        <div class="layout-constrained layout-constrained--narrow">
+            <h1>Lets do this!</h1>
+            <p>
+                There's only a few quick steps to complete, first lets get your details.
+            </p>
+            <h2 class="progress-step"><span class="progress-step__indicator">1</span> Sign in</h2>
+            <div class="form-step__intro">
+                <p>Nobody likes filling forms, sign in below so we can get your details.</p>
+                <p>(Don't worry, we wont be posting anything to your account).</p>
+            </div>
+
+            <div class="form-actions form-actions--divide">
+                <span class="form-actions__content">
+                    <a href="/authentication/redirect/twitter" class="btn btn--twitter">Sign in with Twitter</a>
+                </span>
+            </div>
+
+        </div>
+    </section>
+</article>

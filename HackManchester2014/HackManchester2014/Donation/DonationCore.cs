@@ -1,4 +1,5 @@
 ﻿using HackManchester2014.Infrastructure;
+using HackManchester2014.Util;
 using JustGiving.Api.Sdk;
 using Nancy;
 using Nancy.Responses;
@@ -27,7 +28,7 @@ namespace HackManchester2014.Donation
                 string challengeTag = _.challengeTag;
                 var challenge = session.Load<Domain.Challenge>(string.Format("challenges/{0}", challengeTag));
 
-                var entry = new Entry(user.User, challenge);
+                var entry = new Entry(user.User, challenge, Context.GetGeoIp());
 
                 session.Store(entry);
                 session.SaveChanges();

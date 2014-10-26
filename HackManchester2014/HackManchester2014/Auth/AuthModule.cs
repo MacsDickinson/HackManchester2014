@@ -16,7 +16,7 @@ namespace HackManchester2014.Home
         {
             Get["/Login"] = _ =>
             {
-                var returnUrl = Context.Request.Query.returnUrl.ToString();
+                var returnUrl = Context.Request.Query.returnUrl != null ? Context.Request.Query.returnUrl : null;
                 Session["returnUrl"] = returnUrl;
                 return Negotiate.WithView("Login");
             };

@@ -83,8 +83,9 @@
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\packages\RavenDB.Client.2.5.2935\lib\net45\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=104.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RestSharp.104.5.0\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="SimpleAuthentication.Core">
       <HintPath>..\packages\SimpleAuthentication.Core.0.3.14\lib\net40\SimpleAuthentication.Core.dll</HintPath>
@@ -120,6 +121,11 @@
     <Content Include="Auth\Views\Login.cshtml" />
     <Content Include="Challenge\Views\Challenges.cshtml" />
     <Content Include="Challenge\Views\Challenge.cshtml" />
+    <Content Include="Home\Views\Index.cshtml" />
+    <Content Include="Home\Views\Register2.cshtml" />
+    <Content Include="Home\Views\Register3.cshtml" />
+    <Content Include="Home\Views\Register4.cshtml" />
+    <Content Include="Home\Views\Register1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -133,6 +139,7 @@
   <ItemGroup>
     <Compile Include="Auth\AuthModule.cs" />
     <Compile Include="Auth\AuthProvider.cs" />
+    <Compile Include="Domain\GeoIp.cs" />
     <Compile Include="Domain\Nomination.cs" />
     <Compile Include="Util\ExtentionMethods.cs" />
     <Compile Include="Auth\UserIdentity.cs" />
@@ -157,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Script\" />
-    <Folder Include="Home\Views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

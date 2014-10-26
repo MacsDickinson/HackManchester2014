@@ -114,7 +114,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Styles\screen.css" />
+    <Content Include="Content\Styles\css\screen.css" />
+    <Content Include="Content\Styles\css\screen.min.css" />
     <Content Include="packages.config" />
     <Content Include="Map\Views\Map.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -126,6 +127,22 @@
     <Content Include="Home\Views\Register3.cshtml" />
     <Content Include="Home\Views\Register4.cshtml" />
     <Content Include="Home\Views\Register1.cshtml" />
+    <Content Include="Content\Styles\sass\partials\_base.scss" />
+    <Content Include="Content\Styles\sass\partials\_buttons.scss" />
+    <Content Include="Content\Styles\sass\partials\_forms.scss" />
+    <Content Include="Content\Styles\sass\partials\_icons.scss" />
+    <Content Include="Content\Styles\sass\partials\_island.scss" />
+    <Content Include="Content\Styles\sass\partials\_lists.scss" />
+    <Content Include="Content\Styles\sass\partials\_map.scss" />
+    <Content Include="Content\Styles\sass\partials\_navigation.scss" />
+    <Content Include="Content\Styles\sass\partials\_normalize.scss" />
+    <Content Include="Content\Styles\sass\partials\_sample.scss" />
+    <Content Include="Content\Styles\sass\partials\_stats.scss" />
+    <Content Include="Content\Styles\sass\partials\_temp.scss" />
+    <Content Include="Content\Styles\sass\partials\_this-or-this.scss" />
+    <Content Include="Content\Styles\sass\partials\_typography.scss" />
+    <Content Include="Content\Styles\sass\screen.scss" />
+    <Content Include="Content\Styles\mixture.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,42 @@
+ .stat-group{
+    @extend .group;
+    margin-left: -.5em;
+}
+
+.stat-group--hero {
+    float: right;
+    text-align: center;
+
+    @include breakpoint(viewport-s) {
+        float: none;
+
+    }
+
+}
+    
+    .stat {
+        display: inline-block;
+        margin: 1em;
+        
+    }
+
+        .stat__title{
+            display: block;
+        }
+
+        .stat__value{
+            @include font-size(2);
+            font-weight: 700;
+            display: block;
+            margin-left: 0;
+            margin-bottom: 0;
+        }
+
+
+/*  =STAT BAR
+--------------------------------------------------------------------*/
+
+.stat-bar {
+    background: $accent-primary;
+    color: #fff;
+}

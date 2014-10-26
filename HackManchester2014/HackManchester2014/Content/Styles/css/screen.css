@@ -1,0 +1,8 @@
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: 'Sass Error: File to import not found or unreadable: compass. \A        Load path: \\\\psf\\Home\\Documents\\GitHub\\HackManchester2014\\HackManchester2014\\HackManchester2014\\Content\\Styles\\sass \A         on line 3 of \\\\psf\\Home\\Documents\\GitHub\\HackManchester2014\\HackManchester2014\\HackManchester2014\\Content\\Styles\\sass\\screen.scss \A   Use --trace for backtrace. \A '; }
+
+  body * {
+  	display: none;
+  }

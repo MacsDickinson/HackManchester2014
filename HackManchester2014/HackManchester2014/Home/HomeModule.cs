@@ -2,6 +2,7 @@ using HackManchester2014.Infrastructure;
 
 namespace HackManchester2014.Home
 {
+    using System;
     using HackManchester2014.Domain;
     using HackManchester2014.Home.Models;
     using HackManchester2014.Map;
@@ -16,15 +17,18 @@ namespace HackManchester2014.Home
         {
             Get["/"] = _ =>
             {
+                var seed = new Random().Next(1, 2048);
                 var model = new HomeIndexModel
                 {
                     MapModel = new MapViewModel
                     {
-                        Donation = MapModule.TestDonation()
-                    }
+                        Donation = MapModule.TestDonation(seed),
+                        I = seed
+                    },
+                    TotalDonations = documentSession.Query<Entry>().ToList().Sum(x => x.Donation.Amount ?? 0)
                 };
 
-                model.TotalDonations = documentSession.Query<Entry>().ToList().Sum(x => x.Donation.Amount ?? 0); ;
+                ;
                 model.TotalChallenges = documentSession.Query<Entry>().Count();
 
                 return Negotiate.WithView("Index")

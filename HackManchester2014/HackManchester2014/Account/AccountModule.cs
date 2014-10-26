@@ -2,6 +2,7 @@ using Nancy;
 
 namespace HackManchester2014.Account
 {
+    using System;
     using HackManchester2014.Account.Models;
     using HackManchester2014.Domain;
     using HackManchester2014.Infrastructure.Indexes;
@@ -25,11 +26,13 @@ namespace HackManchester2014.Account
 
                 var entries = documentSession.Query<Entry>().Where(x => x.UserId == user.Id);
 
+                var seed = new Random().Next(1, 2048);
                 var model = new AccountIndexModel
                 {
                     MapModel = new MapViewModel
                     {
-                        Donation = MapModule.TestDonation()
+                        Donation = MapModule.TestDonation(seed),
+                        I = seed
                     }
                 };
 

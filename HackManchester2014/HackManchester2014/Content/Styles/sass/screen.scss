@@ -7,8 +7,8 @@
 @import "partials/normalize"; 		// Edited version of Nicolas Galaghers Normalise
 @import "partials/base.scss";		// Global variables, global mixins & global styles such as clearfix
 @import "partials/typography";		// Global typographys settings such as hN header stack 
-@import "partials/buttons";			// Button variations
 @import "partials/navigation";		// Navigation such as global nav, sub nav and tabs etc
+@import "partials/buttons";			// Button variations
 @import "partials/island";			// Content blocks that stand isolated from surrounding content
 @import "partials/stats";			// Display stats and KPIs 
 @import "partials/forms";			// All form styles
@@ -84,8 +84,14 @@ ul {
 .header-site {
 	@extend .group;
 	padding: 1em 0;
+    background: $accent-primary;
 }
 
+.logo-site {
+    font-size: 2em;
+    color: #fff;
+    text-decoration: none;
+}
 
 /*  =FOOTER
 --------------------------------------------------------------------*/
@@ -201,6 +207,10 @@ ul {
 	padding: 2em 0;
 }
 
+.page-intro {
+    margin-bottom: 2em;
+}
+
 /*  =GALLERY
 --------------------------------------------------------------------*/
 .gallery {
@@ -231,6 +241,7 @@ ul {
 --------------------------------------------------------------------*/
 .progress-step {
     text-align: center;
+    margin-bottom: 1em;
 }
 
 .progress-step__indicator {

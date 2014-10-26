@@ -3,17 +3,23 @@
 }
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
 
-<article>
-    <section class="container-block">
-        <div class="layout-constrained layout-constrained--narrow">
+<article class="register main-content">
+    <section class="layout-constrained layout-constrained--narrow">
+        <div class="page-intro">
             <h1>Lets do this!</h1>
             <p>
                 There's only a few quick steps to complete, first lets get your details.
             </p>
+        </div>
+            
+        <div class="form-panel">
+
             <h2 class="progress-step"><span class="progress-step__indicator">1</span> Sign in</h2>
             <div class="form-step__intro">
-                <p>Nobody likes filling forms, sign in below so we can get your details.</p>
-                <p>(Don't worry, we wont be posting anything to your account).</p>
+                <p>
+                    Nobody likes filling forms, sign in below so we can get your details.<br />
+                    <span class="quiet">Don't worry, we wont be posting anything to your account</span>
+                </p>
             </div>
 
             <div class="form-actions form-actions--divide">
@@ -23,5 +29,6 @@
             </div>
 
         </div>
+     
     </section>
 </article>

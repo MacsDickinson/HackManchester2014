@@ -47,7 +47,7 @@ namespace HackManchester2014.Nomination
                 var challenge = session.Load<Domain.Challenge>(nomination.ChallengeId);
                 var parentEntry = session.Load<Domain.Entry>(nomination.NominatedByEntryId);
 
-                var entry = new Domain.Entry(user, challenge, parentEntry);
+                var entry = new Domain.Entry(user, challenge, Context.GetGeoIp(), parentEntry);
 
                 session.Store(entry);
                 session.SaveChanges();

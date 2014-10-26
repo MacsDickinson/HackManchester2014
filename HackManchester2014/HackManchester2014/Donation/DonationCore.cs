@@ -1,5 +1,5 @@
 ﻿using HackManchester2014.Infrastructure;
-using HackManchester2014.Util;
+using HackManchester2014;
 using JustGiving.Api.Sdk;
 using Nancy;
 using Nancy.Responses;

@@ -163,6 +163,7 @@
     <Content Include="Content\Styles\sass\fonts\_spinning.scss" />
     <Content Include="Content\Styles\sass\fonts\_stacked.scss" />
     <Content Include="Content\Styles\sass\fonts\_variables.scss" />
+    <Content Include="Content\Styles\sass\partials\_notifications.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

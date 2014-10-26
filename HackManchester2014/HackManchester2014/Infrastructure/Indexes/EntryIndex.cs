@@ -12,10 +12,12 @@ namespace HackManchester2014.Infrastructure.Indexes
         public EntryChildrenIndex()
         {
             AddMap<Entry>(entries => from entry in entries
-                            from Id in entry.ParentEntries
+                                     from parentId in entry.ParentEntries
+                                     let parentEntry = LoadDocument<Entry>(parentId)
                             select new
                             {
-                                Id, 
+                                Id = parentId, 
+                                UserId = parentEntry.UserId,
                                 Decendants = 1, 
                                 TotalDonations = entry.Donation.Amount,
                                 OwnDonation = 0
@@ -24,15 +26,17 @@ namespace HackManchester2014.Infrastructure.Indexes
                                      select new
                                      {
                                          Id = entry.Id, 
+                                         UserId = entry.UserId,
                                          Decendants = 0,
                                          TotalDonations = entry.Donation.Amount,
                                          OwnDonation = entry.Donation.Amount
                                      });
             Reduce = results => from result in results
-                                group result by result.Id into g
+                                group result by new{result.Id, result.UserId} into g
                                 select new
                                 {
-                                    Id = g.Key, 
+                                    Id = g.Key.Id,
+                                    UserId = g.Key.UserId, 
                                     Decendants = g.Sum(x => x.Decendants),
                                     TotalDonations = g.Sum(x => x.TotalDonations),
                                     OwnDonation = g.Sum(x => x.OwnDonation)
@@ -43,6 +47,7 @@ namespace HackManchester2014.Infrastructure.Indexes
     public class EntryIndexItem
     {
         public string Id { get; set; }
+        public Guid UserId { get; set; }
         public int Decendants { get; set; }
         public Decimal TotalDonations { get; set; }
         public Decimal OwnDonation { get; set; }

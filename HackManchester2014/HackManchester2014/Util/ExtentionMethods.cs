@@ -7,6 +7,10 @@ using RestSharp;
 
 namespace HackManchester2014
 {
+    using System.Collections.Generic;
+    using HackManchester2014.Achievements.Models;
+    using Raven.Client;
+
     public static class ExtentionMethods
     {
         public static User GetUser(this NancyContext context)
@@ -25,6 +29,27 @@ namespace HackManchester2014
             var request = new RestRequest(context.Request.UserHostAddress);
             var response = client.Execute<GeoIp>(request);
             return response.Data;
+        }
+
+        public static List<Achievement> GetNewAchievements(this IDocumentSession session, User user)
+        {
+            var achievements = new List<Achievement>();
+            foreach (var rule in Rules())
+            {
+                if (rule.Achieved(user, session))
+                {
+                    achievements.Add(rule.AwardAchievement());
+                }
+            }
+            return achievements;
+        }
+
+        private static List<IAchievementRule> Rules()
+        {
+            return new List<IAchievementRule>
+            {
+                new FirstDonationAchievementRule()
+            };
         }
     }
 }

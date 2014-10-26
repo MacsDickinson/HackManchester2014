@@ -13,5 +13,7 @@ namespace HackManchester2014.Nomination.Models
 
         public string NominatedById { get; set; }
         public string NominatedByName { get; set; }
+
+        public int TotalEntryCount { get; set; }
     }
 }

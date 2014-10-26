@@ -12,12 +12,13 @@ using Nancy.Security;
 using HackManchester2014.Domain;
 using HackManchester2014.Auth;
 using Raven.Client;
+using RestSharp.Extensions;
 
 namespace HackManchester2014.Donation
 {
     public class DonationModule: NancyModule
     {
-        public DonationModule(IDocumentSession session, JustGivingConfiguration justGivingConfig, IImageStore imageStore)
+        public DonationModule(IDocumentSession session, JustGivingConfiguration justGivingConfig)
         {
             this.RequiresAuthentication();
 
@@ -99,15 +100,15 @@ namespace HackManchester2014.Donation
                 var httpFile = Request.Files.FirstOrDefault();
                 if (httpFile != null)
                 {
-                    var id = imageStore.SaveImage(httpFile.Value);
                     var image = new Image()
                     {
-                        Id = id,
                         ContentType = httpFile.ContentType,
-                        Name = httpFile.Name
+                        Name = httpFile.Name,
+                        Base64Data = Convert.ToBase64String(httpFile.Value.ReadAsBytes())
                     };
-                    entry.ProofImage = image.Id;
                     session.Store(image);
+                    session.SaveChanges();
+                    entry.ProofImage = image.Id;
                     session.Store(entry);
                 }
                 return Response.AsRedirect(string.Format("/challenges/{0}/entries/{1}/nominate", challengeTag, entryId));

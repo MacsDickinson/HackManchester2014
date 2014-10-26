@@ -176,15 +176,18 @@
   <ItemGroup>
     <Compile Include="Account\AccountModule.cs" />
     <Compile Include="Account\Models\AccountIndexModel.cs" />
+    <Compile Include="Achievements\Models\FirstDonationAchievementRule.cs" />
+    <Compile Include="Achievements\Models\IAchievementRule.cs" />
+    <Compile Include="Achievements\Models\TotalDonationsInTreeOver100Rule.cs" />
     <Compile Include="Auth\AuthModule.cs" />
     <Compile Include="Auth\AuthProvider.cs" />
+    <Compile Include="Domain\Achievement.cs" />
+    <Compile Include="Domain\AchievementType.cs" />
     <Compile Include="Domain\Donation.cs" />
     <Compile Include="Domain\GeoIp.cs" />
     <Compile Include="Domain\Image.cs" />
     <Compile Include="Donation\Models\ConfirmationViewModel.cs" />
     <Compile Include="Donation\Models\NominateViewModel.cs" />
-    <Compile Include="Infrastructure\IImageStore.cs" />
-    <Compile Include="Infrastructure\ImageStore.cs" />
     <Compile Include="Nomination\Models\NominationViewModel.cs" />
     <Compile Include="Nomination\NominationModule.cs" />
     <Compile Include="Domain\Nomination.cs" />

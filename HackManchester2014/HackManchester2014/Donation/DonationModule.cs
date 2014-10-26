@@ -96,17 +96,19 @@ namespace HackManchester2014.Donation
 
             Post["/challenges/{challengeTag}/entries/{entryId}/upload"] = _ =>
             {
+                var entry = session.Load<Entry>(_.entryId);
                 var httpFile = Request.Files.FirstOrDefault();
                 if (httpFile != null)
                 {
-                    var Id = imageStore.SaveImage(httpFile.Value);
+                    var id = imageStore.SaveImage(httpFile.Value);
                     var image = new Image()
                     {
-                        Id = Id,
+                        Id = id,
                         ContentType = httpFile.ContentType,
                         Name = httpFile.Name
                     };
-                    session.Store(image);
+                    entry.Image = image;
+                    session.Store(entry);
                 }
                 return Response.AsRedirect("/");
             };

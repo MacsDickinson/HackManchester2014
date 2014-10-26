@@ -52,7 +52,6 @@ namespace HackManchester2014.Home
                     .WithModel(viewModel)
                     .WithView("Register2");
             };
-                var user = Context.GetUser();
         }
     }
 }

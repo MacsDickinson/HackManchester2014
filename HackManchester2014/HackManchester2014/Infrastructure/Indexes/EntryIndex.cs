@@ -18,7 +18,7 @@ namespace HackManchester2014.Infrastructure.Indexes
                                 Id, 
                                 Decendants = 1, 
                                 TotalDonations = entry.Donation.Amount,
-                                OwnDonation = entry.Donation.Amount
+                                OwnDonation = 0
                             });
             AddMap<Entry>(entries => from entry in entries
                                      select new
@@ -26,7 +26,7 @@ namespace HackManchester2014.Infrastructure.Indexes
                                          Id = entry.Id, 
                                          Decendants = 0,
                                          TotalDonations = entry.Donation.Amount,
-                                         OwnDonation = 0
+                                         OwnDonation = entry.Donation.Amount
                                      });
             Reduce = results => from result in results
                                 group result by result.Id into g

@@ -13,7 +13,7 @@ namespace HackManchester2014.Map
         {
             Get["/"] = _ =>
             {
-                var model = new MapHomeViewModel
+                var model = new MapViewModel
                 {
                     Donation = TestDonation()
                 };
@@ -22,56 +22,41 @@ namespace HackManchester2014.Map
             };
         }
 
-        public MapDonation TestDonation()
+        public static MapDonation TestDonation()
         {
             var topDonation = new MapDonation("Macs Dickinson", "Macs donated £9 to Matts mum", 53.476362020773145,
                 -2.2513389587402344);
 
-            var matt = new MapDonation("Matt Smith", "Matt donated £15 to his mum", 53.477179333058984, -2.254300117492676);
-            var ash = new MapDonation("Ashley Izat", "Ashley donated £10 to Matts mum", 53.476719596835295, -2.253549098968506);
-            var lynden = new MapDonation("Lynden Oliver", "Lynden donated £27 to Matts mum", 53.47752413195797, -2.252669334411621);
-
-            topDonation.Nominations.Add(matt);
-            topDonation.Nominations.Add(ash);
-            topDonation.Nominations.Add(lynden);
-            
-            var random = new Random();
-
-            foreach (var nomination in topDonation.Nominations)
-            {
-                for (double i = 0; i < 3; i++)
-                {
-                    nomination.Nominations.Add(RandomChild(nomination, random));
-                }
-                foreach (var n2 in nomination.Nominations)
-                {
-                    for (double j = 0; j < 3; j++)
-                    {
-                        n2.Nominations.Add(RandomChild(n2, random));
-                    }
-                    foreach (var n3 in n2.Nominations)
-                    {
-                        for (double k = 0; k < 3; k++)
-                        {
-                            n3.Nominations.Add(RandomChild(n3, random));
-                        }
-                    }
-                }
-            }
+            AddNominations(new Random(), topDonation, 0);
 
             return topDonation;
         }
 
-        private MapDonation RandomChild(MapDonation parent, Random random)
+        private static void AddNominations(Random random, MapDonation donation, int depth)
+        {
+            for (double j = 0; j < random.Next(0, 5); j++)
+            {
+                donation.Nominations.Add(RandomChild(donation, random));
+            }
+            if (depth < 5)
+            {
+                foreach (var nomination in donation.Nominations)
+                {
+                    AddNominations(random, nomination, depth + 1);
+                }
+            }
+        }
+
+        private static MapDonation RandomChild(MapDonation parent, Random random)
         {
             return new MapDonation(parent.Title + " Child", parent.Title + " Child", (parent.Location.Latitude + RandomDouble(random)),
                 parent.Location.Longitude + RandomDouble(random));
         }
 
-        private double RandomDouble(Random random)
+        private static double RandomDouble(Random random)
         {
-            const double maximum = 0.5;
-            const double minimum = -0.5;
+            const double maximum = 0.1;
+            const double minimum = -0.1;
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
     }

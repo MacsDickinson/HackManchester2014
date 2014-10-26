@@ -1,5 +1,8 @@
 namespace HackManchester2014.Home
 {
+    using HackManchester2014.Home.Models;
+    using HackManchester2014.Map;
+    using HackManchester2014.Map.Models;
     using Nancy;
     using Raven.Client;
 
@@ -7,7 +10,18 @@ namespace HackManchester2014.Home
     {
         public HomeModule(IDocumentSession documentSession)
         {
-            Get["/"] = _ => Negotiate.WithView("Index");
+            Get["/"] = _ =>
+            {
+                var model = new HomeIndexModel
+                {
+                    MapModel = new MapViewModel
+                    {
+                        Donation = MapModule.TestDonation()
+                    }
+                };
+                return Negotiate.WithView("Index")
+                    .WithModel(model);
+            };
             Get["/register"] = _ => Response.AsRedirect("/register/1");
             Get["/register/1"] = _ =>
             {

@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "Shared/_Layout.cshtml";
+}
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Nomination.Models.NominationViewModel>
+
+
+<h1>@Model.NominatedByName nominated you</h1>
+<div>Challenge: @Model.ChallengeTitle</div>
+<div>Charity: @Model.CharityName</div>
+
+
+<form action="/@Model.Id/accept" method="post">
+    <button>Accept</button>
+</form>

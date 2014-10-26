@@ -114,9 +114,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Styles\screen.css" />
+    <Content Include="Content\Styles\css\screen.css" />
+    <Content Include="Content\Styles\css\screen.min.css" />
     <Content Include="packages.config" />
-    <Content Include="Map\Views\Map.cshtml" />
+    <Content Include="Views\Shared\_Map.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Auth\Views\Login.cshtml" />
     <Content Include="Challenge\Views\Challenges.cshtml" />
@@ -126,6 +127,23 @@
     <Content Include="Home\Views\Register3.cshtml" />
     <Content Include="Home\Views\Register4.cshtml" />
     <Content Include="Home\Views\Register1.cshtml" />
+    <Content Include="Content\Styles\sass\partials\_base.scss" />
+    <Content Include="Content\Styles\sass\partials\_buttons.scss" />
+    <Content Include="Content\Styles\sass\partials\_forms.scss" />
+    <Content Include="Content\Styles\sass\partials\_icons.scss" />
+    <Content Include="Content\Styles\sass\partials\_island.scss" />
+    <Content Include="Content\Styles\sass\partials\_lists.scss" />
+    <Content Include="Content\Styles\sass\partials\_map.scss" />
+    <Content Include="Content\Styles\sass\partials\_navigation.scss" />
+    <Content Include="Content\Styles\sass\partials\_normalize.scss" />
+    <Content Include="Content\Styles\sass\partials\_sample.scss" />
+    <Content Include="Content\Styles\sass\partials\_stats.scss" />
+    <Content Include="Content\Styles\sass\partials\_temp.scss" />
+    <Content Include="Content\Styles\sass\partials\_this-or-this.scss" />
+    <Content Include="Content\Styles\sass\partials\_typography.scss" />
+    <Content Include="Content\Styles\sass\screen.scss" />
+    <Content Include="Content\Styles\mixture.json" />
+    <Content Include="Nomination\Views\Nomination.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -141,8 +159,11 @@
     <Compile Include="Auth\AuthProvider.cs" />
     <Compile Include="Domain\Donation.cs" />
     <Compile Include="Domain\GeoIp.cs" />
+    <Compile Include="Nomination\Models\NominationViewModel.cs" />
+    <Compile Include="Nomination\NominationModule.cs" />
     <Compile Include="Domain\Nomination.cs" />
     <Compile Include="Infrastructure\Indexes\EntryIndex.cs" />
+    <Compile Include="Home\Models\HomeIndexModel.cs" />
     <Compile Include="Util\ExtentionMethods.cs" />
     <Compile Include="Auth\UserIdentity.cs" />
     <Compile Include="Auth\UserMapper.cs" />
@@ -160,12 +181,13 @@
     <Compile Include="Infrastructure\RavenSessionProvider.cs" />
     <Compile Include="Map\MapModule.cs" />
     <Compile Include="Map\Models\MapDonation.cs" />
-    <Compile Include="Map\Models\MapHomeViewModel.cs" />
+    <Compile Include="Map\Models\MapViewModel.cs" />
     <Compile Include="Map\Models\MapLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Script\" />
+    <Folder Include="Map\Views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

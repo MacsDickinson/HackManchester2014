@@ -1,5 +1,5 @@
 ﻿using HackManchester2014.Infrastructure;
-using HackManchester2014.Util;
+using HackManchester2014;
 using JustGiving.Api.Sdk;
 using Nancy;
 using Nancy.Responses;
@@ -63,12 +63,14 @@ namespace HackManchester2014.Donation
 
                 var donation = c.Donation.Retrieve(donationId);
 
-                var entry = session.Load<Entry>(entryId);
-                var nomination = new Nomination
-                {
-                    Id = string.Format("nominations/kLw{0:00000}IaQ", entryId),
-                    NominatedByEntryId = entry.Id
-                };
+                var entry = session
+                    .Include<Entry>(x => x.ChallengeId)
+                    .Include<Entry>(x => x.UserId)
+                    .Load(entryId);
+                var challenge = session.Load<Domain.Challenge>(entry.ChallengeId);
+                var user = session.Load<Domain.User>(entry.UserId);
+
+                var nomination = new Domain.Nomination(string.Format("nominations/kLw{0:00000}IaQ", entryId), entry, challenge, user);
                 session.Store(nomination);
                 entry.Donation = donation;
                 entry.Nominations.Add(nomination);

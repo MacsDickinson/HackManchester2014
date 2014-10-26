@@ -1,0 +1,14 @@
+/*  =THIS OR THIS
+--------------------------------------------------------------------*/
+
+.this-or-this {
+    display: table;
+    width: 100%;
+    text-align: center;
+}
+
+    .this-or-this__this,
+    .this-or-this__or {
+        display: table-cell;
+        vertical-align: middle;
+    }

@@ -2,6 +2,7 @@
 {
     public class MapViewModel
     {
+        public decimal I { get; set; }
         public MapDonation Donation { get; set; }
     }
 }

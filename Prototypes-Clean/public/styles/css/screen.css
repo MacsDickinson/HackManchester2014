@@ -382,22 +382,24 @@ table {
 --------------------------------------------------------------------*/
 /*  =GLOBAL USE STYLES
 --------------------------------------------------------------------*/
-.group:before, .nav:before, .stat-group:before, .input-list:before, .header-site:before, .intro-steps:before,
+.group:before, .nav:before, .stat-group:before, .input-list:before, .map-container:before, .header-site:before, .main-content:before, .intro-steps:before,
 .group:after,
 .nav:after,
 .stat-group:after,
 .input-list:after,
+.map-container:after,
 .header-site:after,
+.main-content:after,
 .intro-steps:after {
   content: "";
   display: table;
 }
 
-.group:after, .nav:after, .stat-group:after, .input-list:after, .header-site:after, .intro-steps:after {
+.group:after, .nav:after, .stat-group:after, .input-list:after, .map-container:after, .header-site:after, .main-content:after, .intro-steps:after {
   clear: both;
 }
 
-.group, .nav, .stat-group, .input-list, .header-site, .intro-steps {
+.group, .nav, .stat-group, .input-list, .map-container, .header-site, .main-content, .intro-steps {
   zoom: 1;
 }
 
@@ -417,7 +419,7 @@ html {
   color: #333;
 }
 
-h1, .alpha, .stat__value,
+h1, .alpha,
 h2, .beta,
 h3, .gamma, .radio-button__title,
 h4, .delta,
@@ -425,7 +427,7 @@ h5, .epsilon {
   font-weight: 700;
   color: #32A07E;
 }
-h1 a, .alpha a, .stat__value a,
+h1 a, .alpha a,
 h2 a, .beta a,
 h3 a, .gamma a, .radio-button__title a,
 h4 a, .delta a,
@@ -433,7 +435,7 @@ h5 a, .epsilon a {
   color: #32A07E;
   text-decoration: none;
 }
-h1 a:hover, .alpha a:hover, .stat__value a:hover,
+h1 a:hover, .alpha a:hover,
 h2 a:hover, .beta a:hover,
 h3 a:hover, .gamma a:hover, .radio-button__title a:hover,
 h4 a:hover, .delta a:hover,
@@ -442,8 +444,7 @@ h5 a:hover, .epsilon a:hover {
 }
 
 h1,
-.alpha,
-.stat__value {
+.alpha {
   font-size: 30px;
   font-size: 1.875rem;
   line-height: 1.2;
@@ -495,6 +496,11 @@ h6,
   .hero-title {
     margin-bottom: .5em;
   }
+}
+
+.quiet {
+  color: #949494;
+  font-style: italic;
 }
 
 p,
@@ -723,12 +729,17 @@ a:hover {
 
 .stat-group--hero {
   float: right;
+  text-align: center;
+}
+@media (max-width: 37.5em) {
+  .stat-group--hero {
+    float: none;
+  }
 }
 
 .stat {
-  float: left;
+  display: inline-block;
   margin: 1em;
-  text-align: center;
 }
 
 .stat__title {
@@ -736,19 +747,31 @@ a:hover {
 }
 
 .stat__value {
+  font-size: 32px;
+  font-size: 2rem;
+  font-weight: 700;
   display: block;
   margin-left: 0;
   margin-bottom: 0;
 }
 
+/*  =STAT BAR
+--------------------------------------------------------------------*/
+.stat-bar {
+  background: #32A07E;
+  color: #fff;
+}
+
 /*  =FORMS
 --------------------------------------------------------------------*/
 fieldset {
+  margin: 0;
+  padding: 0;
   border: 0;
 }
 
 .form-step__intro {
-  margin-bottom: 2em;
+  margin-bottom: 2.5em;
   text-align: center;
 }
 
@@ -771,7 +794,7 @@ fieldset {
 .form-actions--divide {
   text-align: center;
   height: 1.75em;
-  margin-bottom: 3.5em;
+  margin-bottom: 5em;
   border-bottom: 1px solid #ddd;
 }
 .form-actions--divide .form-actions__content {
@@ -866,21 +889,52 @@ textarea.input-xxl {
   margin-left: 0;
   padding: 0;
   list-style-type: none;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
+.input-list__item {
+  display: -webkit-flex;
+  display: flex;
+}
+@media (max-width: 37.5em) {
+  .input-list__item {
+    display: block;
+  }
+}
 .input-list--trio .input-list__item {
   width: 30%;
   float: left;
-  margin-right: 3%;
+  margin: 0 1.5%;
+}
+@media (max-width: 37.5em) {
+  .input-list--trio .input-list__item {
+    float: none;
+    width: 100%;
+    margin: 0 0 1em;
+  }
 }
 
 .btn-radio {
   display: block;
+  display: -webkit-flex;
+  display: flex;
 }
 .btn-radio .btn-radio__btn {
   display: block;
   padding: 1.5em;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  -moz-border-radius: 0.25em;
+  -webkit-border-radius: 0.25em;
+  border-radius: 0.25em;
+}
+@media (max-width: 37.5em) {
+  .btn-radio .btn-radio__btn {
+    width: 100%;
+  }
 }
 .btn-radio input[type="radio"] {
   position: absolute;
@@ -1005,6 +1059,77 @@ textarea {
 
 /*	=FORM SECTION SPECIFIC
 --------------------------------------------------------------------*/
+.register {
+  text-align: center;
+}
+
+/*  =THIS OR THIS
+--------------------------------------------------------------------*/
+.this-or-this {
+  display: table;
+  width: 100%;
+  text-align: center;
+}
+
+.this-or-this__this,
+.this-or-this__or {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/*  =MAP
+--------------------------------------------------------------------*/
+.map-container {
+  background: #ddd;
+  text-align: center;
+}
+
+/*  =LISTS
+--------------------------------------------------------------------*/
+.paired-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.paired-list--divided li {
+  border-bottom: 1px dotted #ddd;
+  line-height: 2;
+}
+
+.paired-list__alpha {
+  float: left;
+  display: block;
+  width: 45%;
+}
+
+.paired-list__beta {
+  display: block;
+  margin-left: 50%;
+}
+
+/*	=ICONS
+--------------------------------------------------------------------*/
+.fa-2 {
+  font-size: 32px;
+  font-size: 2rem;
+}
+
+.fa-3 {
+  font-size: 48px;
+  font-size: 3rem;
+}
+
+.fa-4 {
+  font-size: 64px;
+  font-size: 4rem;
+}
+
+.fa-5 {
+  font-size: 80px;
+  font-size: 5rem;
+}
+
 /*  =BASE
 ------------------------------------------------------------*/
 html {
@@ -1040,6 +1165,18 @@ ul ul {
 
 .layout-constrained--narrow {
   max-width: 720px;
+}
+
+.layout-dual, .layout-third {
+  float: left;
+}
+
+.layout-dual {
+  width: 50%;
+}
+
+.layout-third {
+  width: 33.33%;
 }
 
 /*  =HEADER
@@ -1081,6 +1218,12 @@ ul ul {
   padding-bottom: 2em;
   background: #ddd;
 }
+@media (max-width: 37.5em) {
+  .hero-banner {
+    margin-bottom: 1.5em;
+    padding-bottom: 1em;
+  }
+}
 
 .hero-banner__body {
   float: left;
@@ -1089,6 +1232,8 @@ ul ul {
 @media (max-width: 37.5em) {
   .hero-banner__body {
     float: none;
+    max-width: 100%;
+    margin-bottom: 1em;
     text-align: center;
   }
 }
@@ -1117,6 +1262,12 @@ ul ul {
   .header-divide__content {
     padding: 0;
   }
+}
+
+/*  =MAIN
+--------------------------------------------------------------------*/
+.main-content {
+  padding: 2em 0;
 }
 
 /*  =GALLERY
@@ -1156,7 +1307,7 @@ ul ul {
   border-radius: 3em;
   text-align: center;
   line-height: 2em;
-  margin-right: .5em;
+  margin-right: .25em;
 }
 
 /*  =GALLERY ITEMS

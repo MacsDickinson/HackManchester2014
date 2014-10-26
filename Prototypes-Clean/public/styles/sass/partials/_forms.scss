@@ -2,11 +2,13 @@
 --------------------------------------------------------------------*/
 
 fieldset {
+	margin: 0;
+	padding: 0;
 	border: 0;
 }
 
 .form-step__intro {
-	margin-bottom: 2em;
+	margin-bottom: 2.5em;
 	text-align: center;
 }
 
@@ -32,7 +34,7 @@ fieldset {
 .form-actions--divide {
 	text-align: center;
 	height: 1.75em;
-	margin-bottom: 3.5em;
+	margin-bottom: 5em;
 	border-bottom: 1px solid $base-ui-color;
 
 	.form-actions__content {
@@ -123,14 +125,29 @@ textarea.input-xxl  {
   margin-left: 0;
   padding: 0;
   list-style-type: none;
+  @include display-flex;
+  @include flex-wrap(wrap);
 }
 
   .input-list__item {
+  	@include display-flex;
+
+  	@include breakpoint(viewport-s) {
+      	display: block;
+    }
+
 
     .input-list--trio & {
       width: 30%;
       float: left;
-      margin-right: 3%;
+      margin: 0 1.5%;
+
+      @include breakpoint(viewport-s) {
+      	float: none;
+      	width: 100%;
+      	margin: 0 0 1em;
+      }
+
     }
 
 }
@@ -138,11 +155,18 @@ textarea.input-xxl  {
 
 .btn-radio {
   display: block;
+  @include display-flex;
 
   .btn-radio__btn {
     display: block;
     padding: 1.5em;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    @include border-radius(.25em);
+
+    @include breakpoint(viewport-s) {
+      	width: 100%;
+    }
   }
 
   input[type="radio"] {
@@ -284,6 +308,6 @@ textarea {
 /*	=FORM SECTION SPECIFIC
 --------------------------------------------------------------------*/
 
-.form-step {
-	//border-bottom: 1px solid $base-ui-color;
+.register {
+	text-align: center;
 }

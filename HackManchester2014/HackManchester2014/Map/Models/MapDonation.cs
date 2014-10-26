@@ -31,7 +31,7 @@
                     {
                         {"title", Title},
                         {"description", Description},
-                        {"marker-size", "large"},
+                        {"marker-size", "small"},
                         {"marker-color", "#6FCAC5"},
                         {"marker-symbol", "star"}
                     };
@@ -55,7 +55,7 @@
                     {
                         {"title", x.Title},
                         {"description", x.Description},
-                        {"marker-size", "large"},
+                        {"marker-size", "small"},
                         {"marker-color", "#6FCAC5"},
                         {"marker-symbol", "star"}
                     };

@@ -7,23 +7,22 @@
 @helper LoadNominations(MapDonation donation, bool isLast)
 {
     <text>
+        loadMaxLatLng(@Html.Raw(donation.NominationsGeoJson))
+        map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude]);
         animatePath(map, @Html.Raw(donation.DonationGeoJson), @Html.Raw(donation.NominationsGeoJson))
         setTimeout(function() {
             @for (int i = 0; i < donation.Nominations.Count; i++)
             {
-                <text>loadPoints(map, @Html.Raw(donation.DonationGeoJson))</text>
+                <text>drawPoints(map, @Html.Raw(donation.NominationsGeoJson))</text>
+            }
+        }, 5000);
+        setTimeout(function() {
+            @for (int i = 0; i < donation.Nominations.Count; i++)
+            {
                 @LoadNominations(donation.Nominations[i], donation.Nominations.Count - 1 == i)
             }
-            @if (isLast)
-            {
-                <text>
-                    map.fitBounds([[minLat, minLng],[maxLat, maxLng]], [5,5]);
-                    map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude]);
-                </text>
-            }
-
-    }, 5000);
-</text>
+        }, 6000);
+    </text>
 }
 
 <div id='map-wrapper'>
@@ -38,68 +37,69 @@
         var maxLng = -180;
         var minLat = 180;
         var minLng = 180;
-        var markers = [];
 
         map = L.mapbox.map('map', 'examples.map-20v6611k', {
             attributionControl: false,
             infoControl: true
         });
 
-        map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude], 18);
+        map.infoControl.addInfo('<a href="http://hackman14.azurewebsites.net/">Mighty Morphin Power Hackers</a>');
+        map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude], 15);
 
-        //map.dragging.disable();
-        //map.touchZoom.disable();
-        //map.doubleClickZoom.disable();
-        //map.scrollWheelZoom.disable();
+        map.dragging.disable();
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.scrollWheelZoom.disable();
         if (map.tap) map.tap.disable();
 
         // Load the data for the user
-        //loadPoints(map, @Html.Raw(Model.Donation.DonationGeoJson));
+        drawPoints(map, @Html.Raw(Model.Donation.DonationGeoJson));
+        loadMaxLatLng(@Html.Raw(Model.Donation.NominationsGeoJson));
 
         @LoadNominations(Model.Donation, true)
-        map.infoControl.addInfo('<a href="http://hackman14.azurewebsites.net/">Mighty Morphin Power Hackers</a>');
 
-        function obj(ll) { return { y: ll[0], x: ll[1] }; }
+
+        function obj(ll) { return { y: ll[1], x: ll[0] }; }
 
         function animatePath(map, parent, data) {
             for (var i = 0; i < data.features.length; i++) {
                 var source = parent.geometry.coordinates;
                 var target = data.features[i].geometry.coordinates;
 
-                //var generator = new arc.GreatCircle(obj(source), obj(target));
-                //var line = generator.Arc(100, { offset: 10 });
-                //var newLine = L.polyline(line.geometries[0].coords.map(function(c) {
-                //    return c.reverse();
-                //}), {
-                //    color: '#6FCAC5',
-                //    weight: 1,
-                //    opacity: 0.5
-                //})
-                //.addTo(map);
-                //var totalLength = newLine._path.getTotalLength();
-                //newLine._path.classList.add('path-start');
+                var generator = new arc.GreatCircle(obj(source), obj(target));
+                var line = generator.Arc(100, { offset: 10 });
+                var newLine = L.polyline(line.geometries[0].coords.map(function(c) {
+                    return c.reverse();
+                }), {
+                    color: '#6FCAC5',
+                    weight: 3,
+                    opacity: 0.9
+                })
+                .addTo(map);
+                var totalLength = newLine._path.getTotalLength();
+                newLine._path.classList.add('path-start');
 
-                //newLine._path.style.strokeDashoffset = totalLength;
-                //newLine._path.style.strokeDasharray = totalLength;
+                newLine._path.style.strokeDashoffset = totalLength;
+                newLine._path.style.strokeDasharray = totalLength;
 
-                //setTimeout((function(path) {
-                //    return function() {
-                //        // setting the strokeDashoffset to 0 triggers
-                //        // the animation.
-                //        path.style.strokeDashoffset = 0;
-                //    };
-                //})(newLine._path), i * 100);
+                setTimeout((function(path) {
+                    return function() {
+                        // setting the strokeDashoffset to 0 triggers
+                        // the animation.
+                        path.style.strokeDashoffset = 0;
+                    };
+                })(newLine._path), i * 100);
             }
         }
-        function loadPoints(map, data) {
-            var layer = L.mapbox.featureLayer(data)
-                .addTo(map);
-
-            layer.eachLayer(function(marker) {
-                markers.push(marker);
-                var latlng = marker.getLatLng();
-                var lat = latlng.lat;
-                var lng = latlng.lng;
+        function loadMaxLatLng(data) {
+            var oldmaxLat = maxLat;
+            var oldmaxLng = maxLng;
+            var oldminLat = minLat;
+            var oldminLng = minLng;
+            for (var i = 0; i < data.features.length; i++) {
+                var latLng = data.features[i].geometry.coordinates;
+                var lat = latLng[0];
+                var lng = latLng[1];
                 if (lat < minLat) {
                     minLat = lat;
                 }
@@ -112,8 +112,14 @@
                 if (lng > maxLng) {
                     maxLng = lng;
                 }
-            });
-            //map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude]);
+            }
+            if (oldmaxLat != maxLat || oldmaxLng != maxLng || oldminLat != minLat || oldminLng == minLng) {
+                map.fitBounds([[minLat, minLng],[maxLat, maxLng]], [10,10]);
+            }
+        }
+        function drawPoints(map, data) {
+            L.mapbox.featureLayer(data)
+                .addTo(map);
         }
 
         function addPoint(map, title, description, longitude, latitude) {

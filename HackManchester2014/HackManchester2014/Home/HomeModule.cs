@@ -66,6 +66,7 @@ namespace HackManchester2014.Home
             };
             Post["/register/4"] = _ =>
             {
+                var user = Context.GetUser();
                 var httpFile = Request.Files.FirstOrDefault();
                 if (httpFile != null)
                 {
@@ -76,7 +77,6 @@ namespace HackManchester2014.Home
                         ContentType=httpFile.ContentType,
                         Name=httpFile.Name
                     };
-                    documentSession.Store(image);
                 }
                 return Response.AsRedirect("/");
             };

@@ -77,7 +77,7 @@ namespace HackManchester2014.Infrastructure
             Action<Challenge, Entry, int> makeFakePeople = null;
             makeFakePeople = (c, e, depth) =>
             {
-                if (depth < 5)
+                if (depth < 3)
                 {
                     var geoIp = new GeoIp
                     {
@@ -85,7 +85,7 @@ namespace HackManchester2014.Infrastructure
                         longitude = (float)(e == null ? -2.2513389587402344 : HackManchester2014.Map.MapModule.RandomDouble(rnd) + e.GeoIp.longitude)
                     };
 
-                    for (int i = 0; i < 3; ++i)
+                    for (int i = 0; i < 2; ++i)
                     {
                         var user = new User
                         {

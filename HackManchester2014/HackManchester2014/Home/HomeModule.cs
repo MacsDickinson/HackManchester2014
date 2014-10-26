@@ -13,7 +13,7 @@ namespace HackManchester2014.Home
 
     public class HomeModule : NancyModule
     {
-        public HomeModule(IDocumentSession documentSession, IImageStore imageStore)
+        public HomeModule(IDocumentSession documentSession)
         {
             Get["/"] = _ =>
             {
@@ -71,7 +71,7 @@ namespace HackManchester2014.Home
             {
                 Guid imageId = _.imageId;
                 var image = documentSession.Load<Image>(imageId);
-                return Response.FromStream(imageStore.GetImage(imageId), image.ContentType);
+                return Response.FromStream(new MemoryStream(Convert.FromBase64String(image.Base64Data)), image.ContentType);
             };
         }
     }

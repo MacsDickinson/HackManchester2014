@@ -1115,6 +1115,7 @@ textarea {
 /*  =MAP
 --------------------------------------------------------------------*/
 .map-container {
+  position: relative;
   width: auto;
   margin: 5px;
   height: 460px;

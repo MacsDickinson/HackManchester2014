@@ -43,8 +43,27 @@ namespace HackManchester2014.Infrastructure
             {
                 Id = "challenges/mind",
                 Title = "Mindful for Minds",
+                Brief = "Share a selfie with your thinking cap on",
                 CharityName = "Mind",
                 JustGivingCharityId = 300,
+            });
+
+            session.Store(new Challenge
+            {
+                Id = "challenges/autism",
+                Title = "Tapie Selfie",
+                Brief = "Tape your mouth shut to raise awareness for the issues faced by those with autism",
+                CharityName = "Autism Concern",
+                JustGivingCharityId = 114885,
+            });
+
+            session.Store(new Challenge
+            {
+                Id = "challenges/cancer",
+                Title = "Spread Faster Than Cancer",
+                Brief = "Spread your voice faster than cancer",
+                CharityName = "Cancer Research UK",
+                JustGivingCharityId = 2357,
             });
 
             session.SaveChanges();

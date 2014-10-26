@@ -15,15 +15,23 @@
             </div>
 
             <div class="form-panel">
-                <h2 class="progress-step"><span class="progress-step__indicator">4</span>Enter your friends names</h2>
+                <h2 class="progress-step"><span class="progress-step__indicator">1</span>Keep the chain going</h2>
 
                 <fieldset>
-                    <legend class="form-step__intro">Click below to share the nomination on twitter.</legend>
+                    <legend class="form-step__intro">Click accept below to nominate your friends and support @Model.CharityName.</legend>
 
                     <div class="form-group">
 
-                        <form action="/@Model.Id/accept" method="post">
-                            <button>Accept</button>
+                        <form action="/@Model.Id/accept" method="get">
+                            @if (Html.CurrentUser == null)
+                            {
+                                <a href="/authentication/redirect/twitter" class="btn btn--twitter">Sign in with Twitter &amp; Accept</a>
+                                @*<button class="btn btn--primary">Sign in with Twitter &amp; Accept</button>*@
+                            }
+                            else
+                            {
+                                <button class="btn btn--primary">Accept</button>
+                            }
                         </form>
 
                     </div>

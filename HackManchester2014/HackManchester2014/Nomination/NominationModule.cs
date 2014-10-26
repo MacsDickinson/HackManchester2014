@@ -34,12 +34,17 @@ namespace HackManchester2014.Nomination
                     TotalEntryCount = totalEntryCount,
                 };
 
+                if (this.Context.GetUser() == null)
+                {
+                    Session["returnUrl"] = string.Format("/{0}/accept", nomination.Id);
+                }
+
                 return Negotiate
                     .WithModel(viewModel)
                     .WithView("nomination");
             };
 
-            Post["/nominations/{nominationId}/accept"] = _ =>
+            Get["/nominations/{nominationId}/accept"] = _ =>
             {
                 this.RequiresAuthentication();
 

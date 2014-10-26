@@ -13,21 +13,23 @@ namespace HackManchester2014.Map
         {
             Get["/"] = _ =>
             {
+                var seed = new Random().Next(1,2048);
                 var model = new MapViewModel
                 {
-                    Donation = TestDonation()
+                    Donation = TestDonation(seed),
+                    I = seed
                 };
                 return Negotiate.WithView("Map")
                                 .WithModel(model);
             };
         }
 
-        public static MapDonation TestDonation()
+        public static MapDonation TestDonation(int seed)
         {
             var topDonation = new MapDonation("Macs Dickinson", "Macs donated £9 to Matts mum", 53.476362020773145,
                 -2.2513389587402344);
 
-            AddNominations(new Random(), topDonation, 0);
+            AddNominations(new Random(seed), topDonation, 0);
 
             return topDonation;
         }

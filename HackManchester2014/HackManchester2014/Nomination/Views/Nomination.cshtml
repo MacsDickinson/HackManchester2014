@@ -3,12 +3,33 @@
 }
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Nomination.Models.NominationViewModel>
 
+<article class="register main-content">
+    <section class="layout-constrained layout-constrained--narrow">
+        <div class="layout-constrained layout-constrained--narrow">
 
-<h1>@Model.NominatedByName nominated you</h1>
-<div>Challenge: @Model.ChallengeTitle</div>
-<div>Charity: @Model.CharityName</div>
+            <div class="page-intro">
+                <h1>@Model.NominatedByName nominated you for the @Model.ChallengeTitle challenge!</h1>
+                <p>
+                    @Model.NominatedByName has completed this challenge alongside @Model.TotalEntryCount others, now it's your turn.
+                </p>
+            </div>
 
+            <div class="form-panel">
+                <h2 class="progress-step"><span class="progress-step__indicator">4</span>Enter your friends names</h2>
 
-<form action="/@Model.Id/accept" method="post">
-    <button>Accept</button>
-</form>
+                <fieldset>
+                    <legend class="form-step__intro">Click below to share the nomination on twitter.</legend>
+
+                    <div class="form-group">
+
+                        <form action="/@Model.Id/accept" method="post">
+                            <button>Accept</button>
+                        </form>
+
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
+    </section>
+</article>

@@ -3402,6 +3402,17 @@ ul ul {
   width: 33.33%;
 }
 
+/*  =IMAGES
+--------------------------------------------------------------------*/
+img {
+  max-width: 100%;
+}
+
+img[width],
+img[height] {
+  max-width: none;
+}
+
 /*  =HEADER
 --------------------------------------------------------------------*/
 .header-site {
@@ -3535,6 +3546,12 @@ ul ul {
 --------------------------------------------------------------------*/
 .gallery {
   margin-bottom: 3em;
+}
+
+.gallery-item {
+  max-width: 30%;
+  max-height: 300px;
+  overflow: hidden;
 }
 
 /*  =STEPS

@@ -1179,6 +1179,10 @@ ul ul {
   max-width: 800px;
 }
 
+.layout-constrained--s {
+  max-width: 400px;
+}
+
 .layout-dual, .layout-third {
   float: left;
 }

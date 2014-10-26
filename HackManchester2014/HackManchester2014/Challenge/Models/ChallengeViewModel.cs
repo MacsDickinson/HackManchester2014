@@ -9,6 +9,7 @@ namespace HackManchester2014.Challenge.Models
     {
         public string Id { get; set; }
         public string Title { get; set; }
+        public string Brief { get; set; }
         public string Charity { get; set; }
     }
 }

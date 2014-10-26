@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "Shared/_Layout.cshtml";
 }
-@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Challenge.Models.ChallengesViewModel>
 
 <article>
     <section class="container-block">
@@ -13,41 +13,40 @@
 
 
                 <ul class="form-group input-list input-list--trio">
-                    <li class="input-list__item">
-                        <label for="challenge-x" class="btn-radio">
-                            <input type="radio" id="challenge-x" name="challengeSelection" />
-                            <span class="btn-radio__btn">
-                                <span class="radio-button__title">Project X</span>
-                                <span class="radio-button__description">A Take a picture of yourself with...</span>
-                            </span>
-                        </label>
-                    </li>
-                    <li class="input-list__item">
-                        <label for="challenge-y" class="btn-radio">
-                            <input type="radio" id="challenge-y" name="challengeSelection" />
-                            <span class="btn-radio__btn">
-                                <span class="radio-button__title">Project Sample 1</span>
-                                <span class="radio-button__description">This is a sample challenge, dont pick it!</span>
-                            </span>
-                        </label>
-                    </li>
-                    <li class="input-list__item">
-                        <label for="challenge-z" class="btn-radio">
-                            <input type="radio" id="challenge-z" name="challengeSelection" />
-                            <span class="btn-radio__btn">
-                                <span class="radio-button__title">Project Sample 2</span>
-                                <span class="radio-button__description">This is a sample challenge, dont pick it!</span>
-                            </span>
-                        </label>
-                    </li>
+                    @foreach (var c in Model.Challenges)
+                    {
+                        <li class="input-list__item">
+                            <label for="@c.Id" class="btn-radio">
+                                <input type="radio" id="@c.Id" name="challengeSelection" class="js-option" />
+                                <span class="btn-radio__btn">
+                                    <span class="radio-button__title">@c.Title</span>
+                                    <span class="radio-button__description">@c.Brief</span>
+                                </span>
+                            </label>
+                        </li>
+                    }
                 </ul>
 
                 <div class="form-actions form-actions--divide">
                     <span class="form-actions__content">
-                        <a class="btn btn--primary">Continue</a>
+                        <a class="btn btn--primary js-continue">Continue</a>
                     </span>
                 </div>
             </fieldset>
         </div>
     </section>
 </article>
+
+<script>
+$(function(){
+    $('.js-continue').click(function (ev) {
+        ev.preventDefault();
+
+        var $selected = $('.js-option:checked');
+        if ($selected.length) {
+            var id = $selected[0].id;
+            window.location = '/' + id;
+        }
+    });
+});
+</script>

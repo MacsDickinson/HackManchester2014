@@ -13,7 +13,7 @@ namespace HackManchester2014.Home
 
     public class HomeModule : NancyModule
     {
-        public HomeModule(IDocumentSession documentSession, IImageStore imageStore)
+        public HomeModule(IDocumentSession documentSession)
         {
             Get["/"] = _ =>
             {
@@ -59,31 +59,7 @@ namespace HackManchester2014.Home
                     .WithModel(viewModel)
                     .WithView("Register2");
             };
-
-            Get["/register/3"] = _ =>
-            {
-                return Negotiate.WithView("Register3");
-            };
-            Get["/register/4"] = _ =>
-            {
-                return Negotiate.WithView("Register4");
-            };
-            Post["/register/4"] = _ =>
-            {
                 var user = Context.GetUser();
-                var httpFile = Request.Files.FirstOrDefault();
-                if (httpFile != null)
-                {
-                    var Id = imageStore.SaveImage(httpFile.Value);
-                    var image = new Image()
-                    {
-                        Id = Id,
-                        ContentType=httpFile.ContentType,
-                        Name=httpFile.Name
-                    };
-                }
-                return Response.AsRedirect("/");
-            };
         }
     }
 }

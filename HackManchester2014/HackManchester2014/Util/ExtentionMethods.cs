@@ -5,7 +5,7 @@ using Nancy;
 using Nancy.ViewEngines.Razor;
 using RestSharp;
 
-namespace HackManchester2014.Util
+namespace HackManchester2014
 {
     public static class ExtentionMethods
     {

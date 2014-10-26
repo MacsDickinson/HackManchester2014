@@ -9,12 +9,7 @@
     {
         public bool Achieved(User user, IDocumentSession documentSession)
         {
-            if (user.Achievements == null)
-            {
-                return false;
-            }
-
-            if (user.Achievements.Any(x => x.Type == AchievementType.FirstDonation))
+            if (user.Achievements != null && user.Achievements.Any(x => x.Type == AchievementType.FirstDonation))
             {
                 return false;
             }
@@ -29,7 +24,7 @@
                 Name = "First Donation",
                 Description = "Congratulations, you have made your first donation.",
                 Type = AchievementType.FirstDonation,
-                Icon = "fa-bolt",
+                Icon = "fa-gift",
                 Awarded = DateTime.Now
             };
         }

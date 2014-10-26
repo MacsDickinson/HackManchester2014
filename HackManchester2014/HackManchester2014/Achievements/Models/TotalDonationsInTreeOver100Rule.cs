@@ -10,12 +10,9 @@
     {
         public bool Achieved(User user, IDocumentSession documentSession)
         {
-            if (user.Achievements == null)
-            {
-                return false;
-            }
+            return false;
 
-            if (user.Achievements.Any(x => x.Type == AchievementType.TotalDonationsInTreeOver100))
+            if (user.Achievements != null && user.Achievements.Any(x => x.Type == AchievementType.TotalDonationsInTreeOver100))
             {
                 return false;
             }
@@ -24,6 +21,7 @@
 
             if (entries.Any())
             {
+                // TODO: Replace with Matts snazzy new index
                 var indexItems = documentSession.Query<EntryIndexItem>("EntryChildrenIndex").ToList()
                     .Where(x => entries.Any(y => y.Id == x.Id)).ToList();
 

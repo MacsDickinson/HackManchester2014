@@ -56,18 +56,18 @@
 <body>
     <header class="header-site">
         <div class="layout-constrained">
-            <img class="logo-site" src="http://placehold.it/125x75" />
+            <a class="logo-site" href="/">Project<strong>X</strong></a>
             <ul class="nav nav--site">
                 @if (Html.GetUser() == null)
                 {
                     <li class="nav__item">
-                        <a href="/Login" class="nav__link btn btn--tertiary btn--l">Sign In</a>
+                        <a href="/Login" class="nav__link btn btn--tertiary btn--m">Sign In</a>
                     </li>
                 }
                 else
                 {
                     <li class="nav__item">
-                        <span>Signed in as @Html.GetUser().UserInfo.Name</span>
+                        <span>Signed in as <a href="/my-account" title="my account">@Html.GetUser().UserInfo.Name</a></span>
                         <a href="/logout" class="nav__link btn btn--tertiary btn--l">Sign Out</a>
                     </li>
                 }

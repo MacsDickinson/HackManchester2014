@@ -43,12 +43,6 @@
         map.infoControl.addInfo('<a href="http://hackman14.azurewebsites.net/">Mighty Morphin Power Hackers</a>');
         map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude], 15);
 
-        map.dragging.disable();
-        map.touchZoom.disable();
-        map.doubleClickZoom.disable();
-        map.scrollWheelZoom.disable();
-        if (map.tap) map.tap.disable();
-
         // Load the data for the user
         drawPoints(map, @Html.Raw(Model.Donation.DonationGeoJson));
         loadMaxLatLng(@Html.Raw(Model.Donation.NominationsGeoJson));

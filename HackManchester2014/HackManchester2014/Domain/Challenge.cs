@@ -10,6 +10,7 @@ namespace HackManchester2014.Domain
         public string Id { get; set; }
 
         public string Title { get; set; }
+        public string Brief { get; set; }
 
         public string CharityName { get; set; }
         public int JustGivingCharityId { get; set; }

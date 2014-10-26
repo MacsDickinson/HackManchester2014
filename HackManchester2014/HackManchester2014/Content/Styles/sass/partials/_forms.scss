@@ -12,6 +12,13 @@ fieldset {
 	text-align: center;
 }
 
+.form-panel {
+    border: 2px solid $base-ui-color;
+    padding: 3em;
+    background: #FAFAFA;
+    @include border-radius();
+}
+
 /*	=FORM GROUPING 
 --------------------------------------------------------------------*/
 .form-group {
@@ -34,12 +41,12 @@ fieldset {
 .form-actions--divide {
 	text-align: center;
 	height: 1.75em;
-	margin-bottom: 5em;
-	border-bottom: 1px solid $base-ui-color;
+	margin-bottom: 3em;
+	border-bottom: 1px solid #E4E4E4;
 
 	.form-actions__content {
 		padding: 0 1em;
-		background: #fff;
+		background: #FAFAFA;
 	}
 
 }

@@ -516,6 +516,28 @@ a:hover {
   text-decoration: none;
 }
 
+/*	=NAVIGATION
+--------------------------------------------------------------------*/
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav__item {
+  display: inline-block;
+}
+
+.nav__link {
+  padding: 0 .5em;
+  color: #32A07E;
+  text-decoration: none;
+}
+
+.nav--site {
+  float: right;
+}
+
 .btn {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -609,7 +631,7 @@ a:hover {
 }
 
 .btn--m {
-  padding: 1em 1.5em;
+  padding: .75em 1.5em;
 }
 
 .btn--l {
@@ -694,28 +716,6 @@ a:hover {
   background: #646464;
 }
 
-/*	=NAVIGATION
---------------------------------------------------------------------*/
-.nav {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.nav__item {
-  display: inline-block;
-}
-
-.nav__link {
-  padding: 0 .5em;
-  color: #32A07E;
-  text-decoration: none;
-}
-
-.nav--site {
-  float: right;
-}
-
 /*  =ISLAND
 --------------------------------------------------------------------*/
 .island {
@@ -775,6 +775,15 @@ fieldset {
   text-align: center;
 }
 
+.form-panel {
+  border: 2px solid #ddd;
+  padding: 3em;
+  background: #FAFAFA;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
 /*	=FORM GROUPING 
 --------------------------------------------------------------------*/
 .form-group {
@@ -794,12 +803,12 @@ fieldset {
 .form-actions--divide {
   text-align: center;
   height: 1.75em;
-  margin-bottom: 5em;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 3em;
+  border-bottom: 1px solid #E4E4E4;
 }
 .form-actions--divide .form-actions__content {
   padding: 0 1em;
-  background: #fff;
+  background: #FAFAFA;
 }
 
 /*	=FORM LABELS
@@ -1183,6 +1192,13 @@ ul ul {
 --------------------------------------------------------------------*/
 .header-site {
   padding: 1em 0;
+  background: #32A07E;
+}
+
+.logo-site {
+  font-size: 2em;
+  color: #fff;
+  text-decoration: none;
 }
 
 /*  =FOOTER
@@ -1270,6 +1286,10 @@ ul ul {
   padding: 2em 0;
 }
 
+.page-intro {
+  margin-bottom: 2em;
+}
+
 /*  =GALLERY
 --------------------------------------------------------------------*/
 .gallery {
@@ -1297,6 +1317,7 @@ ul ul {
 --------------------------------------------------------------------*/
 .progress-step {
   text-align: center;
+  margin-bottom: 1em;
 }
 
 .progress-step__indicator {

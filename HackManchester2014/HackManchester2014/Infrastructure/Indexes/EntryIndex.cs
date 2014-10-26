@@ -13,12 +13,30 @@ namespace HackManchester2014.Infrastructure.Indexes
         {
             AddMap<Entry>(entries => from entry in entries
                             from Id in entry.ParentEntries
-                            select new { Id, Decendants = 1, TotalDonations = entry.Donation.Amount });
+                            select new
+                            {
+                                Id, 
+                                Decendants = 1, 
+                                TotalDonations = entry.Donation.Amount,
+                                OwnDonation = entry.Donation.Amount
+                            });
             AddMap<Entry>(entries => from entry in entries
-                                     select new { Id = entry.Id, Decendants = 0, TotalDonations = entry.Donation.Amount });
+                                     select new
+                                     {
+                                         Id = entry.Id, 
+                                         Decendants = 0,
+                                         TotalDonations = entry.Donation.Amount,
+                                         OwnDonation = 0
+                                     });
             Reduce = results => from result in results
                                 group result by result.Id into g
-                                select new { Id = g.Key, Decendants = g.Sum(x => x.Decendants), TotalDonations = g.Sum(x=>x.TotalDonations) };
+                                select new
+                                {
+                                    Id = g.Key, 
+                                    Decendants = g.Sum(x => x.Decendants),
+                                    TotalDonations = g.Sum(x => x.TotalDonations),
+                                    OwnDonation = g.Sum(x => x.OwnDonation)
+                                };
         }
     }
 
@@ -27,5 +45,6 @@ namespace HackManchester2014.Infrastructure.Indexes
         public string Id { get; set; }
         public int Decendants { get; set; }
         public Decimal TotalDonations { get; set; }
+        public Decimal OwnDonation { get; set; }
     }
 }

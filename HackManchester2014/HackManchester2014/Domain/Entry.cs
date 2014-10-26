@@ -5,11 +5,13 @@ using System.Web;
 
 namespace HackManchester2014.Domain
 {
+    using System;
+
     public class Entry
     {
         public string Id { get; set; }
 
-        public string UserId { get; private set; }
+        public Guid UserId { get; private set; }
         public string UserName { get; set; }
 
         public string ChallengeId { get; set; }
@@ -31,7 +33,7 @@ namespace HackManchester2014.Domain
 
         public Entry(User user, Challenge challenge, GeoIp geoIp, Entry parentEntry = null)
         {
-            UserId = string.Format("users/{0}", user.Id);
+            UserId = user.Id;
             UserName = user.UserInfo.Name;
             ChallengeId = challenge.Id;
             ChallengeTitle = challenge.Title;

@@ -16,21 +16,23 @@
 
             <div class="form-panel">
                 <h2 class="progress-step"><span class="progress-step__indicator">3</span>Upload picture</h2>
-                
+
                 <fieldset>
                     <legend class="form-step__intro">Prove you have done the challenge</legend>
 
                     <div class="form-group">
 
                         <form id="upload-form" method="POST" enctype="multipart/form-data">
-                            <label for="proof-file" class="btn btn--primary">
-                                Upload your image
-                                <input type="file" id="proof-file" name="file" onchange="$('#upload-form').submit();" />
-                            </label>
 
+                            <div class="this-or-this">
+
+                                <label for="proof-file" class="btn btn--primary">
+                                    Upload your image
+                                    <input type="file" id="proof-file" name="file" onchange="$('#upload-form').submit();" />
+                                </label>
+                                <a href="./nominate" class="btn btn--secondary">Or just nominate</a>
+                            </div>
                         </form>
-
-                        <a href="./nominate" class="btn--secondary">Or just nominate</a>
 
                     </div>
                 </fieldset>

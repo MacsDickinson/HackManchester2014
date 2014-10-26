@@ -144,6 +144,7 @@
     <Content Include="Content\Styles\sass\screen.scss" />
     <Content Include="Content\Styles\mixture.json" />
     <Content Include="Challenge\Views\Nomination.cshtml" />
+    <Content Include="Nomination\Views\Nomination.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -160,6 +161,8 @@
     <Compile Include="Domain\GeoIp.cs" />
     <Compile Include="Challenge\Models\NominationViewModel.cs" />
     <Compile Include="Challenge\NominationModule.cs" />
+    <Compile Include="Nomination\Models\NominationViewModel.cs" />
+    <Compile Include="Nomination\NominationModule.cs" />
     <Compile Include="Domain\Nomination.cs" />
     <Compile Include="Home\Models\HomeIndexModel.cs" />
     <Compile Include="Util\ExtentionMethods.cs" />

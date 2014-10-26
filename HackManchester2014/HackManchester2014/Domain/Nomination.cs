@@ -20,6 +20,7 @@ namespace HackManchester2014.Domain
         private Nomination() { }
         public Nomination(string id, Entry parentEntry, Challenge challenge, User nominatedBy)
         {
+            Id = id;
             NominatedByEntryId = parentEntry.Id;
 
             NominatedById = string.Format("users/{0}", nominatedBy.Id);

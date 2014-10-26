@@ -70,7 +70,7 @@ namespace HackManchester2014.Donation
                 var challenge = session.Load<Domain.Challenge>(entry.ChallengeId);
                 var user = session.Load<Domain.User>(entry.UserId);
 
-                var nomination = new Nomination(string.Format("nominations/kLw{0:00000}IaQ", entryId), entry, challenge, user);
+                var nomination = new Domain.Nomination(string.Format("nominations/kLw{0:00000}IaQ", entryId), entry, challenge, user);
                 session.Store(nomination);
                 entry.Donation = donation;
                 entry.Nominations.Add(nomination);

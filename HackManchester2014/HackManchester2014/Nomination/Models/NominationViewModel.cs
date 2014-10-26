@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace HackManchester2014.Challenge.Models
+namespace HackManchester2014.Nomination.Models
 {
     public class NominationViewModel
     {

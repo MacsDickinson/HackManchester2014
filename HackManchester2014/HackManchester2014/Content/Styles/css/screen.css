@@ -552,6 +552,9 @@ a:hover {
   padding: 0 .5em;
   text-decoration: none;
 }
+.nav--site .nav__link {
+  color: #fff;
+}
 
 .nav--site {
   float: right;

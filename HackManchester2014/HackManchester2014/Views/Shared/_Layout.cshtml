@@ -37,9 +37,12 @@
                     </li>
                 }
                 else
-                {
+                {   
                     <li class="nav__item">
-                        Signed in as <a href="/my-account" title="my account">@Html.GetUser().UserInfo.Name</a>
+                        Signed in as <a class="nav__link" href="/my-account" title="my account"><strong>@Html.GetUser().UserInfo.Name</strong></a>
+                    </li>
+                    
+                    <li class="nav__item">
                         <a href="/logout" class="nav__link btn btn--tertiary btn--m">Sign Out</a>
                     </li>
                 }

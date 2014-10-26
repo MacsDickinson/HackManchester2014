@@ -4,23 +4,7 @@
 @using System.Linq
 @using HackManchester2014
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Home.Models.HomeIndexModel>
-
-@if (Model.NewAchievements.Any())
-{
-    foreach (var achievement in Model.NewAchievements)
-    {
-        <div class="notification notification--positive js-notification">
-            <button class="notification__action js-notification-dismiss">Dismiss</button>
-            <span class="notification__indicator">
-                <i class="fa @achievement.Icon"></i>
-            </span>
-            <span class="notification__content">
-                <h2>@achievement.Name</h2>
-                @achievement.Description
-            </span>
-        </div>
-    }
-}              
+ 
 
 <div class="hero-banner group">
     @Html.Partial("Shared/_Map", Model.MapModel)

@@ -1,16 +1,28 @@
 ﻿@{
     Layout = "Shared/_Layout.cshtml";
 }
+@using HackManchester2014
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<HackManchester2014.Home.Models.HomeIndexModel>
 <div class="hero-banner group">
     @Html.Partial("Shared/_Map", Model.MapModel)
     <div class="layout-constrained">
         <div class="hero-banner__body">
-            <h1 class="kilo">Project X</h1>
-            <p class="">
-                Using the power of social media to to change the world one link at a time.
-            </p>
-            <a href="/register" class="btn btn--primary btn--xl">Get Involved</a>
+            @if (Html.GetUser() == null)
+            {
+                <h1 class="kilo">Project X</h1>
+                <p class="">
+                    Using the power of social media to to change the world one link at a time.
+                </p>
+                <a href="/register" class="btn btn--primary btn--xl">Get Involved</a>
+            }
+            else
+            {
+                <h1 class="kilo">Hey @Html.GetUser().UserInfo.Name</h1>
+                <p class="">
+                    You're network has generated £999 since we last saw you. Check out your account for more stats.
+                </p>
+                <a href="/my-account" class="btn btn--primary btn--xl">My Account</a>
+            }
         </div>
 
         <div class="stat-group stat-group--hero">

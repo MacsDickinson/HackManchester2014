@@ -1,0 +1,28 @@
+/*  =LISTS
+--------------------------------------------------------------------*/
+
+.paired-list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.paired-list--divided {
+
+	li {
+		border-bottom: 1px dotted $base-ui-color;
+		line-height: 2;
+	}
+
+}
+
+.paired-list__alpha {
+	float: left;
+	display: block;
+	width: 45%;
+}
+
+.paired-list__beta {
+	display: block;
+	margin-left: 50%;
+}

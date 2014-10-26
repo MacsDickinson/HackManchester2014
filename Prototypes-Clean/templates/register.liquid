@@ -3,7 +3,7 @@
 
 {% include "header" %}
 
-<article>
+<article class="register">
 
 	<section class="container-block">
 		<div class="layout-constrained layout-constrained--narrow">
@@ -11,10 +11,12 @@
 			<p>
 				There's only a few quick steps to complete, first lets get your details.
 			</p>
-			<h2 class="progress-step"><span class="progress-step__indicator">1</span> Sign in</h2>
+			<h2 class="progress-step"><span class="progress-step__indicator">1</span> Your details</h2>
 			<div class="form-step__intro">
-				<p>Nobody likes filling forms, sign in below so we can get your details.</p>
-				<p>(Don't worry, we wont be posting anything to your account).</p>
+				<p>Nobody likes filling forms, sign in below so we can get your details.<br />
+					<span class="quiet">Don't worry, we won't be posting anything to your account.</span>
+				</p>
+				
 			</div>
 			
 			<div class="form-actions form-actions--divide">
@@ -28,7 +30,7 @@
 
 	<section class="container-block">
 		<div class="layout-constrained layout-constrained--narrow">
-			<h2 class="progress-step"><span class="progress-step__indicator">2</span> Accept your challenge</h2>
+			<h2 class="progress-step"><span class="progress-step__indicator">2</span> Pick a challenge &amp; donate</h2>
 
 			<fieldset>
 				<legend class="form-step__intro">Please select the challenge you would like to complete...</legend>
@@ -39,7 +41,7 @@
 						<label for="challenge-x" class="btn-radio">
 							<input type="radio" id="challenge-x" name="challengeSelection" />
 							<span class="btn-radio__btn">
-								<span class="radio-button__title">Project X</span>
+								<span class="radio-button__title">Speak Up For Autism</span>
 								<span class="radio-button__description">A Take a picture of yourself with...</span>
 							</span>
 						</label>
@@ -64,16 +66,20 @@
 					</li>
 				</ul>
 
+				<p>
+					Before you can nominate we need you to make your donation. You will be taken to JustGiving to securely take your payment.
+				</p>
+
 				<div class="form-actions form-actions--divide">
 					<span class="form-actions__content">
-						<a class="btn btn--primary">Continue</a>
+						<a class="btn btn--primary" href="#">Go to Just Giving</a>
 					</span>
 				</div>	
 			</fieldset>
 		</div>
 	</section>
 
-	<section class="container-block">
+<!-- 	<section class="container-block">
 		<div class="layout-constrained layout-constrained--narrow">
 			<h2 class="progress-step"><span class="progress-step__indicator">3</span>Make your donation</h2>
 			<div class="form-step__intro">
@@ -88,29 +94,40 @@
 				</span>
 			</div>	
 		</div>
-	</section>
+	</section> -->
 
 	<section class="container-block">
 		<div class="layout-constrained form-step">
-			<h2><span class="progress-step">3</span>Upload your proof</h2>
+			<h2 class="progress-step"><span class="progress-step__indicator">3</span>Upload your proof</h2>
+
 			<div class="form-step__intro">
 				<p>
-					Select a challenge from below to 
+					Prove you have done the challenge
 				</p>
 			</div>
 
-			<fieldset>
-				<legend class="is-offscreen">Prove you have done the challenge</legend>
-
-				<div class="form-group">
+			<div class="this-or-this">
+				
+				<div class="this-or-this__this">
 					<label for="proof-file" class="btn btn--primary">
 						Upload your image
 						<input type="file" id="proof-file" />
 					</label>
-
-
 				</div>
-			</fieldset>
+
+				<div class="this-or-this__that">
+					<div class="form-group">
+						<label>Insert link</label>
+						<input type="text" />
+					</div>
+				</div>
+
+				<p>
+					Not done it yet? <a href="#">Come back later</a>.
+				</p>
+
+			</div>
+
 		</div>
 	</section>
 

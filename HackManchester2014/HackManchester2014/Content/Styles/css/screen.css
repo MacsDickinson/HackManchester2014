@@ -745,6 +745,14 @@ a:hover {
   background: #ddd;
 }
 
+.stat-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
 .stat-group {
   margin-left: -.5em;
 }
@@ -760,13 +768,16 @@ a:hover {
   }
 }
 .stat-group--hero .stat {
-  display: inline-block;
-  padding: 1em 2em;
-  margin: 0;
   background: rgba(0, 0, 0, 0.7);
 }
 .stat-group--hero .stat:first-child {
   background: rgba(50, 160, 126, 0.7);
+}
+
+.stat {
+  display: inline-block;
+  padding: 1em 2em;
+  margin: 0;
 }
 
 .stat__title {
@@ -782,13 +793,6 @@ a:hover {
   display: block;
   margin-left: 0;
   margin-bottom: 0;
-}
-
-/*  =STAT BAR
---------------------------------------------------------------------*/
-.stat-bar {
-  background: #32A07E;
-  color: #fff;
 }
 
 /*  =FORMS
@@ -1120,7 +1124,6 @@ textarea {
 .map-container {
   position: relative;
   width: auto;
-  margin: 5px;
   height: 460px;
   background: #ddd;
   text-align: center;

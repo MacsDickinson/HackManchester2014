@@ -23,40 +23,12 @@
     <link href='/Content/Styles/css/screen.css' rel='stylesheet' />
     <script src="//use.typekit.net/qhz1mph.js"></script>
     <script>try { Typekit.load(); } catch (e) { }</script>
-    <style type="text/css">
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial;
-            margin: 0;
-            padding: 0;
-        }
-
-        #map-wrapper {
-            position: relative;
-            width: auto;
-            margin: 5px;
-            height: 400px;
-        }
-
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-        .path-start {
-               -webkit-transition: stroke-dashoffset 5s ease-in;
-               -moz-transition: stroke-dashoffset 5s ease-in;
-               -o-transition: stroke-dashoffset 5s ease-in;
-               transition: stroke-dashoffset 5s ease-in;
-           }
-    </style>
 
 </head>
 <body>
     <header class="header-site">
         <div class="layout-constrained">
-            <a class="logo-site" href="/">Project<strong>X</strong></a>
+            <a class="logo-site" href="/">Project<strong>X</strong></a><span> <span class="logo-site__strapline">Creating a chain reaction</span></span>
             <ul class="nav nav--site">
                 @if (Html.GetUser() == null)
                 {

@@ -3,6 +3,16 @@
 }
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
 
-This is a login page.
+<article class="register main-content">
+    <section class="layout-constrained layout-constrained--s">
+        <h1>Sign In</h1>
+        <div class="form-panel">
+            <p>
+                Please sign in with your Twitter details.<br /> <span class="quiet">If you've not already registered you can use the same link.</span>
+            </p>
+            <a href="/authentication/redirect/twitter" class="btn btn--twitter">Sign in with Twitter</a>
+        </div>
+    </section>
+</article>
 
-<a href="/authentication/redirect/twitter">Click here to log in using twitter</a>
+        

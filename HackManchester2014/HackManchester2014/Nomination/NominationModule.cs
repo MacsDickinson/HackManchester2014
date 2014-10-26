@@ -19,13 +19,19 @@ namespace HackManchester2014.Nomination
             {
                 string nominationId = _.nominationId;
                 var nomination = session.Load<Domain.Nomination>(string.Format("nominations/{0}", nominationId));
+                var totalEntryCount = session.Query<Domain.Entry>()
+                    .Where(x => x.ChallengeId == nomination.ChallengeId)
+                    .Where(x => x.Donation != null)
+                    .Count();
+
                 var viewModel = new Models.NominationViewModel
                 {
                     Id = nomination.Id,
                     ChallengeTitle = nomination.ChallengeTitle,
                     CharityName = nomination.CharityName,
                     NominatedById = nomination.NominatedById,
-                    NominatedByName = nomination.NominatedByName
+                    NominatedByName = nomination.NominatedByName,
+                    TotalEntryCount = totalEntryCount,
                 };
 
                 return Negotiate

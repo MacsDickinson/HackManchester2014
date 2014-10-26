@@ -144,6 +144,7 @@
     <Content Include="Content\Styles\mixture.json" />
     <Content Include="Account\Views\Account.cshtml" />
     <Content Include="Nomination\Views\Nomination.cshtml" />
+    <Content Include="Donation\Views\Nominate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -167,6 +168,7 @@
     <Compile Include="Domain\GeoIp.cs" />
     <Compile Include="Domain\Image.cs" />
     <Compile Include="Donation\Models\ConfirmationViewModel.cs" />
+    <Compile Include="Donation\Models\NominateViewModel.cs" />
     <Compile Include="Infrastructure\IImageStore.cs" />
     <Compile Include="Infrastructure\ImageStore.cs" />
     <Compile Include="Nomination\Models\NominationViewModel.cs" />

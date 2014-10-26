@@ -1,3 +1,4 @@
+using System.IO;
 using HackManchester2014.Infrastructure;
 
 namespace HackManchester2014.Home
@@ -13,7 +14,7 @@ namespace HackManchester2014.Home
 
     public class HomeModule : NancyModule
     {
-        public HomeModule(IDocumentSession documentSession)
+        public HomeModule(IDocumentSession documentSession, IImageStore imageStore)
         {
             Get["/"] = _ =>
             {
@@ -26,9 +27,11 @@ namespace HackManchester2014.Home
                         I = seed
                     },
                     TotalDonations = documentSession.Query<Entry>().ToList().Sum(x => x.Donation.Amount ?? 0)
+
                 };
 
-                ;
+                model.Entries = documentSession.Query<Entry>().Where(x => x.ProofImage != null).OrderByDescending(x => x.Donation.DonationDate).Take(6).ToList();
+
                 model.TotalChallenges = documentSession.Query<Entry>().Count();
 
                 return Negotiate.WithView("Index")
@@ -58,6 +61,12 @@ namespace HackManchester2014.Home
                 return Negotiate
                     .WithModel(viewModel)
                     .WithView("Register2");
+            };
+            Get["/image/{imageId}"] = _ =>
+            {
+                Guid imageId = _.imageId;
+                var image = documentSession.Load<Image>(imageId);
+                return Response.FromStream(imageStore.GetImage(imageId), image.ContentType);
             };
         }
     }

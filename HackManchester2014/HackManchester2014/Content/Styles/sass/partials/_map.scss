@@ -3,6 +3,25 @@
 
 .map-container {
 	@extend .group;
-	background: #ddd;
+    //position: relative;
+	width: auto;
+    margin: 5px;
+    height: 460px;
+    background: #ddd;
 	text-align: center;
+
 }
+
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    .path-start {
+            -webkit-transition: stroke-dashoffset 5s ease-in;
+            -moz-transition: stroke-dashoffset 5s ease-in;
+            -o-transition: stroke-dashoffset 5s ease-in;
+            transition: stroke-dashoffset 5s ease-in;
+        }

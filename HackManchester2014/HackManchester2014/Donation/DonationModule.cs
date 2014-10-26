@@ -76,9 +76,6 @@ namespace HackManchester2014.Donation
                 entry.Nominations.Add(nomination);
                 session.SaveChanges();
 
-                var nominationUrl = new UriBuilder(Request.Url.ToString());
-                nominationUrl.Path = nomination.Id;
-
                 return new RedirectResponse(string.Format("/challenges/{0}/entries/{1}/upload", challengeTag, entryId));
             };
 
@@ -109,11 +106,34 @@ namespace HackManchester2014.Donation
                         ContentType = httpFile.ContentType,
                         Name = httpFile.Name
                     };
-                    entry.ProofImage = image;
+                    entry.ProofImage = image.Id;
+                    session.Store(image);
                     session.Store(entry);
                 }
                 return Response.AsRedirect(string.Format("/challenges/{0}/entries/{1}/nominate", challengeTag, entryId));
             };
+
+            Get["/challenges/{challengeTag}/entries/{entryId}/nominate"] = _ =>
+            {
+                int entryId = _.entryId;
+
+                var entry = session.Load<Entry>(entryId);
+                var nomination = entry.Nominations.First();
+
+                var nominationUrl = new UriBuilder(Request.Url.ToString());
+                nominationUrl.Path = nomination.Id;
+
+                var viewModel = new Models.NominateViewModel
+                {
+                    NominationUrl = nominationUrl.ToString(),
+                    ChallengeTitle = entry.ChallengeTitle
+                };
+
+                return Negotiate
+                    .WithModel(viewModel)
+                    .WithView("nominate");
+            };
+
         }
     }
 }

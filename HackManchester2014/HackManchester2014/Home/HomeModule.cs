@@ -1,3 +1,7 @@
+using System.Linq;
+using HackManchester2014.Domain;
+using HackManchester2014.Infrastructure;
+
 namespace HackManchester2014.Home
 {
     using HackManchester2014.Home.Models;
@@ -8,7 +12,7 @@ namespace HackManchester2014.Home
 
     public class HomeModule : NancyModule
     {
-        public HomeModule(IDocumentSession documentSession)
+        public HomeModule(IDocumentSession documentSession, IImageStore imageStore)
         {
             Get["/"] = _ =>
             {
@@ -39,6 +43,22 @@ namespace HackManchester2014.Home
             Get["/register/4"] = _ =>
             {
                 return Negotiate.WithView("Register4");
+            };
+            Post["/register/4"] = _ =>
+            {
+                var httpFile = Request.Files.FirstOrDefault();
+                if (httpFile != null)
+                {
+                    var Id = imageStore.SaveImage(httpFile.Value);
+                    var image = new Image()
+                    {
+                        Id = Id,
+                        ContentType=httpFile.ContentType,
+                        Name=httpFile.Name
+                    };
+                    documentSession.Store(image);
+                }
+                return Response.AsRedirect("/");
             };
         }
     }

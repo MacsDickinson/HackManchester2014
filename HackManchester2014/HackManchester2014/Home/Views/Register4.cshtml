@@ -17,11 +17,15 @@
                 <legend class="is-offscreen">Prove you have done the challenge</legend>
 
                 <div class="form-group">
-                    <label for="proof-file" class="btn btn--primary">
-                        Upload your image
-                        <input type="file" id="proof-file" />
-                    </label>
+                    <form id="upload-form" method="POST" enctype="multipart/form-data">
+                        <label for="proof-file" class="btn btn--primary">
+                            Upload your image
 
+
+
+                        </label>
+                        <input type="file" id="proof-file" name="file" onchange="$('#upload-form').submit();" />
+                    </form>
 
                 </div>
             </fieldset>

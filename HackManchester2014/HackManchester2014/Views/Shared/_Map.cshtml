@@ -5,7 +5,6 @@
 {
     <text>
         loadMaxLatLng(@Html.Raw(donation.NominationsGeoJson))
-        map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude]);
         animatePath(map, @Html.Raw(donation.DonationGeoJson), @Html.Raw(donation.NominationsGeoJson))
         setTimeout(function() {
             @for (int i = 0; i < donation.Nominations.Count; i++)
@@ -22,6 +21,7 @@
     </text>
 }
 
+<input type="hidden" value="@Model.I" id="seed"/>
 <div id='map-wrapper' class="map-container">
     <div id='map'></div>
 </div>
@@ -42,6 +42,9 @@
 
         map.infoControl.addInfo('<a href="http://hackman14.azurewebsites.net/">Mighty Morphin Power Hackers</a>');
         map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude], 15);
+        
+        map.touchZoom.disable();
+        map.scrollWheelZoom.disable();
 
         // Load the data for the user
         drawPoints(map, @Html.Raw(Model.Donation.DonationGeoJson));
@@ -83,29 +86,32 @@
             }
         }
         function loadMaxLatLng(data) {
-            var oldmaxLat = maxLat;
-            var oldmaxLng = maxLng;
-            var oldminLat = minLat;
-            var oldminLng = minLng;
+            var buffer = 0.1;
+            var updated = false;
             for (var i = 0; i < data.features.length; i++) {
                 var latLng = data.features[i].geometry.coordinates;
                 var lat = latLng[0];
                 var lng = latLng[1];
                 if (lat < minLat) {
-                    minLat = lat;
+                    updated = true;
+                    minLat = lat - buffer;
                 }
                 if (lat > maxLat) {
-                    maxLat = lat;
+                    updated = true;
+                    maxLat = lat + buffer;
                 }
                 if (lng < minLng) {
-                    minLng = lng;
+                    updated = true;
+                    minLng = lng - buffer;
                 }
                 if (lng > maxLng) {
-                    maxLng = lng;
+                    updated = true;
+                    maxLng = lng + buffer;
                 }
             }
-            if (oldmaxLat != maxLat || oldmaxLng != maxLng || oldminLat != minLat || oldminLng == minLng) {
+            if (updated === true) {
                 map.fitBounds([[minLat, minLng],[maxLat, maxLng]], [10,10]);
+                map.setView([@Model.Donation.Location.Latitude, @Model.Donation.Location.Longitude]);
             }
         }
         function drawPoints(map, data) {

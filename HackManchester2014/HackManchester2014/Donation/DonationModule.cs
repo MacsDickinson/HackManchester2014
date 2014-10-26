@@ -15,13 +15,13 @@ using Raven.Client;
 
 namespace HackManchester2014.Donation
 {
-    public class DonationCore: NancyModule
+    public class DonationModule: NancyModule
     {
-        public DonationCore(IDocumentSession session, JustGivingConfiguration justGivingConfig)
+        public DonationModule(IDocumentSession session, JustGivingConfiguration justGivingConfig, IImageStore imageStore)
         {
             this.RequiresAuthentication();
 
-            Post[@"/challenges/{challengeTag}/donate"] = _ =>
+            Get[@"/challenges/{challengeTag}/donate"] = _ =>
             {
                 var user = (UserIdentity)Context.CurrentUser;
 
@@ -76,11 +76,64 @@ namespace HackManchester2014.Donation
                 entry.Nominations.Add(nomination);
                 session.SaveChanges();
 
+                return new RedirectResponse(string.Format("/challenges/{0}/entries/{1}/upload", challengeTag, entryId));
+            };
+
+            Get["/challenges/{challengeTag}/entries/{entryId}/upload"] = _ =>
+            {
+                var viewModel = new Models.ConfirmationViewModel
+                {
+
+                };
+
+                return Negotiate
+                    .WithModel(viewModel)
+                    .WithView("register4");
+            };
+
+            Post["/challenges/{challengeTag}/entries/{entryId}/upload"] = _ =>
+            {
+                string challengeTag = _.challengeTag;
+                int entryId = _.entryId;
+                var entry = session.Load<Entry>(string.Format("entries/{0}", entryId));
+                var httpFile = Request.Files.FirstOrDefault();
+                if (httpFile != null)
+                {
+                    var id = imageStore.SaveImage(httpFile.Value);
+                    var image = new Image()
+                    {
+                        Id = id,
+                        ContentType = httpFile.ContentType,
+                        Name = httpFile.Name
+                    };
+                    entry.ProofImage = image.Id;
+                    session.Store(image);
+                    session.Store(entry);
+                }
+                return Response.AsRedirect(string.Format("/challenges/{0}/entries/{1}/nominate", challengeTag, entryId));
+            };
+
+            Get["/challenges/{challengeTag}/entries/{entryId}/nominate"] = _ =>
+            {
+                int entryId = _.entryId;
+
+                var entry = session.Load<Entry>(entryId);
+                var nomination = entry.Nominations.First();
+
                 var nominationUrl = new UriBuilder(Request.Url.ToString());
                 nominationUrl.Path = nomination.Id;
 
-                return "Thanks for donating, here's your nomination Url: " + nominationUrl.ToString();
+                var viewModel = new Models.NominateViewModel
+                {
+                    NominationUrl = nominationUrl.ToString(),
+                    ChallengeTitle = entry.ChallengeTitle
+                };
+
+                return Negotiate
+                    .WithModel(viewModel)
+                    .WithView("nominate");
             };
+
         }
     }
 }

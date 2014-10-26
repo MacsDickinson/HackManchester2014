@@ -124,8 +124,7 @@
     <Content Include="Challenge\Views\Challenge.cshtml" />
     <Content Include="Home\Views\Index.cshtml" />
     <Content Include="Home\Views\Register2.cshtml" />
-    <Content Include="Home\Views\Register3.cshtml" />
-    <Content Include="Home\Views\Register4.cshtml" />
+    <Content Include="Donation\Views\Register4.cshtml" />
     <Content Include="Home\Views\Register1.cshtml" />
     <Content Include="Content\Styles\sass\partials\_base.scss" />
     <Content Include="Content\Styles\sass\partials\_buttons.scss" />
@@ -145,6 +144,7 @@
     <Content Include="Content\Styles\mixture.json" />
     <Content Include="Account\Views\Account.cshtml" />
     <Content Include="Nomination\Views\Nomination.cshtml" />
+    <Content Include="Donation\Views\Nominate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,6 +163,8 @@
     <Compile Include="Domain\Donation.cs" />
     <Compile Include="Domain\GeoIp.cs" />
     <Compile Include="Domain\Image.cs" />
+    <Compile Include="Donation\Models\ConfirmationViewModel.cs" />
+    <Compile Include="Donation\Models\NominateViewModel.cs" />
     <Compile Include="Infrastructure\IImageStore.cs" />
     <Compile Include="Infrastructure\ImageStore.cs" />
     <Compile Include="Nomination\Models\NominationViewModel.cs" />
@@ -179,7 +181,7 @@
     <Compile Include="Domain\Entry.cs" />
     <Compile Include="Domain\Challenge.cs" />
     <Compile Include="Domain\User.cs" />
-    <Compile Include="Donation\DonationCore.cs" />
+    <Compile Include="Donation\DonationModule.cs" />
     <Compile Include="Donation\JustGivingUrlBuilder.cs" />
     <Compile Include="Home\HomeModule.cs" />
     <Compile Include="Infrastructure\JustGivingConfiguration.cs" />

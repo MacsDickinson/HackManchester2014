@@ -36,7 +36,7 @@
 
                     <div class="form-actions form-actions--divide">
                         <span class="form-actions__content">
-                            <a class="btn btn--primary js-continue">Continue</a>
+                            <a class="btn btn--primary js-continue">Donate</a>
                         </span>
                     </div>
                     <a href="#">Go back a step</a>
@@ -54,7 +54,7 @@ $(function(){
         var $selected = $('.js-option:checked');
         if ($selected.length) {
             var id = $selected[0].id;
-            window.location = '/' + id;
+            window.location = '/' + id + '/donate';
         }
     });
 });

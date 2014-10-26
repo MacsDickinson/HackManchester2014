@@ -31,13 +31,10 @@ namespace HackManchester2014.Infrastructure
             return Id;
         }
 
-        public void GetImage(Guid Id, Stream stream)
+        public Stream GetImage(Guid Id)
         {
             var uploadDirectory = Path.Combine(DataDir, "ImageUploads");
-            using (var fileStream = File.OpenRead(string.Format("{0}/{1}", uploadDirectory, Id)))
-            {
-                fileStream.CopyTo(stream);
-            }
+            return File.OpenRead(string.Format("{0}/{1}", uploadDirectory, Id));
         }
     }
 }

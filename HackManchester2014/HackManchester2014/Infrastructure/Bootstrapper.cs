@@ -26,6 +26,7 @@ namespace HackManchester2014.Infrastructure
 
             var store = RavenSessionProvider.DocumentStore;
             container.Register<IDocumentStore>(store);
+            container.Register<IImageStore>(new ImageStore(RootPathProvider.GetRootPath()+"/App_Data/"));
             container.Register<JustGivingConfiguration>(new JustGivingConfiguration
             {
                 ApiHost = ConfigurationManager.AppSettings["JustGiving.ApiHost"],

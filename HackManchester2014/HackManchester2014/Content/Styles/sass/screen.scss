@@ -17,6 +17,9 @@
 @import "partials/lists";			// List styles
 @import "partials/icons";			// Icon styles
 
+@import "fonts/font-awesome.scss";	// Base font styles from font awesome 
+
+
 /*  =BASE
 ------------------------------------------------------------*/
 
@@ -126,7 +129,6 @@ ul {
 }
 
 .step-item {
-	
 	text-align: center;
 }
 
@@ -135,7 +137,7 @@ ul {
 }
 
     .step-item__title {
-       
+       margin-top: .5em;
     }
 
     .step-item__detail { 

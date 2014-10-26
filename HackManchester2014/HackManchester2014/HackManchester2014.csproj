@@ -116,6 +116,7 @@
   <ItemGroup>
     <Content Include="Content\Styles\css\screen.css" />
     <Content Include="Content\Styles\css\screen.min.css" />
+    <Content Include="Content\Styles\fonts\fontawesome-webfont.svg" />
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_Map.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -145,6 +146,23 @@
     <Content Include="Account\Views\Account.cshtml" />
     <Content Include="Nomination\Views\Nomination.cshtml" />
     <Content Include="Donation\Views\Nominate.cshtml" />
+    <Content Include="Content\Styles\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Styles\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Styles\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Styles\fonts\FontAwesome.otf" />
+    <Content Include="Content\Styles\sass\fonts\font-awesome.scss" />
+    <Content Include="Content\Styles\sass\fonts\_bordered-pulled.scss" />
+    <Content Include="Content\Styles\sass\fonts\_core.scss" />
+    <Content Include="Content\Styles\sass\fonts\_fixed-width.scss" />
+    <Content Include="Content\Styles\sass\fonts\_icons.scss" />
+    <Content Include="Content\Styles\sass\fonts\_larger.scss" />
+    <Content Include="Content\Styles\sass\fonts\_list.scss" />
+    <Content Include="Content\Styles\sass\fonts\_mixins.scss" />
+    <Content Include="Content\Styles\sass\fonts\_path.scss" />
+    <Content Include="Content\Styles\sass\fonts\_rotated-flipped.scss" />
+    <Content Include="Content\Styles\sass\fonts\_spinning.scss" />
+    <Content Include="Content\Styles\sass\fonts\_stacked.scss" />
+    <Content Include="Content\Styles\sass\fonts\_variables.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -53,7 +53,7 @@ namespace HackManchester2014.Map
                 parent.Location.Longitude + RandomDouble(random));
         }
 
-        private static double RandomDouble(Random random)
+        public static double RandomDouble(Random random)
         {
             const double maximum = 0.1;
             const double minimum = -0.1;

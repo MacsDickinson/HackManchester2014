@@ -1,0 +1,52 @@
+﻿/*  =NOTIFICATIONS
+--------------------------------------------------------------------*/
+
+.notification {
+    background: #596D8D;
+    padding: 1em 2em;
+}
+
+.notification--global {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-width: 0 0 1px 0;
+}
+
+.notification--positive {
+    border-color: $positive-highlight;
+    color: #fff;
+}
+
+.notification--negative {
+    //border-color: $negative-highlight;
+    //color: $negative-highlight;
+}
+
+    .notification__action {
+        float: right;
+        color: #fff !important;
+        background: none;
+        border: 0;
+    }
+
+    .notification__indicator {
+        margin-right: 2em;
+        float: left;
+        color: #fff;
+
+        .fa {
+            color: #fff;
+        }
+    }
+
+    .notification__content {
+        margin-left: 3em;
+        display: block;
+
+        h2 {
+            color:#fff;
+            margin-bottom: 0;
+        }
+    }

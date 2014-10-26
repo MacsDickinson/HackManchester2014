@@ -10,9 +10,9 @@
     foreach (var achievement in Model.NewAchievements)
     {
         <div class="notification notification--positive js-notification">
-            <button class="notification__action js-notification-dismiss">Dismiss</button>
+            <button class="notification__action js-notification-dismiss fa fa-close fa-2x"></button>
             <span class="notification__indicator">
-                <i class="fa @achievement.Icon"></i>
+                <i class="fa @achievement.Icon fa-4x"></i>
             </span>
             <span class="notification__content">
                 <h2>@achievement.Name</h2>

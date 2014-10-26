@@ -1,6 +1,8 @@
 namespace HackManchester2014.Home
 {
+    using HackManchester2014.Domain;
     using HackManchester2014.Home.Models;
+    using HackManchester2014.Infrastructure.Indexes;
     using HackManchester2014.Map;
     using HackManchester2014.Map.Models;
     using Nancy;
@@ -20,6 +22,10 @@ namespace HackManchester2014.Home
                         Donation = MapModule.TestDonation()
                     }
                 };
+
+                model.TotalDonations = documentSession.Query<Entry>().Sum(x => x.Donation.Amount ?? 0); ;
+                model.TotalChallenges = documentSession.Query<Entry>().Count();
+
                 return Negotiate.WithView("Index")
                     .WithModel(model);
             };
@@ -34,9 +40,9 @@ namespace HackManchester2014.Home
             {
                 var challenges = documentSession.Query<Domain.Challenge>().Take(10).ToList();
 
-                var viewModel = new Challenge.Models.ChallengesViewModel
+                var viewModel = new HackManchester2014.Challenge.Models.ChallengesViewModel
                 {
-                    Challenges = challenges.Select(x => new Challenge.Models.ChallengeViewModel
+                    Challenges = challenges.Select(x => new HackManchester2014.Challenge.Models.ChallengeViewModel
                     {
                         Title = x.Title,
                         Brief = x.Brief,

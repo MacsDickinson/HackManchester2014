@@ -77,7 +77,7 @@ namespace HackManchester2014.Infrastructure
             Action<Challenge, Entry, int> makeFakePeople = null;
             makeFakePeople = (c, e, depth) =>
             {
-                if (depth < 3)
+                if (depth < 8)
                 {
                     var geoIp = new GeoIp
                     {
@@ -98,8 +98,13 @@ namespace HackManchester2014.Infrastructure
                         };
                         session.Store(user);
                         var entry = new Entry(user, c, geoIp, e);
+                        entry.Donation = new Donation()
+                        {
+                            Amount = (decimal) (rnd.NextDouble() + 1*10),
+                            DonationDate = DateTime.Now
+                        };
                         session.Store(entry);
-                        makeFakePeople(c, e, depth + 1);
+                        makeFakePeople(c, entry, depth + 1);
                     }
                 }
             };

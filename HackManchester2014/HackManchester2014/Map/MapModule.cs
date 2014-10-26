@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
+using HackManchester2014.Domain;
 using Nancy.Security;
+using Raven.Client;
 
 namespace HackManchester2014.Map
 {
@@ -8,7 +12,7 @@ namespace HackManchester2014.Map
 
     public class MapModule : NancyModule
     {
-        public MapModule()
+        public MapModule(IDocumentSession documentSession)
             : base("Map")
         {
             Get["/"] = _ =>
@@ -23,6 +27,20 @@ namespace HackManchester2014.Map
                                 .WithModel(model);
             };
         }
+
+        public static MapDonation BuildTree(Entry root, List<Entry> decendants)
+        {
+            var children = decendants.Where(x => x.ParentEntry == root.Id);
+            var childrenModels = children.Select(x => BuildTree(x, decendants));
+            if (root.GeoIp != null)
+            {
+                var donation = new MapDonation(root.UserName, root.ChallengeTitle, root.GeoIp.latitude, root.GeoIp.longitude);
+                donation.Nominations.AddRange(childrenModels);
+                return donation;
+            }
+            return null;
+        }
+
 
         public static MapDonation TestDonation(int seed)
         {
@@ -57,8 +75,8 @@ namespace HackManchester2014.Map
 
         public static double RandomDouble(Random random)
         {
-            const double maximum = 0.1;
-            const double minimum = -0.1;
+            const double maximum = 0.2;
+            const double minimum = -0.2;
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
     }

@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
+=======
 using System.IO;
+using HackManchester2014.Infrastructure;
 using HackManchester2014.Infrastructure.Indexes;
+
+>>>>>>> Stashed changes
 namespace HackManchester2014.Home
 {
     using System;
